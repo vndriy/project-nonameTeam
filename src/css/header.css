@@ -1,5 +1,7 @@
 .header {
   padding: 20px 0;
+  display: block;
+  background: #ffffff;
 }
 
 .nav-list {

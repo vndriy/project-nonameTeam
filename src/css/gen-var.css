@@ -1,0 +1,22 @@
+:root {
+  --light-theme-body: #f6f6f6
+  --dark-theme-body: #202024;
+  --black: #111111;
+  --blue: #4f2ee8;
+  --yellow: #eac645;
+  --white: #ffffff;
+
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color: var(--black);
+  background-color: var(--light-theme-body);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}

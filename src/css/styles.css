@@ -1,25 +1,23 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
+/* FONTS  */
+@import url('./fonts.css');
+
+/* GEN-VAR */
+@import url('./gen-var.css');
+
+/* RESET */
 @import url('./reset.css');
-@import url('./vite-promo.css');
+
+/* HEADER  */
 @import url('./header.css');
 
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+/* HOME */
+@import url('./home.css');
 
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
+/* FUNDS */
+@import url('./funds.css');
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
+/* SHOPPING LIST */
+@import url('./shopping-list.css');
+
+/* MODAL WINDOW */
+@import url('./modal-window.css');
