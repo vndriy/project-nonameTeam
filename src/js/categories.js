@@ -1,4 +1,6 @@
-import { listOfCategories } from "book-api.js";
+import {
+  listOfCategories
+} from "book-api.js";
 
 const categories = document.querySelector('.categories');
 const listOfBooks = document.querySelector('.list-of-books');
@@ -37,6 +39,7 @@ listOfCategories(topBooks)
       const category = bestBooksByCategory[categoryName];
       const bookCard = createBookCard(category);
       listOfBooks.appendChild(bookCard);
+      listOfBooks.append(createSeeMoreBtn())
     }
   })
   .catch(error => {
@@ -61,10 +64,6 @@ function createBookCard(book) {
   const bookCard = document.createElement('div');
   bookCard.classList.add('book-item');
 
-  const bookInfo = document.createElement('p');
-  bookInfo.classList.add('category-information');
-  bookInfo.textContent = book.list_name;
-
   const bookCover = document.createElement('img');
   bookCover.src = book.book_image;
   bookCover.classList.add('book-cover');
@@ -77,15 +76,26 @@ function createBookCard(book) {
   bookAuthor.textContent = book.author;
   bookAuthor.classList.add('book-author');
 
+  bookCard.append(createCategoryName(book))
+  bookCard.appendChild(bookCover);
+  bookCard.appendChild(bookTitle);
+  bookCard.appendChild(bookAuthor);
+
+  return bookCard;
+}
+
+function createSeeMoreBtn() {
   const seeMoreBtn = document.createElement('button');
   seeMoreBtn.textContent = 'see more';
   seeMoreBtn.classList.add('see-more-btn');
 
-  bookCard.appendChild(bookInfo);
-  bookCard.appendChild(bookCover);
-  bookCard.appendChild(bookTitle);
-  bookCard.appendChild(bookAuthor);
-  bookCard.appendChild(seeMoreBtn);
+  return seeMoreBtn;
+}
 
-  return bookCard;
+function createCategoryName(category) {
+  const bookInfo = document.createElement('p');
+  bookInfo.classList.add('category-information');
+  bookInfo.textContent = category.list_name;
+
+  return bookInfo;
 }
