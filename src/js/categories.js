@@ -1,7 +1,5 @@
-import {
-  listOfCategories
-} from "book-api.js";
-
+import { listOfCategories } from "./book-api.js";
+    
 const categories = document.querySelector('.categories');
 const listOfBooks = document.querySelector('.list-of-books');
 const category_list = 'category-list';
