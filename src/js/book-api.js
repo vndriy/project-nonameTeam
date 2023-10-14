@@ -1,7 +1,6 @@
-import axios from `axios`;
+import axios from "axios";
 
-const BASE_URL = `https://books-backend.p.goit.global/`;
-
+const BASE_URL = `https://books-backend.p.goit.global`;
 
 export async function listOfCategories(keyword) {
     try {

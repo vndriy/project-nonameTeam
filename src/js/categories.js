@@ -1,7 +1,10 @@
+
 import {
   listOfCategories,
   listOfBooks
 } from "./axios_export.js";
+
+   
 
 const categories = document.querySelector('.categories');
 const listOfAllBooks = document.querySelector('.list-of-books');
