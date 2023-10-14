@@ -1,15 +1,14 @@
 import {
-  listOfCategories,
-  listOfBooks
+  getCategoryList,
+  getTopBooks
 } from "./book-api";
 
 const categories = document.querySelector('.categories');
 const listOfAllBooks = document.querySelector('.list-of-books');
-const category_list = 'category-list';
 
 
 
-listOfCategories(category_list)
+getCategoryList()
   .then(data => {
     const allCategories = document.createElement('li');
     allCategories.textContent = 'All categories';
@@ -28,124 +27,64 @@ listOfCategories(category_list)
   });
 
 
-const category = 'top-books'
+getTopBooks()
+  .then(data => {
+    data.forEach(library => {
+      const libraryArr = library.books.sort((a, b) => a.rank - b.rank);
 
-let arrLength;
+      const arrLength =
+        window.innerWidth >= 375 && window.innerWidth < 768 ?
+        1 :
+        window.innerWidth >= 768 && window.innerWidth < 1440 ?
+        3 :
+        5;
 
-
-listOfBooks(category).then(data => {
-  data.forEach(library => {
-    const libraryArr = library.books.sort((a, b) => a.rank - b.rank);
-    if ( window.innerWidth >= 375  && window.innerWidth < 768) {
-      arrLength = 1;
-      libraryArr.length = arrLength;
       const contain = document.createElement('div');
       const aboutCategory = document.createElement('div');
       const seeMoreBtn = document.createElement('button');
-      const bookList = document.createElement('ul')
+      const bookList = document.createElement('ul');
       seeMoreBtn.textContent = 'see more';
       seeMoreBtn.classList.add('see-more-btn');
-      contain.classList.add('contain')
-      aboutCategory.classList.add('category-information')
-      bookList.classList.add('book-list')
+      contain.classList.add('contain');
+      aboutCategory.classList.add('category-information');
+      bookList.classList.add('book-list');
       aboutCategory.textContent = library.list_name;
       contain.append(aboutCategory);
-      listOfAllBooks.append(contain)
-      libraryArr.forEach(lib => {
-        const bookContent = document.createElement('li');
-        const bookImage = document.createElement('img');
-        const bookTitle = document.createElement('div');
-        const bookAuthor = document.createElement('p');
-        bookImage.classList.add('book-image-class');
-        bookTitle.classList.add('book-title');
-        bookAuthor.classList.add('book-author');
-        bookContent.classList.add('book-content');
-        bookContent.id = lib._id;
-        bookImage.src = lib.book_image;
-        bookTitle.textContent = lib.title;
-        bookAuthor.textContent = lib.author;
-        bookContent.append(bookImage)
-        bookContent.append(bookTitle)
-        bookContent.append(bookAuthor)
-        bookList.append(bookContent)
-        contain.append(bookList)
-        listOfAllBooks.append(contain)
-      })
-      contain.append(seeMoreBtn)
-    } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
-      arrLength = 3;
-      libraryArr.length = arrLength;
-      const contain = document.createElement('div');
-      const aboutCategory = document.createElement('div');
-      const seeMoreBtn = document.createElement('button');
-      const bookList = document.createElement('ul')
-      seeMoreBtn.textContent = 'see more';
-      seeMoreBtn.classList.add('see-more-btn');
-      contain.classList.add('contain')
-      aboutCategory.classList.add('category-information')
-      bookList.classList.add('book-list')
-      aboutCategory.textContent = library.list_name;
-      contain.append(aboutCategory);
-      listOfAllBooks.append(contain)
-      libraryArr.forEach(lib => {
-        const bookContent = document.createElement('li');
-        const bookImage = document.createElement('img');
-        const bookTitle = document.createElement('div');
-        const bookAuthor = document.createElement('p');
-        bookImage.classList.add('book-image-class');
-        bookTitle.classList.add('book-title');
-        bookAuthor.classList.add('book-author');
-        bookContent.classList.add('book-content');
-        bookContent.id = lib._id;
-        bookImage.src = lib.book_image;
-        bookTitle.textContent = lib.title;
-        bookAuthor.textContent = lib.author;
-        bookContent.append(bookImage)
-        bookContent.append(bookTitle)
-        bookContent.append(bookAuthor)
-        bookList.append(bookContent)
-        contain.append(bookList)
-        listOfAllBooks.append(contain)
-      })
-      contain.append(seeMoreBtn)
-    } else if (window.innerWidth >= 1440) {
-      arrLength = 5;
-      libraryArr.length = arrLength;
-      const contain = document.createElement('div');
-      const aboutCategory = document.createElement('div');
-      const seeMoreBtn = document.createElement('button');
-      const bookList = document.createElement('ul')
-      seeMoreBtn.textContent = 'see more';
-      seeMoreBtn.classList.add('see-more-btn');
-      contain.classList.add('contain')
-      aboutCategory.classList.add('category-information')
-      bookList.classList.add('book-list')
-      aboutCategory.textContent = library.list_name;
-      contain.append(aboutCategory);
-      listOfAllBooks.append(contain)
-      libraryArr.forEach(lib => {
-        const bookContent = document.createElement('li');
-        const bookImage = document.createElement('img');
-        const bookTitle = document.createElement('div');
-        const bookAuthor = document.createElement('p');
-        bookImage.classList.add('book-image-class');
-        bookTitle.classList.add('book-title');
-        bookAuthor.classList.add('book-author');
-        bookContent.classList.add('book-content')
-        bookContent.id = lib._id;
-        bookImage.src = lib.book_image;
-        bookTitle.textContent = lib.title;
-        bookAuthor.textContent = lib.author;
-        bookContent.append(bookImage)
-        bookContent.append(bookTitle)
-        bookContent.append(bookAuthor)
-        bookList.append(bookContent)
-        contain.append(bookList)
-        listOfAllBooks.append(contain)
-      })
-      contain.append(seeMoreBtn)
-    }
+      listOfAllBooks.append(contain);
+
+      const booksCard = createBookCard(libraryArr.slice(0, arrLength));
+      bookList.innerHTML = booksCard;
+
+      contain.append(bookList);
+      listOfAllBooks.append(contain);
+      contain.append(seeMoreBtn);
+    });
   })
-}).catch(error => {
-  console.error(error);
-})
+  .catch(error => {
+    console.error(error);
+  });
+
+function createBookCard(books) {
+  const booksCard = books
+    .map(({
+      _id,
+      author,
+      title,
+      book_image,
+    }) => {
+      return `
+        <li class="book-card" data-book-id="${_id}">
+          <a href="#" class="book-link">
+            <div class="overlay-wrapper">
+              <img class="book-image-category" src="${book_image}" alt="${title}" loading="lazy"/>
+            </div>
+            <h2 class="book-title">${title}</h2>
+            <p class="author">${author}</p>
+          </a>
+        </li>
+      `;
+    })
+    .join('');
+
+  return booksCard;
+}

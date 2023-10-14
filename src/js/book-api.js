@@ -1,25 +1,14 @@
-import axios from `axios`;
+import axios from 'axios';
 
-const BASE_URL = `https://books-backend.p.goit.global/`;
+const BASE_URL = `https://books-backend.p.goit.global`;
 
 
-export async function listOfCategories(keyword) {
-    try {
-        const response = await axios.get(`${BASE_URL}/books/${keyword}`);
-        return response.data;
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
-
+export async function getCategoryList() {
+  const response = await axios(`${BASE_URL}/books/category-list`);
+  return response.data;
 }
 
-export async function listOfBooks(keyword) {
-    try {
-      const response = await axios.get(`${BASE_URL}books/${keyword}`);
-      return response.data
-    } catch (error) {
-      console.error(error);
-      throw error
-    }
-  }
+export async function getTopBooks() {
+  const response = await axios(`${BASE_URL}/books/top-books`);
+  return response.data
+}
