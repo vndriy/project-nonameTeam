@@ -61,9 +61,6 @@ function generateMarketplaceLinks(buy_links) {
         case 'apple-books': {
           return markup(appleBooksImg);
         }
-        case 'bookshop': {
-          return markup(bookshopImg);
-        }
       }
     })
     .join('');

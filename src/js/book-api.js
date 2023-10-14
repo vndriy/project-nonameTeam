@@ -17,7 +17,7 @@ export async function getBooksByCategory() {
   return response.data;
 }
 
-export async function getBooksById() {
-  const response = await axios.get(`${BASE_URL}/books/{id}`);
+export async function getBooksById(bookId) {
+  const response = await axios.get(`${BASE_URL}/books/${bookId}`);
   return response.data;
 }

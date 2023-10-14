@@ -1,6 +1,6 @@
 import { renderModal } from './modal-book-selection';
 
-import { getBookDetail } from './book-api';
+import { getBooksById } from './book-api';
 import ShoppingList from './storage';
 
 const shoppingList = new ShoppingList();
@@ -23,7 +23,7 @@ addToShoppingListBtn.addEventListener('click', () => {
 });
 
 export function openModal(bookId) {
-  getBookDetail(bookId)
+  getBooksById(bookId)
     .then(bookDetails => {
       currentBook = bookDetails;
       renderModal(bookDetails);
