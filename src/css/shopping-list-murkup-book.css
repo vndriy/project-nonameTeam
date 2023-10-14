@@ -123,7 +123,8 @@ text-overflow: ellipsis;
     display: flex;
     flex-direction: row;
     gap: 8px;
-   
+    align-items: center;
+    
 }
 
 .svg {
@@ -133,12 +134,17 @@ text-overflow: ellipsis;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 }
-.icon {
-    height: 14px;
-    max-width: 32px;
-    
+
+
+.book {
+    width: 16px;
+     height: 16px;
+}
+.amazon {
+    width: 32px;
+    height: 11px;
 }
 
 /* Планшет */
@@ -179,6 +185,14 @@ text-overflow: ellipsis;
    
     .svg {
         max-width: 514px;
+    }
+    .book {
+        width: 28px;
+         height: 27px;
+    }
+    .amazon {
+        width: 48px;
+        height: 15px;
     }
     
 }
