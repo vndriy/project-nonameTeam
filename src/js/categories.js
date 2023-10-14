@@ -1,10 +1,6 @@
+import { getCategoryList, getTopBooks } from './book-api';
+import { openModal } from './remote-modal';
 
-import { 
-  getCategoryList,
-  getTopBooks
-} from "./book-api";
-
- 
 const categories = document.querySelector('.categories');
 const listOfAllBooks = document.querySelector('.list-of-books');
 
@@ -26,18 +22,17 @@ getCategoryList()
     console.error(error);
   });
 
-
 getTopBooks()
   .then(data => {
     data.forEach(library => {
       const libraryArr = library.books.sort((a, b) => a.rank - b.rank);
 
       const arrLength =
-        window.innerWidth >= 375 && window.innerWidth < 768 ?
-        1 :
-        window.innerWidth >= 768 && window.innerWidth < 1440 ?
-        3 :
-        5;
+        window.innerWidth >= 375 && window.innerWidth < 768
+          ? 1
+          : window.innerWidth >= 768 && window.innerWidth < 1440
+          ? 3
+          : 5;
 
       const contain = document.createElement('div');
       const aboutCategory = document.createElement('div');
@@ -66,12 +61,7 @@ getTopBooks()
 
 function createBookCard(books) {
   const booksCard = books
-    .map(({
-      _id,
-      author,
-      title,
-      book_image,
-    }) => {
+    .map(({ _id, author, title, book_image }) => {
       return `
         <li class="book-card" data-book-id="${_id}">
           <a href="#" class="book-link">
@@ -88,3 +78,12 @@ function createBookCard(books) {
 
   return booksCard;
 }
+listOfAllBooks.addEventListener('click', e => {
+  e.preventDefault();
+
+  const targetBook = e.target.closest('.book-card');
+  console.log(targetBook);
+  if (targetBook) {
+    openModal(targetBook.dataset.bookId);
+  }
+});
