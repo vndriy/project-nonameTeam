@@ -1,12 +1,11 @@
 import {
   listOfCategories,
   listOfBooks
-} from "./axios_export.js";
+} from "./book-api";
 
 const categories = document.querySelector('.categories');
 const listOfAllBooks = document.querySelector('.list-of-books');
 const category_list = 'category-list';
-const topBooks = 'top-books';
 
 
 
