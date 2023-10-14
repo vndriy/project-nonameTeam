@@ -1,4 +1,9 @@
 /*-backdrop-*/
+
+.no-scroll {
+  overflow: hidden;
+}
+
 .backdrop {
   position: fixed;
   top: 0;
