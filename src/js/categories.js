@@ -1,5 +1,5 @@
-import { listOfCategories } from "./book-api.js";
-    
+import { listOfCategories } from './book-api.js';
+
 const categories = document.querySelector('.categories');
 const listOfBooks = document.querySelector('.list-of-books');
 const category_list = 'category-list';
@@ -37,7 +37,7 @@ listOfCategories(topBooks)
       const category = bestBooksByCategory[categoryName];
       const bookCard = createBookCard(category);
       listOfBooks.appendChild(bookCard);
-      listOfBooks.append(createSeeMoreBtn())
+      listOfBooks.append(createSeeMoreBtn());
     }
   })
   .catch(error => {
@@ -74,7 +74,7 @@ function createBookCard(book) {
   bookAuthor.textContent = book.author;
   bookAuthor.classList.add('book-author');
 
-  bookCard.append(createCategoryName(book))
+  bookCard.append(createCategoryName(book));
   bookCard.appendChild(bookCover);
   bookCard.appendChild(bookTitle);
   bookCard.appendChild(bookAuthor);
