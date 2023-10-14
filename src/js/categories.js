@@ -1,12 +1,12 @@
-import {
+
+import { 
   getCategoryList,
   getTopBooks
 } from "./book-api";
 
+ 
 const categories = document.querySelector('.categories');
 const listOfAllBooks = document.querySelector('.list-of-books');
-
-
 
 getCategoryList()
   .then(data => {
