@@ -10,11 +10,12 @@ window.addEventListener("load",  murkupBook);
 function murkupBook() {
    const list = localStorage.getItem("shopping-list")
    const listPars = JSON.parse(list)
-   
-   
+   let url = "";
   
    listPars.map(({_id, buy_links,  author, title, description, book_image, list_name}) => {
     buy_links.map(({url}) => {
+      url = url
+      console.log(url)
      
      })
     murkup.insertAdjacentHTML("beforeend", `
@@ -40,7 +41,7 @@ function murkupBook() {
   <ul class="platform">
     <li class="platform-svg">
       <a href="" target="_blank" rel="noopener noreferrer">
-      <img  class="icon" src="${book_image}" alt="${title}" >
+      <img  class="icon" src="" alt="${title}" >
       </a>
     </li>
   </ul>
@@ -49,10 +50,11 @@ function murkupBook() {
 </div>
 </section>`)
 
+const removeButton = document.querySelector(".remove-book")
+removeButton.addEventListener ("click", toRemoveMurkup);
+
+
   })
-  const removeButton = document.querySelector(".remove-book")
-  removeButton.addEventListener ("click", toRemoveMurkup)
-   console.log(removeButton)
 
 }
 
@@ -61,9 +63,12 @@ function toRemoveMurkup() {
   
   murkup.removeChild(document.querySelector('.container'));
   // murkup.classList.remove('container');
-  console.log(murkup)
+  localStorage.removeItem("shopping-list")
 
 }
+
+
+
 
 
 
