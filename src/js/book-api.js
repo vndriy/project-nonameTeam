@@ -13,3 +13,13 @@ export async function listOfCategories(keyword) {
     }
 
 }
+
+export async function listOfBooks(keyword) {
+    try {
+      const response = await axios.get(`${BASE_URL}books/${keyword}`);
+      return response.data
+    } catch (error) {
+      console.error(error);
+      throw error
+    }
+  }
