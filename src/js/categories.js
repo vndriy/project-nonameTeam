@@ -1,9 +1,17 @@
-import { listOfCategories } from "./book-api.js";
-    
+
+import {
+  listOfCategories,
+  listOfBooks
+} from "./axios_export.js";
+
+   
+
 const categories = document.querySelector('.categories');
-const listOfBooks = document.querySelector('.list-of-books');
+const listOfAllBooks = document.querySelector('.list-of-books');
 const category_list = 'category-list';
 const topBooks = 'top-books';
+
+
 
 listOfCategories(category_list)
   .then(data => {
@@ -23,77 +31,125 @@ listOfCategories(category_list)
     console.error(error);
   });
 
-listOfCategories(topBooks)
-  .then(data => {
-    const bestBooksByCategory = {};
 
-    data.forEach(category => {
-      const bestBook = findBestBookInCategory(category.books);
-      if (bestBook) {
-        bestBooksByCategory[category.list_name] = bestBook;
-      }
-    });
-    for (const categoryName in bestBooksByCategory) {
-      const category = bestBooksByCategory[categoryName];
-      const bookCard = createBookCard(category);
-      listOfBooks.appendChild(bookCard);
-      listOfBooks.append(createSeeMoreBtn())
+const category = 'top-books'
+
+let arrLength;
+
+
+listOfBooks(category).then(data => {
+  data.forEach(library => {
+    const libraryArr = library.books.sort((a, b) => a.rank - b.rank);
+    if ( window.innerWidth >= 375  && window.innerWidth < 768) {
+      arrLength = 1;
+      libraryArr.length = arrLength;
+      const contain = document.createElement('div');
+      const aboutCategory = document.createElement('div');
+      const seeMoreBtn = document.createElement('button');
+      const bookList = document.createElement('ul')
+      seeMoreBtn.textContent = 'see more';
+      seeMoreBtn.classList.add('see-more-btn');
+      contain.classList.add('contain')
+      aboutCategory.classList.add('category-information')
+      bookList.classList.add('book-list')
+      aboutCategory.textContent = library.list_name;
+      contain.append(aboutCategory);
+      listOfAllBooks.append(contain)
+      libraryArr.forEach(lib => {
+        const bookContent = document.createElement('li');
+        const bookImage = document.createElement('img');
+        const bookTitle = document.createElement('div');
+        const bookAuthor = document.createElement('p');
+        bookImage.classList.add('book-image-class');
+        bookTitle.classList.add('book-title');
+        bookAuthor.classList.add('book-author');
+        bookContent.classList.add('book-content');
+        bookContent.id = lib._id;
+        bookImage.src = lib.book_image;
+        bookTitle.textContent = lib.title;
+        bookAuthor.textContent = lib.author;
+        bookContent.append(bookImage)
+        bookContent.append(bookTitle)
+        bookContent.append(bookAuthor)
+        bookList.append(bookContent)
+        contain.append(bookList)
+        listOfAllBooks.append(contain)
+      })
+      contain.append(seeMoreBtn)
+    } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
+      arrLength = 3;
+      libraryArr.length = arrLength;
+      const contain = document.createElement('div');
+      const aboutCategory = document.createElement('div');
+      const seeMoreBtn = document.createElement('button');
+      const bookList = document.createElement('ul')
+      seeMoreBtn.textContent = 'see more';
+      seeMoreBtn.classList.add('see-more-btn');
+      contain.classList.add('contain')
+      aboutCategory.classList.add('category-information')
+      bookList.classList.add('book-list')
+      aboutCategory.textContent = library.list_name;
+      contain.append(aboutCategory);
+      listOfAllBooks.append(contain)
+      libraryArr.forEach(lib => {
+        const bookContent = document.createElement('li');
+        const bookImage = document.createElement('img');
+        const bookTitle = document.createElement('div');
+        const bookAuthor = document.createElement('p');
+        bookImage.classList.add('book-image-class');
+        bookTitle.classList.add('book-title');
+        bookAuthor.classList.add('book-author');
+        bookContent.classList.add('book-content');
+        bookContent.id = lib._id;
+        bookImage.src = lib.book_image;
+        bookTitle.textContent = lib.title;
+        bookAuthor.textContent = lib.author;
+        bookContent.append(bookImage)
+        bookContent.append(bookTitle)
+        bookContent.append(bookAuthor)
+        bookList.append(bookContent)
+        contain.append(bookList)
+        listOfAllBooks.append(contain)
+      })
+      contain.append(seeMoreBtn)
+    } else if (window.innerWidth >= 1440) {
+      arrLength = 5;
+      libraryArr.length = arrLength;
+      const contain = document.createElement('div');
+      const aboutCategory = document.createElement('div');
+      const seeMoreBtn = document.createElement('button');
+      const bookList = document.createElement('ul')
+      seeMoreBtn.textContent = 'see more';
+      seeMoreBtn.classList.add('see-more-btn');
+      contain.classList.add('contain')
+      aboutCategory.classList.add('category-information')
+      bookList.classList.add('book-list')
+      aboutCategory.textContent = library.list_name;
+      contain.append(aboutCategory);
+      listOfAllBooks.append(contain)
+      libraryArr.forEach(lib => {
+        const bookContent = document.createElement('li');
+        const bookImage = document.createElement('img');
+        const bookTitle = document.createElement('div');
+        const bookAuthor = document.createElement('p');
+        bookImage.classList.add('book-image-class');
+        bookTitle.classList.add('book-title');
+        bookAuthor.classList.add('book-author');
+        bookContent.classList.add('book-content')
+        bookContent.id = lib._id;
+        bookImage.src = lib.book_image;
+        bookTitle.textContent = lib.title;
+        bookAuthor.textContent = lib.author;
+        bookContent.append(bookImage)
+        bookContent.append(bookTitle)
+        bookContent.append(bookAuthor)
+        bookList.append(bookContent)
+        contain.append(bookList)
+        listOfAllBooks.append(contain)
+      })
+      contain.append(seeMoreBtn)
     }
   })
-  .catch(error => {
-    console.error(error);
-  });
-
-function findBestBookInCategory(books) {
-  let bestBook = null;
-  let bestRank = Infinity;
-
-  books.forEach(book => {
-    if (book.rank < bestRank) {
-      bestRank = book.rank;
-      bestBook = book;
-    }
-  });
-
-  return bestBook;
-}
-
-function createBookCard(book) {
-  const bookCard = document.createElement('div');
-  bookCard.classList.add('book-item');
-
-  const bookCover = document.createElement('img');
-  bookCover.src = book.book_image;
-  bookCover.classList.add('book-cover');
-
-  const bookTitle = document.createElement('div');
-  bookTitle.textContent = book.title;
-  bookTitle.classList.add('book-title');
-
-  const bookAuthor = document.createElement('p');
-  bookAuthor.textContent = book.author;
-  bookAuthor.classList.add('book-author');
-
-  bookCard.append(createCategoryName(book))
-  bookCard.appendChild(bookCover);
-  bookCard.appendChild(bookTitle);
-  bookCard.appendChild(bookAuthor);
-
-  return bookCard;
-}
-
-function createSeeMoreBtn() {
-  const seeMoreBtn = document.createElement('button');
-  seeMoreBtn.textContent = 'see more';
-  seeMoreBtn.classList.add('see-more-btn');
-
-  return seeMoreBtn;
-}
-
-function createCategoryName(category) {
-  const bookInfo = document.createElement('p');
-  bookInfo.classList.add('category-information');
-  bookInfo.textContent = category.list_name;
-
-  return bookInfo;
-}
+}).catch(error => {
+  console.error(error);
+})
