@@ -17,20 +17,22 @@
   <body>
     <!-- HEADER  -->
     <load ="partials/header.html" />
-
-    <!-- HOME  -->
-    <load ="partials/categories.html" />
-
-    <!-- FUNDS  -->
-    <load ="partials/funds.html" />
-
-    <!-- MODAL WINDOW -->
-    <load ="partials/modal-window.html" />
-
-    <!-- Support Card -->
-    <!-- <load="partials/support-card.html" /> -->
-    
-    
+    <main>
+      <section class="main-section">
+        <div class="left-side">
+          <!-- Category list JS відмальовує -->
+          <load ="partials/categories.html" />
+          <!-- Support Card -->
+          <load ="partials/support-card.html" />
+        </div>
+        <div class="right-side">
+          <load ="partials/right-side.html" />
+          <!-- Book List -->
+        </div>
+        <!-- MODAL WINDOW -->
+        <load ="partials/modal-window.html" />
+      </section>
+    </main>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

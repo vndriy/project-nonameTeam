@@ -5,10 +5,10 @@ const modalContainer = document.querySelector('.modal-book-content-wrap');
 
 export function renderModal(bookDetails) {
   const { book_image, title, author, description, buy_links } = bookDetails;
-
+  console.log(bookDetails);
   const markup = `
     <img
-      class="modal-book-book-cover"
+      class="modal-book-cover"
       src="${book_image}" 
       alt="${title}"
       width="335" 
@@ -26,42 +26,21 @@ export function renderModal(bookDetails) {
             : `<p class="modal-book-description not-description scrollbar">No description</p>`
         }
       </div>
-      <ul class="modal-book-marketplaces">
-        ${generateMarketplaceLinks(buy_links)}
-      </ul>
+      <div class="trading-platforms">
+          <a class="modal-book-trading-platform amazon" href="${
+            buy_links[0].url
+          }" target="_blank">
+            <img class="modal-image-amazon" src="${amazonImg}" alt="Amazon shop" loading="lazy">
+          </a>
+          <a class="modal-book-trading-platform apple" href="${
+            buy_links[1].url
+          }" target="_blank">
+            <img class="modal-image-apple" src="${appleBooksImg}" alt="Apple shop" loading="lazy">
+          </a>
+      
+        </div>
     </div>
   `;
 
   modalContainer.innerHTML = markup;
-}
-
-function generateMarketplaceLinks(buy_links) {
-  return buy_links
-    .map(({ name, url }) => {
-      const iconId = name.toLowerCase().replace(' ', '-');
-
-      const markup = img => {
-        return `
-          <li class="trading-platform-color">
-            <a
-              href="${url}" class="modal-book-trading-platform"
-              target="_blank"
-              rel="noopener noreferrer"
-              >
-                <img class="${iconId}" height="36" width="36" src="${img}" alt="${name}" loading="lazy"/>
-            </a>
-          </li>
-        `;
-      };
-
-      switch (iconId) {
-        case 'amazon': {
-          return markup(amazonImg);
-        }
-        case 'apple-books': {
-          return markup(appleBooksImg);
-        }
-      }
-    })
-    .join('');
 }

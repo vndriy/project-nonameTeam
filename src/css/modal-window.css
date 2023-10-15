@@ -17,6 +17,10 @@
   pointer-events: none;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 /*--modal-*/
 .close {
   width: 24px;

@@ -40,6 +40,7 @@ export function openModal(bookId) {
         modalMessage.classList.add('message-hide');
       }
 
+      document.body.classList.add('no-scroll');
       modalBackdropEl.classList.remove('is-hidden');
 
       const closeModal = () => {
@@ -69,6 +70,7 @@ export function openModal(bookId) {
     .catch(error => {
       console.log(error);
     });
+  document.body.classList.remove('no-scroll');
 }
 
 function remoteShoppingList(book) {

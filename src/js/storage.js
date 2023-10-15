@@ -4,6 +4,7 @@ export default class ShoppingList {
 
   constructor() {
     this.#init();
+    this.#checkLocalStorage();
   }
 
   #init() {
@@ -11,6 +12,32 @@ export default class ShoppingList {
 
     if (!this.#shoppingList) {
       localStorage.setItem(this.#KEY, '[]');
+    }
+  }
+
+  #checkLocalStorage() {
+    if (this.#shoppingList.length > 0) {
+      this.#handleNonEmptyStorage();
+    } else {
+      this.#handleEmptyStorage();
+    }
+  }
+
+  #handleNonEmptyStorage() {
+    // потрібно додати відображення карток
+  }
+
+  #handleEmptyStorage() {
+    const supportCards = document.querySelector(
+      '.shop-list-wrap .support-card'
+    );
+    const shopListCap = document.querySelector(
+      '.shop-list-wrap .empty-basket-wrap'
+    );
+
+    if (supportCards && shopListCap) {
+      supportCards.style.display = 'block';
+      shopListCap.style.display = 'block';
     }
   }
 

@@ -5,7 +5,6 @@ import { openModal } from './remote-modal';
 const categories = document.querySelector('.categories');
 const booksContainer = document.querySelector('.list-of-books');
 
-
 getCategoryList()
   .then(data => {
     const allCategories = document.createElement('li');
@@ -17,7 +16,6 @@ getCategoryList()
       const listItem = document.createElement('li');
       listItem.classList.add('list-item');
       listItem.textContent = category.list_name;
-      // listItem.dataset.categoryId = category._id;
       categories.appendChild(listItem);
     });
   })
@@ -91,7 +89,6 @@ function createBookCard(arr) {
       `;
     })
     .join('');
-
   return booksCard;
 }
 
