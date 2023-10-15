@@ -20,12 +20,12 @@ function murkupBook() {
  <img class="img" src="${book_image}" alt="${title}" >
  </picture>
  <div class="book-description">
- <div class="remove-book"> 
-   <button type="button" class="${_id}">
+ <div class="remove-book "> 
+ <button type="button" class="${_id} button-svg">
      <svg class="svg-button" >
-      <use href="./img/icons.svg#icon-dump" "></use>
+      <use href="./img/icons.svg#icon-dump" class="${_id}"></use>
      </svg>
-     </button>
+     </button> 
  </div>
  <h2 class="name">${title}</h2>
  <p class="category">${list_name}</p>
@@ -51,33 +51,39 @@ function murkupBook() {
  </div>
  </div>
  </section>`)
- console.log(_id);
-
  
  const removeButton = document.querySelectorAll(".remove-book");
- console.log(removeButton)
+ 
   
     })
-    // const removeButtons = document.querySelectorAll(".remove-book");
-    // removeButtons.addEventListener("click", toRemoveMurkup);
-    // console.log(removeButtons)
+    const removeButton = document.querySelectorAll(".remove-book");
+    removeButton.forEach(book => {
+      book.addEventListener('click', toRemoveMurkup);
+    });
     
    }
 
    
 
 
-  // let  removeBookInShoppingList = [];
   
  // Видаляємо книжку  
-function toRemoveMurkup(e) {
-  console.log(e)
+    function toRemoveMurkup(e) {
+   
+  let  removeBookInShoppingList = [];
   const list = localStorage.getItem("shopping-list")
    const listPars = JSON.parse(list)
-   console.log(listPars)
    listPars.filter(b => {
-    if(b._id === e.target.classList.value ) {
-      console.log(b)
+    // console.log(b._id)
+    // console.log(e.target.classList.value)
+    if(b._id !== e.target.classList.value ) {
+     removeBookInShoppingList.push(b)
+      console.log(removeBookInShoppingList)
+      // murkup.classList.remove('.container');
+      murkup.removeChild(document.querySelector('.container'));
+      localStorage.setItem("shopping-list", JSON.stringify(removeBookInShoppingList))
+     
+      
     }
     
   })

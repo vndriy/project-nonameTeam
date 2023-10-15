@@ -29,6 +29,12 @@ margin: 40px 0;
     width: 28px;
     height: 28px;
 }
+.button-svg {
+    width: 28px;
+    height: 28px; 
+    border: none;
+    background-color: white;
+}
 .container{
     
     display: flex;
