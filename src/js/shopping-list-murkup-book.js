@@ -8,6 +8,7 @@ window.addEventListener("load",  murkupBook);
 
 
 function murkupBook() {
+  // localStorage.removeItem("shopping-list")
    const list = localStorage.getItem("shopping-list")
    const listPars = JSON.parse(list)
    
@@ -65,7 +66,7 @@ function murkupBook() {
 
    
 
-   let  removeBookInShoppingList = [];
+  //  let  removeBookInShoppingList = [];
   
  // Видаляємо книжку  
     function toRemoveMurkup(e) {
@@ -73,23 +74,33 @@ function murkupBook() {
   // let  removeBookInShoppingList = [];
   const list = localStorage.getItem("shopping-list")
    const listPars = JSON.parse(list)
-   listPars.filter(b => {
-    
-    const filterBookId = b._id !== e.target.classList.value;
-    console.log(filterBookId)
-    if(b._id === e.target.classList.value ) {
-     removeBookInShoppingList.push(filterBookId)
+  const masBook =  listPars.filter(b => b._id === e.target.classList.value)
+  console.log(masBook)
+  // if(b._id !== e.target.classList.value) {
+  //   removeBookInShoppingList.push(masBooks)
+  // }
+   const masBooks = listPars.filter(b => b._id !== e.target.classList.value)
+   console.log(masBooks)
+      // const filterBookId = [b._id === e.target.classList.value];
+      const masBooksLockal = listPars.filter(b => {
+        if(masBook ) {
+          // removeBookInShoppingList.push(masBooks)
+          murkup.classList.remove('.container');
+          murkup.removeChild(document.querySelector('.container'));
+          localStorage.setItem("shopping-list", JSON.stringify(masBooks))
+        }
+      })
+  
      
-      console.log(removeBookInShoppingList)
-      murkup.classList.remove('.container');
+      // murkup.classList.remove('.container');
       // murkup.removeChild(document.querySelector('.container'));
       // localStorage.setItem("shopping-list", JSON.stringify(removeBookInShoppingList))
      
       
-    }
     
-  })
-}
+    
+  }
+
   //  removeBookInShoppingList = listPars;
   //  console.log(removeBookInShoppingList)
   //  removeBookInShoppingList.map((b) => {
