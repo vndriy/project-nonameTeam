@@ -16,13 +16,13 @@ function murkupBook() {
     const applBook = buy_links[1];
     
       murkup.insertAdjacentHTML("beforeend", `
-      <section class="container">
+      <section class="container ${_id}">
  <picture class="picture"> 
  <img class="img" src="${book_image}" alt="${title}" >
  </picture>
  <div class="book-description">
  <div class="remove-book "> 
- <button type="button" class="${_id} button-svg">
+ <button type="button" class="${_id}" button-svg">
      <svg class="svg-button" >
       <use href="./img/icons.svg#icon-dump" class="${_id}"></use>
      </svg>
@@ -71,17 +71,19 @@ function murkupBook() {
   const list = localStorage.getItem("shopping-list")
    const listPars = JSON.parse(list)
   const masBook =  listPars.filter(b => b._id === e.target.classList.value)
-  console.log(masBook)
- 
+
+  
    const masBooks = listPars.filter(b => b._id !== e.target.classList.value)
    console.log(masBooks)
-     
+   console.log(masBook)
        listPars.filter(b => {
-        if(masBook ) {
-          
-          // murkup.classList.remove('.container');
-          murkup.removeChild(document.querySelector('.container'));
+        if(masBook) {
           localStorage.setItem("shopping-list", JSON.stringify(masBooks))
+          const h = murkup.querySelector(".container")
+          h.remove();
+          // murkup.classList.remove('h');
+          murkup.removeChild(document.querySelector('h'));
+        
         }
       })
   
