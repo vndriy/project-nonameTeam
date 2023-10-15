@@ -7,3 +7,4 @@ import './js/remote-modal.js';
 import './js/storage.js';
 
 import './js/support-ua.js';
+import './js/button-up.js';
