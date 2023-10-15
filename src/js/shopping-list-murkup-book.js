@@ -66,16 +66,21 @@ removeButton.addEventListener ("click", toRemoveMurkup);
     })
     
    }
-  
+  let  removeBookInShoppingList = [];
   
  // Видаляємо книжку  
 function toRemoveMurkup(e) {
   const list = localStorage.getItem("shopping-list")
    const listPars = JSON.parse(list)
-   console.log(listPars)
-   listPars.map((b) => {
+   removeBookInShoppingList = listPars;
+   console.log(removeBookInShoppingList)
+   removeBookInShoppingList.map((b) => {
     if(e.target.classList.value === b._id) {
-      localStorage.removeItem("shopping-list", "b")
+      console.log(removeBookInShoppingList.length )
+      removeBookInShoppingList.length -=1
+      // for (let i = 0; i < removeBookInShoppingList.length; i--)
+      localStorage.setItem("shopping-list", removeBookInShoppingList )
+      console.log(removeBookInShoppingList)
     }
     // console.log(b)
     // console.log(e.target.classList.value)
