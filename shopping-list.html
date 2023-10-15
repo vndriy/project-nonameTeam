@@ -13,27 +13,84 @@
       referrerpolicy="no-referrer"
     />
     
-    <script type="module" crossorigin src="/project-nonameTeam/assets/main-bd140c73.js"></script>
-    <link rel="stylesheet" href="/project-nonameTeam/assets/main-cc16bb3e.css">
+    <script type="module" crossorigin src="/project-nonameTeam/assets/main-40cd65a8.js"></script>
+    <link rel="stylesheet" href="/project-nonameTeam/assets/main-746c1b2e.css">
   </head>
   <body>
     <!-- HEADER  -->
     <header class="header">
-  <nav class="nav">
-    <ul class="nav-list">
-      <li class="nav-item">
-        <a href="./index.html" class="nav-link">Home</a>
-      </li>
+  <!--  -->
+  <!-- header container -->
+  <div class="header-container">
+    <!-- left side -->
+    <nav class="header-nav">
+      <a class="logo-block" href="./index.html">
+        <svg width="28" height="28">
+          <use href="/project-nonameTeam/assets/icons-7d612619.svg#icon-logo"></use></svg
+        ><span class="logo-style">Bookshelf</span></a
+      >
+      <!-- tablet + desktop -->
+      <ul class="nav-menu">
+        <li>
+          <a href="./index.html" class="nav-home" id="home-link">Home</a>
+        </li>
+        <li>
+          <a href="./shopping-list.html" class="nav-shopli" id="shopping-link"
+            >Shopping List
+            <svg width="20" height="20">
+              <use href="/project-nonameTeam/assets/icons-7d612619.svg#icon-sl"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /tablet + desktop -->
 
-      <li class="nav-item">
-        <a href="./shopping-list.html" class="nav-link">Shopping List</a>
+    <!-- switcher -->
+    <div class="right-block">
+      <input type="checkbox" id="darkmode-toggle" />
+      <label for="darkmode-toggle"></label>
+      <!-- /switcher -->
+
+      <!-- mobile button for mobile menu-->
+      <button
+        type="button"
+        class="burger-btn menu-btn-open js-open-menu"
+        id="menu-button"
+      >
+        <!-- <svg class="menu-close-icon" width="28" height="28">
+          <use href="./img/icons.svg#open-menu"></use>
+        </svg> -->
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- /mobile button for mobile menu -->
+    </div>
+  </div>
+</header>
+<!-- MOBILE MENU -->
+<div class="mob-menu js-menu-container">
+  <!-- x-button -->
+  <!-- <div class="x-button">
+    <button type="button" class="menu-btn-close js-close-menu">
+      <svg class="menu-close-icon" width="28" height="28">
+        <use href="./img/icons.svg#close-menu"></use>
+      </svg>
+    </button>
+    closeMenuBtn.addEventListener('click', toggleMenu)
+  </div> -->
+  <!-- /x-button -->
+  <div class="burger-menu">
+    <ul class="menu-mob">
+      <li class="menu-mob-item">
+        <a class="menu-link-mob" href="./index.html">Home</a>
       </li>
-      <li class="nav-item">
-        <button type="button" class="change-background">black</button>
+      <li class="menu-mob-item">
+        <a class="menu-link-mob" href="./portfolio.html">Shopping List</a>
       </li>
     </ul>
-  </nav>
-</header>
+  </div>
+</div>
 
 
     <!-- FUNDS  -->
