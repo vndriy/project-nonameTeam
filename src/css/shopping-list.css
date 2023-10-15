@@ -1,9 +1,14 @@
+.shop-list-wrap .support-card,
+.shop-list-wrap .empty-basket-wrap {
+  display: none;
+}
+
 empty-basket-wrap {
   display: flex;
   flex-direction: column;
 }
 
-#funds-load {
+.shop-list-wrap .support {
   display: none;
 }
 
@@ -71,7 +76,13 @@ empty-basket-wrap {
     gap: 40px;
   }
 
-  #funds-load {
+  .shop-list-wrap .support {
     display: block;
+  }
+
+  .empty-basket-wrap {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
 }
