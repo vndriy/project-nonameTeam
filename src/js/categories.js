@@ -75,7 +75,7 @@ getTopBooks()
           : 5;
 
       const contain = document.createElement('div');
-      const aboutCategory = document.createElement('div');
+      const aboutCategory = document.createElement('p');
       const seeMoreBtn = document.createElement('button');
       const bookList = document.createElement('ul');
       seeMoreBtn.textContent = 'see more';

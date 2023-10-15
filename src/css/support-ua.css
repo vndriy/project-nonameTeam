@@ -9,7 +9,8 @@
 
 @media screen and (min-width: 768px) {
   .support{
-    padding-right: 32px;
+    padding-right: 0;
+    padding-left: 0;
 
     margin-left: 0;
     margin-right: 0;
@@ -20,6 +21,7 @@
   .support{
     padding-top: 86px;
     padding-left: 24px;
+    padding-right: 40px;
 
     margin-top: 0;
     margin-left: 0;
