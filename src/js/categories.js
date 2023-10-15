@@ -1,11 +1,10 @@
-import { listOfCategories } from "./book-api.js";
-    
-const categories = document.querySelector('.categories');
-const listOfBooks = document.querySelector('.list-of-books');
-const category_list = 'category-list';
-const topBooks = 'top-books';
+import { getCategoryList, getTopBooks } from './book-api';
+import { openModal } from './remote-modal';
 
-listOfCategories(category_list)
+const categories = document.querySelector('.categories');
+const listOfAllBooks = document.querySelector('.list-of-books');
+
+getCategoryList()
   .then(data => {
     const allCategories = document.createElement('li');
     allCategories.textContent = 'All categories';
@@ -23,77 +22,68 @@ listOfCategories(category_list)
     console.error(error);
   });
 
-listOfCategories(topBooks)
+getTopBooks()
   .then(data => {
-    const bestBooksByCategory = {};
+    data.forEach(library => {
+      const libraryArr = library.books.sort((a, b) => a.rank - b.rank);
 
-    data.forEach(category => {
-      const bestBook = findBestBookInCategory(category.books);
-      if (bestBook) {
-        bestBooksByCategory[category.list_name] = bestBook;
-      }
+      const arrLength =
+        window.innerWidth >= 375 && window.innerWidth < 768
+          ? 1
+          : window.innerWidth >= 768 && window.innerWidth < 1440
+          ? 3
+          : 5;
+
+      const contain = document.createElement('div');
+      const aboutCategory = document.createElement('div');
+      const seeMoreBtn = document.createElement('button');
+      const bookList = document.createElement('ul');
+      seeMoreBtn.textContent = 'see more';
+      seeMoreBtn.classList.add('see-more-btn');
+      contain.classList.add('contain');
+      aboutCategory.classList.add('category-information');
+      bookList.classList.add('book-list');
+      aboutCategory.textContent = library.list_name;
+      contain.append(aboutCategory);
+      listOfAllBooks.append(contain);
+
+      const booksCard = createBookCard(libraryArr.slice(0, arrLength));
+      bookList.innerHTML = booksCard;
+
+      contain.append(bookList);
+      listOfAllBooks.append(contain);
+      contain.append(seeMoreBtn);
     });
-    for (const categoryName in bestBooksByCategory) {
-      const category = bestBooksByCategory[categoryName];
-      const bookCard = createBookCard(category);
-      listOfBooks.appendChild(bookCard);
-      listOfBooks.append(createSeeMoreBtn())
-    }
   })
   .catch(error => {
     console.error(error);
   });
 
-function findBestBookInCategory(books) {
-  let bestBook = null;
-  let bestRank = Infinity;
+function createBookCard(books) {
+  const booksCard = books
+    .map(({ _id, author, title, book_image }) => {
+      return `
+        <li class="book-card" data-book-id="${_id}">
+          <a href="#" class="book-link">
+            <div class="overlay-wrapper">
+              <img class="book-image-category" src="${book_image}" alt="${title}" loading="lazy"/>
+            </div>
+            <h2 class="book-title">${title}</h2>
+            <p class="author">${author}</p>
+          </a>
+        </li>
+      `;
+    })
+    .join('');
 
-  books.forEach(book => {
-    if (book.rank < bestRank) {
-      bestRank = book.rank;
-      bestBook = book;
-    }
-  });
-
-  return bestBook;
+  return booksCard;
 }
+listOfAllBooks.addEventListener('click', e => {
+  e.preventDefault();
 
-function createBookCard(book) {
-  const bookCard = document.createElement('div');
-  bookCard.classList.add('book-item');
-
-  const bookCover = document.createElement('img');
-  bookCover.src = book.book_image;
-  bookCover.classList.add('book-cover');
-
-  const bookTitle = document.createElement('div');
-  bookTitle.textContent = book.title;
-  bookTitle.classList.add('book-title');
-
-  const bookAuthor = document.createElement('p');
-  bookAuthor.textContent = book.author;
-  bookAuthor.classList.add('book-author');
-
-  bookCard.append(createCategoryName(book))
-  bookCard.appendChild(bookCover);
-  bookCard.appendChild(bookTitle);
-  bookCard.appendChild(bookAuthor);
-
-  return bookCard;
-}
-
-function createSeeMoreBtn() {
-  const seeMoreBtn = document.createElement('button');
-  seeMoreBtn.textContent = 'see more';
-  seeMoreBtn.classList.add('see-more-btn');
-
-  return seeMoreBtn;
-}
-
-function createCategoryName(category) {
-  const bookInfo = document.createElement('p');
-  bookInfo.classList.add('category-information');
-  bookInfo.textContent = category.list_name;
-
-  return bookInfo;
-}
+  const targetBook = e.target.closest('.book-card');
+  console.log(targetBook);
+  if (targetBook) {
+    openModal(targetBook.dataset.bookId);
+  }
+});
