@@ -64,71 +64,32 @@ function murkupBook() {
     
    }
 
-   
-
-  //  let  removeBookInShoppingList = [];
   
  // Видаляємо книжку  
     function toRemoveMurkup(e) {
    
-  // let  removeBookInShoppingList = [];
   const list = localStorage.getItem("shopping-list")
    const listPars = JSON.parse(list)
   const masBook =  listPars.filter(b => b._id === e.target.classList.value)
   console.log(masBook)
-  // if(b._id !== e.target.classList.value) {
-  //   removeBookInShoppingList.push(masBooks)
-  // }
+ 
    const masBooks = listPars.filter(b => b._id !== e.target.classList.value)
    console.log(masBooks)
-      // const filterBookId = [b._id === e.target.classList.value];
-      const masBooksLockal = listPars.filter(b => {
+     
+       listPars.filter(b => {
         if(masBook ) {
-          // removeBookInShoppingList.push(masBooks)
-          murkup.classList.remove('.container');
+          
+          // murkup.classList.remove('.container');
           murkup.removeChild(document.querySelector('.container'));
           localStorage.setItem("shopping-list", JSON.stringify(masBooks))
         }
       })
   
      
-      // murkup.classList.remove('.container');
-      // murkup.removeChild(document.querySelector('.container'));
-      // localStorage.setItem("shopping-list", JSON.stringify(removeBookInShoppingList))
-     
-      
-    
     
   }
 
-  //  removeBookInShoppingList = listPars;
-  //  console.log(removeBookInShoppingList)
-  //  removeBookInShoppingList.map((b) => {
-  //   if(e.target.classList.value === b._id) {
-  //     console.log(removeBookInShoppingList.length )
-  //     removeBookInShoppingList.length -=1
-  //     murkup.classList.remove('container');
-      // for (let i = 0; i < removeBookInShoppingList.length; i--)
-      // localStorage.setItem("shopping-list", removeBookInShoppingList )
-      // console.log(removeBookInShoppingList)
-  //   }
  
-  //  })
-  
-  // for (let i = 0; i < murkup.length; i--)
-  
- 
-  // listPars.length -=1
-  
-   
-  
-  
-  // murkup.removeChild(document.querySelector('.container'));
-  // murkup.classList.remove('container');
-  // localStorage.removeItem("shopping-list")
-
-
-
 
 
 // Отримуємо URL
