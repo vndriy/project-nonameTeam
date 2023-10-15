@@ -23,9 +23,22 @@ export default class ShoppingList {
     }
   }
 
+  
   #handleNonEmptyStorage() {
-    // потрібно додати відображення карток
+    const bookCard = document.querySelector(".shop-list-wrap .shopping-container");
+    const supportCards = document.querySelector(
+      '.shop-list-wrap .support-card'
+    );
+    const basketTitle = document.querySelector(".shop-list-wrap .container-general");
+
+    if (supportCards && bookCard && basketTitle) {
+      supportCards.style.display = 'block';
+      bookCard.style.display = 'block';
+      basketTitle.style.display = 'block';
+    };
+    
   }
+
 
   #handleEmptyStorage() {
     const supportCards = document.querySelector(

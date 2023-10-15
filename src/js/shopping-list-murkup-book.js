@@ -32,7 +32,7 @@ function murkupBooksFromLockalstirage(evt) {
     const applBook = buy_links[1];
     
       murkup.insertAdjacentHTML("beforeend", `
-      <section class="container ${_id}">
+      <section class="shopping-container ${_id}">
  <picture class="picture"> 
  <img class="img" src="${book_image}" alt="${title}" >
  </picture>
