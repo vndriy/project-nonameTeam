@@ -65,25 +65,25 @@ function murkupBook() {
 
    
 
-
+   let  removeBookInShoppingList = [];
   
  // Видаляємо книжку  
     function toRemoveMurkup(e) {
    
-  let  removeBookInShoppingList = [];
+  // let  removeBookInShoppingList = [];
   const list = localStorage.getItem("shopping-list")
    const listPars = JSON.parse(list)
    listPars.filter(b => {
-    console.log(b._id)
-    console.log(e.target.classList.value)
+    
     const filterBookId = b._id !== e.target.classList.value;
+    console.log(filterBookId)
     if(b._id === e.target.classList.value ) {
      removeBookInShoppingList.push(filterBookId)
-     console.log(b)
+     
       console.log(removeBookInShoppingList)
       murkup.classList.remove('.container');
       // murkup.removeChild(document.querySelector('.container'));
-      localStorage.setItem("shopping-list", JSON.stringify(removeBookInShoppingList))
+      // localStorage.setItem("shopping-list", JSON.stringify(removeBookInShoppingList))
      
       
     }
