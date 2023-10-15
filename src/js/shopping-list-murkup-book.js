@@ -8,11 +8,27 @@ window.addEventListener("load",  murkupBook);
 
 
 function murkupBook() {
-  // localStorage.removeItem("shopping-list")
+  
    const list = localStorage.getItem("shopping-list")
    const listPars = JSON.parse(list)
+   murkupBooksFromLockalstirage(listPars)
    
-   listPars.map(({_id, buy_links,  author, title, description, book_image, list_name}) => {
+   }
+
+
+
+// Отримуємо URL
+function toGetUrl(evt) {
+  for (const e of evt) {
+    return e.url
+  }
+
+}
+
+// Зобимо розмітку
+
+function murkupBooksFromLockalstirage(evt) {
+  evt.map(({_id, buy_links,  author, title, description, book_image, list_name}) => {
     const applBook = buy_links[1];
     
       murkup.insertAdjacentHTML("beforeend", `
@@ -22,7 +38,7 @@ function murkupBook() {
  </picture>
  <div class="book-description">
  <div class="remove-book "> 
- <button type="button" class="${_id}" button-svg">
+ <button type="button" class="${_id} button-svg ">
      <svg class="svg-button" >
       <use href="./img/icons.svg#icon-dump" class="${_id}"></use>
      </svg>
@@ -53,55 +69,36 @@ function murkupBook() {
  </div>
  </section>`)
  
- const removeButton = document.querySelectorAll(".remove-book");
- 
-  
     })
     const removeButton = document.querySelectorAll(".remove-book");
     removeButton.forEach(book => {
       book.addEventListener('click', toRemoveMurkup);
     });
-    
-   }
+}
 
-  
- // Видаляємо книжку  
-    function toRemoveMurkup(e) {
+
+// Видаляємо книжку  
+function toRemoveMurkup(e) {
    
   const list = localStorage.getItem("shopping-list")
    const listPars = JSON.parse(list)
   const masBook =  listPars.filter(b => b._id === e.target.classList.value)
 
-  
    const masBooks = listPars.filter(b => b._id !== e.target.classList.value)
-   console.log(masBooks)
-   console.log(masBook)
-       listPars.filter(b => {
-        if(masBook) {
-          localStorage.setItem("shopping-list", JSON.stringify(masBooks))
-          const h = murkup.querySelector(".container")
-          h.remove();
-          // murkup.classList.remove('h');
-          murkup.removeChild(document.querySelector('h'));
+   if(masBook) {
+    localStorage.setItem("shopping-list", JSON.stringify(masBooks));
+    location.reload()
+   }
+   
+      //  listPars.filter(b => {
+      //   if(masBook) {
+      //     localStorage.setItem("shopping-list", JSON.stringify(masBooks))
+      //     const h = murkup.querySelector(".container")
+      //     h.remove();
+      //     // murkup.classList.remove('h');
+      //     murkup.removeChild(document.querySelector('h'));
         
-        }
-      })
+      //   }
+      // })
   
-     
-    
   }
-
- 
-
-
-// Отримуємо URL
-function toGetUrl(evt) {
-  for (const e of evt) {
-    return e.url
-  }
-
-}
-
-
-
-
