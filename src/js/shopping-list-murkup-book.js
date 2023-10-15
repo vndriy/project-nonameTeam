@@ -12,7 +12,7 @@ function murkupBook() {
    const listPars = JSON.parse(list)
    
    listPars.map(({_id, buy_links,  author, title, description, book_image, list_name}) => {
-    const applBook = buy_links[1]
+    const applBook = buy_links[1];
     
       murkup.insertAdjacentHTML("beforeend", `
       <section class="container">
@@ -74,13 +74,15 @@ function murkupBook() {
   const list = localStorage.getItem("shopping-list")
    const listPars = JSON.parse(list)
    listPars.filter(b => {
-    // console.log(b._id)
-    // console.log(e.target.classList.value)
-    if(b._id !== e.target.classList.value ) {
-     removeBookInShoppingList.push(b)
+    console.log(b._id)
+    console.log(e.target.classList.value)
+    const filterBookId = b._id !== e.target.classList.value;
+    if(b._id === e.target.classList.value ) {
+     removeBookInShoppingList.push(filterBookId)
+     console.log(b)
       console.log(removeBookInShoppingList)
-      // murkup.classList.remove('.container');
-      murkup.removeChild(document.querySelector('.container'));
+      murkup.classList.remove('.container');
+      // murkup.removeChild(document.querySelector('.container'));
       localStorage.setItem("shopping-list", JSON.stringify(removeBookInShoppingList))
      
       
