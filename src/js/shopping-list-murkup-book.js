@@ -8,7 +8,7 @@ window.addEventListener("load",  murkupBook);
 
 
 function murkupBook() {
-  localStorage.removeItem("shopping-list")
+  // localStorage.removeItem("shopping-list")
    const list = localStorage.getItem("shopping-list")
    const listPars = JSON.parse(list)
    
