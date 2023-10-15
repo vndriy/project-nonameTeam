@@ -10,7 +10,6 @@ window.addEventListener("load",  murkupBook);
 function murkupBook() {
    const list = localStorage.getItem("shopping-list")
    const listPars = JSON.parse(list)
-  //  console.log(listPars.length)
    
    listPars.map(({_id, buy_links,  author, title, description, book_image, list_name}) => {
     const applBook = buy_links[1]
@@ -22,11 +21,11 @@ function murkupBook() {
  </picture>
  <div class="book-description">
  <div class="remove-book"> 
- 
+ <button class="${_id}">
      <svg class="svg-button" >
       <use href="./img/icons.svg#icon-dump" class="${_id}"></use>
      </svg>
-   
+     </button>
  </div>
  <h2 class="name">${title}</h2>
  <p class="category">${list_name}</p>
@@ -61,7 +60,7 @@ function murkupBook() {
  if(toRemoveMurkup) {
 
  }
- const removeButton = document.querySelector(".remove-book")
+ const removeButton = document.querySelectorAll(".remove-book")
 removeButton.addEventListener ("click", toRemoveMurkup);
     })
     
