@@ -28,7 +28,7 @@
     font-weight: 700;
     line-height: 18px;
     letter-spacing: -0.32px;
-    color: rgba(17, 17, 17, 0.60);
+    color: rgba(17, 17, 17, 0.6);
     cursor: pointer;
   }
 
@@ -49,7 +49,7 @@
   }
 
   .category-information {
-    color: #B4AFAF;
+    color: #b4afaf;
     font-family: 'DM Sans';
     font-size: 14px;
     font-style: normal;
@@ -79,7 +79,7 @@
   }
 
   .book-author {
-    color: #B4AFAF;
+    color: #b4afaf;
     font-family: 'DM Sans';
     font-size: 12px;
     font-style: italic;
@@ -94,10 +94,9 @@
     padding: 14px 26px;
     text-transform: uppercase;
     border-radius: 40px;
-    border: 2px solid #4F2EE8;
+    border: 2px solid #4f2ee8;
     margin-left: 205px;
     min-width: 126px;
     height: 46px;
   }
-
 }
