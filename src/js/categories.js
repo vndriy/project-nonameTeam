@@ -1,8 +1,44 @@
-import { getCategoryList, getTopBooks } from './book-api';
+import Notiflix from 'notiflix';
+import { getCategoryList, getTopBooks, getBooksByCategory } from './book-api';
 import { openModal } from './remote-modal';
 
 const categories = document.querySelector('.categories');
 const listOfAllBooks = document.querySelector('.list-of-books');
+const categoryTitle = document.querySelector('.category-title');
+const categoryBookList = document.querySelector('.category-book-list');
+
+function receiveBookByCategory(selectedCategory) {
+  if (selectedCategory && selectedCategory.length > 0) {
+    categoryTitle.innerHTML = createCategoryTitle(selectedCategory[0].list_name);
+    categoryBookList.innerHTML = createBookCard(selectedCategory);
+  } else {
+    Notiflix.Notify.failure('Unfortunately there are no books under the selected category');
+  }
+}
+
+function createCategoryTitle(categoryName) {
+  return `Category: ${categoryName}`;
+}
+
+function createBookCard(books) {
+  const booksCard = books
+    .map(({ _id, author, title, book_image }) => {
+      return `
+        <li class="book-card" data-book-id="${_id}">
+          <a href="#" class "book-link">
+            <div class="overlay-wrapper">
+              <img class="book-image-category" src="${book_image}" alt="${title}" loading="lazy"/>
+            </div>
+            <h2 class="book-title">${title}</h2>
+            <p class="author">${author}</p>
+          </a>
+        </li>
+      `;
+    })
+    .join('');
+
+  return booksCard;
+}
 
 getCategoryList()
   .then(data => {
@@ -15,6 +51,7 @@ getCategoryList()
       const listItem = document.createElement('li');
       listItem.classList.add('list-item');
       listItem.textContent = category.list_name;
+      listItem.dataset.categoryId = category._id;
       categories.appendChild(listItem);
     });
   })
@@ -62,6 +99,7 @@ getTopBooks()
     console.error(error);
   });
 
+
 function createBookCard(books) {
   const booksCard = books
     .map(({ _id, author, title, book_image, description }) => {
@@ -80,14 +118,35 @@ function createBookCard(books) {
     })
     .join('');
 
-  return booksCard;
-}
+categories.addEventListener('click', async e => {
+  e.preventDefault();
+  const targetCategory = e.target.closest('.list-item');
+  if (targetCategory) {
+    const categoryId = targetCategory.dataset.categoryId;
+    if (categoryId) {
+      try {
+        const selectedCategory = await getBooksByCategory(categoryId);
+        receiveBookByCategory(selectedCategory);
+      } catch (error) {
+        console.error(error);
+        Notiflix.Notify.failure('Unfortunately there are no books under the selected category');
+      }
+    } else {
+      categoryTitle.innerHTML = 'All Categories';
+      categoryBookList.innerHTML = '';
+    }
+  }
+});
+
+
 listOfAllBooks.addEventListener('click', e => {
   e.preventDefault();
 
   const targetBook = e.target.closest('.book-card');
-  console.log(targetBook);
   if (targetBook) {
     openModal(targetBook.dataset.bookId);
   }
 });
+
+
+//need help!!!
