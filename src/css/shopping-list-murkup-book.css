@@ -142,9 +142,16 @@ text-overflow: ellipsis;
     width: 16px;
      height: 16px;
 }
+.book:hover {
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
+}
 .amazon {
     width: 32px;
     height: 11px;
+}
+.amazon:hover {
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
+
 }
 
 /* Планшет */
@@ -152,9 +159,7 @@ text-overflow: ellipsis;
 .container-general {
     max-width: 704px; 
 }
-.shopping-list {
-   
-}
+
     .container{
         max-width: 704px;
         max-height: 213px;
@@ -208,5 +213,7 @@ text-overflow: ellipsis;
     .book-description{
         width: 808px;
     }
-    
+    .svg {
+        max-width: 996px;
+    }
 }
