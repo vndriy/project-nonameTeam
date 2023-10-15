@@ -1,57 +1,23 @@
 import Notiflix from 'notiflix';
-import { getCategoryList, getTopBooks, getBooksByCategory } from './book-api';
+import { getCategoryList, getBooksByCategory, getTopBooks } from './book-api';
 import { openModal } from './remote-modal';
 
 const categories = document.querySelector('.categories');
-const listOfAllBooks = document.querySelector('.list-of-books');
-const categoryTitle = document.querySelector('.category-title');
-const categoryBookList = document.querySelector('.category-book-list');
+const booksContainer = document.querySelector('.list-of-books');
 
-function receiveBookByCategory(selectedCategory) {
-  if (selectedCategory && selectedCategory.length > 0) {
-    categoryTitle.innerHTML = createCategoryTitle(selectedCategory[0].list_name);
-    categoryBookList.innerHTML = createBookCard(selectedCategory);
-  } else {
-    Notiflix.Notify.failure('Unfortunately there are no books under the selected category');
-  }
-}
-
-function createCategoryTitle(categoryName) {
-  return `Category: ${categoryName}`;
-}
-
-function createBookCard(books) {
-  const booksCard = books
-    .map(({ _id, author, title, book_image }) => {
-      return `
-        <li class="book-card" data-book-id="${_id}">
-          <a href="#" class "book-link">
-            <div class="overlay-wrapper">
-              <img class="book-image-category" src="${book_image}" alt="${title}" loading="lazy"/>
-            </div>
-            <h2 class="book-title">${title}</h2>
-            <p class="author">${author}</p>
-          </a>
-        </li>
-      `;
-    })
-    .join('');
-
-  return booksCard;
-}
 
 getCategoryList()
   .then(data => {
     const allCategories = document.createElement('li');
     allCategories.textContent = 'All categories';
-    allCategories.classList.add('list-item');
+    allCategories.classList.add('list-item', 'all-categories');
     categories.appendChild(allCategories);
 
     data.forEach(category => {
       const listItem = document.createElement('li');
       listItem.classList.add('list-item');
       listItem.textContent = category.list_name;
-      listItem.dataset.categoryId = category._id;
+      // listItem.dataset.categoryId = category._id;
       categories.appendChild(listItem);
     });
   })
@@ -59,71 +25,87 @@ getCategoryList()
     console.error(error);
   });
 
-getTopBooks()
+  displayTopBooks() 
+
+  // Функція для відображення top-книг
+  async function displayTopBooks() {
+  return getTopBooks()
   .then(data => {
-    data.forEach(library => {
-      const libraryArr = library.books.sort((a, b) => a.rank - b.rank);
-
-      const arrLength =
-        window.innerWidth >= 375 && window.innerWidth < 768
-          ? 1
-          : window.innerWidth >= 768 && window.innerWidth < 1440
-          ? 3
-          : 5;
-
-      const contain = document.createElement('div');
-      const aboutCategory = document.createElement('div');
-      const seeMoreBtn = document.createElement('button');
-      const bookList = document.createElement('ul');
-      seeMoreBtn.textContent = 'see more';
-      seeMoreBtn.classList.add('see-more-btn');
-      contain.classList.add('contain');
-      aboutCategory.classList.add('category-information');
-      bookList.classList.add('book-list');
-      aboutCategory.textContent = library.list_name;
-      contain.append(aboutCategory);
-      listOfAllBooks.append(contain);
-
-      const booksCard = createBookCard(libraryArr.slice(0, arrLength));
-      bookList.innerHTML = booksCard;
-
-      contain.append(bookList);
-      listOfAllBooks.append(contain);
-      contain.append(seeMoreBtn);
-    });
-  })
+    console.log(data);
+    const topBooksHTML = createTopBooks(data);
+  booksContainer.innerHTML = topBooksHTML; // Виводимо отримані top-books
+ 
+})
   .catch(error => {
     console.error(error);
+    Notiflix.Notify.failure('Failed to fetch top books');
   });
+  
+}
 
+function createTopBooks(arr) {
+  let html = arr
+    .map(({ list_name: listName, books }) => {
+      return `
+      <h2>${listName}<h2/>
+       ${createBookCard(books)}
+       <button class="seemore-btn" data-category="${listName}" >See more</button>
+      `;
+    })
+    .join('');       
+  return html;
+}
+  
 categories.addEventListener('click', async e => {
-  e.preventDefault();
-  const targetCategory = e.target.closest('.list-item');
-  if (targetCategory) {
-    const categoryId = targetCategory.dataset.categoryId;
-    if (categoryId) {
-      try {
-        const selectedCategory = await getBooksByCategory(categoryId);
-        receiveBookByCategory(selectedCategory);
-      } catch (error) {
-        console.error(error);
-        Notiflix.Notify.failure('Unfortunately there are no books under the selected category');
+  console.log(e.target.textContent)
+  const targetCategory = e.target.textContent;
+  try {
+    if (targetCategory === 'All categories') {
+    return displayTopBooks();
       }
-    } else {
-      categoryTitle.innerHTML = 'All Categories';
-      categoryBookList.innerHTML = '';
-    }
+    
+    const selectedCategory = await getBooksByCategory(targetCategory);
+    const booksHTML = createBookCard(selectedCategory);
+    booksContainer.innerHTML = booksHTML;
+  } catch (error) {
+    console.error(error);
+    Notiflix.Notify.failure('Unfortunately there are no books under the selected category');
   }
 });
 
-listOfAllBooks.addEventListener('click', e => {
+function createBookCard(arr) {
+  // console.log("arr", arr);
+  const booksCard = arr
+    .map(({ _id, author, title, book_image }) => {
+      return `<div>
+        <li class="book-card" >
+          <a href="#" class="book-link">
+            <div class="overlay-wrapper">
+            
+              <img data-book-id="${_id}" class="book-image-category" src="${book_image}" width="180" height="256"  alt="${title}" loading="lazy"/>
+            </div>
+            <h2 class="book-title">${title}</h2>
+            <p class="author">${author}</p>
+          </a>
+        </li></div>
+      `;
+    })
+    .join('');
+
+  return booksCard;
+}
+
+booksContainer.addEventListener('click', async (e) => {
   e.preventDefault();
+if (e.target.dataset.category) {
+  const targetCategory = e.target.dataset.category;
+  const selectedCategory = await getBooksByCategory(targetCategory);
+  const booksHTML = createBookCard(selectedCategory);
+    booksContainer.innerHTML = booksHTML;
+}
+if (e.target.dataset.bookId) {
+    openModal(e.target.dataset.bookId);
+ }
 
-  const targetBook = e.target.closest('.book-card');
-  if (targetBook) {
-    openModal(targetBook.dataset.bookId);
-  }
-});
+})
 
-
-//need help!!!
