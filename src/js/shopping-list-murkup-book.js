@@ -78,12 +78,12 @@ function toRemoveMurkup(e) {
     if(e.target.classList.value === b._id) {
       console.log(removeBookInShoppingList.length )
       removeBookInShoppingList.length -=1
+      murkup.classList.remove('container');
       // for (let i = 0; i < removeBookInShoppingList.length; i--)
       localStorage.setItem("shopping-list", removeBookInShoppingList )
       console.log(removeBookInShoppingList)
     }
-    // console.log(b)
-    // console.log(e.target.classList.value)
+ 
    })
   
   // for (let i = 0; i < murkup.length; i--)
