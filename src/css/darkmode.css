@@ -1,0 +1,19 @@
+.headerbg {
+  background: var(--black);
+}
+
+.bodybg {
+  background: var(--dark-theme-body);
+}
+
+.darkmode-logo {
+  color: var(--black);
+}
+
+.darkmode-logo {
+  color: var(--darkmode-logo);
+}
+
+/* .darkmode-menu {
+  color: #fff;
+} */

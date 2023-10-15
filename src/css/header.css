@@ -1,23 +1,264 @@
+/* HEADER + CONTAINER ⭐  */
+
 .header {
-  padding: 20px 0;
-  display: block;
-  background: #ffffff;
+  height: 64px;
+  padding: 18px 20px;
+  border-radius: 0px 0px 8px 8px;
+  border: 1.5px solid #111;
+  background: #fff;
+  align-items: center;
+  z-index: 999;
+  margin: 0 auto;
+  min-width: 375px;
+  position: relative;
 }
 
-.nav-list {
+.header-container {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 40px;
+  justify-content: space-between;
+  /* max-width: 335px; */
+  margin: 0 auto;
 }
 
-.nav-link {
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  line-height: 1.5;
+/*LEFT SIDE HEADER ⭐*/
+
+.header-nav {
+  display: flex;
+  align-items: center;
 }
 
-.nav-link:hover,
-.nav-link:focus {
-  color: #747bff;
+/* LOGO ⭐*/
+
+.logo-block {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.logo-style {
+  font-family: DM Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px; /* 112.5% */
+  letter-spacing: -0.32px;
+}
+
+/* NAVIGATION TABLET+ ⭐*/
+
+.nav-menu {
+  display: none; /* прибрано навігацію в мобільному меню */
+}
+
+/* SWITCHER ⭐ */
+
+.right-block {
+  display: flex;
+  margin-left: 144px;
+  /* gap: 14px; */
+  align-items: center;
+}
+
+label {
+  width: 40px;
+  height: 20px;
+  position: relative;
+  display: block;
+  background: linear-gradient(180deg, #4f2ee8, #dcdcdc);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+label::after {
+  content: '';
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background: #ffffff;
+  border-radius: 18px;
+  transition: 0.3s;
+}
+
+input {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+input:checked + label {
+  background: linear-gradient(180deg, #4f2ee8, #686868);
+}
+
+input:checked + label:after {
+  left: 39px;
+  transform: translateX(-100%);
+  background: linear-gradient(180deg);
+}
+
+label:active:after {
+  width: 26px;
+}
+/* /switcher */
+
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/* BURGER MENU ⭐ */
+
+.menu-close-icon {
+  margin-left: 14px;
+}
+
+.mob-menu {
+  width: 100vw;
+  height: 100vh;
+  /* background-color: #fff; */
+  position: fixed;
+
+  z-index: 100;
+  padding: 24px 24px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
+  transform: translateX(110%);
+  transition: transform 250ms ease-in-out;
+  background: radial-gradient(
+    189.32% 190.93% at 59.76% -23.42%,
+    #4f2ee8 18.03%,
+    #fff 100%
+  );
+}
+
+.mob-menu.is-open {
+  transform: translateY(0);
+}
+
+.menu-btn-open {
+  display: flex;
+
+  background: transparent;
+  border: none;
+}
+
+.menu-btn-close {
+  display: flex;
+
+  background: transparent;
+  border: none;
+}
+
+.burger-btn {
+  position: relative;
+  height: 28px;
+  width: 28px;
+  border: none;
+  margin-left: 14px;
+  transition: transform 0.5s, opacity 0.5c, background-color 0.5s;
+}
+
+.burger-btn span {
+  position: absolute;
+  width: 28px;
+  height: 3px;
+  background-color: black;
+  transform: translateY(4px);
+}
+
+.burger-btn span:nth-child(1) {
+  transform: translateY(12px);
+}
+
+.burger-btn span:nth-child(3) {
+  transform: translateY(20px);
+}
+
+.js-menu-container.is-open .burger-btn span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-menu {
+  margin-top: 183 px;
+}
+
+.menu-mob {
+  margin: auto 0;
+  margin-top: 183px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+/* /burger */
+
+@media screen and (min-width: 768px) {
+  .header {
+    height: 72px;
+    padding: 22px 32px;
+    max-width: 1440px;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 16px;
+    margin-left: 40px;
+    align-items: center;
+  }
+
+  .nav-home {
+    color: var(--black);
+    font-family: DM Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px; /* 128.571% */
+    letter-spacing: -0.56px;
+    text-transform: uppercase;
+  }
+
+  .nav-shopli {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #111;
+    font-family: DM Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px; /* 128.571% */
+    letter-spacing: -0.56px;
+    text-transform: uppercase;
+  }
+
+  .yellow-block {
+    display: flex;
+    /* height: 100%; */
+    padding: 7px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 36px;
+    background: #eac645;
+  }
+
+  .menu-btn-open {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .nav-list {
+    margin-left: 76px;
+  }
 }
