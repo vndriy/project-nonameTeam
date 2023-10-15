@@ -1,9 +1,4 @@
 /*-backdrop-*/
-
-.no-scroll {
-  overflow: hidden;
-}
-
 .backdrop {
   position: fixed;
   top: 0;
@@ -31,7 +26,6 @@
   top: 12px;
   cursor: pointer;
   stroke: var(--black);
-  background: transparent;
 }
 
 @media screen and (min-width: 768px) {
@@ -48,45 +42,42 @@
 }
 
 .modal-book-selection {
-  z-index: 9999;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  max-height: 100vh;
-  min-width: 335px;
-
+  z-index: 9999;
   display: flex;
+  padding: 40px 24px;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-
-  padding: 40px 24px;
   border-radius: 18px;
   border: 2px solid var(--black);
   background: var(--white);
+
+  width: 338px;
+  max-height: calc(100% - 40px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 2px solid;
 }
 
 @media screen and (min-width: 768px) {
   .modal-book-selection {
-    max-width: 579px;
-    min-height: 465px;
-
+    width: 582px;
+    display: inline-flex;
     padding: 40px;
-    margin: 0 auto;
+    align-items: flex-start;
+    gap: 10px;
   }
 }
 
-/* .modal-book-content {
+.modal-book-content {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 40px;
-
   margin-bottom: 40px;
 }
 
@@ -94,13 +85,12 @@
   .modal-book-content {
     align-items: flex-start;
   }
-} */
+}
 
 .modal-book-content-wrap {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
   gap: 14px;
 }
 
@@ -111,17 +101,14 @@
   }
 }
 
-.modal-book-cover {
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  height: auto;
-  max-width: 287px;
+.modal-book-book-cover {
+  width: 287px;
+  height: 408px;
   border-radius: 8px;
 }
 
 @media screen and (min-width: 768px) {
-  .modal-book-cover {
+  .modal-book-book-cover {
     width: 192px;
     height: 281px;
   }
@@ -168,16 +155,17 @@
 .modal-book-title {
   color: var(--black);
   font-size: 16px;
+  font-style: normal;
   font-weight: 700;
   line-height: 1.13;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.64px;
 }
 
 @media screen and (min-width: 768px) {
   .modal-book-title {
     font-size: 24px;
     line-height: 1.17;
-    letter-spacing: 0.06em;
+    letter-spacing: -0.96px;
   }
 }
 
@@ -188,59 +176,70 @@
   font-style: italic;
   font-weight: 400;
   line-height: 1.17;
-  letter-spacing: 0.03em;
+  letter-spacing: -0.48px;
 }
 
 @media screen and (min-width: 768px) {
-  .modal-book-author {
+  .modal-book-book-author {
     font-size: 14px;
     line-height: 1.29;
-    letter-spacing: 0.04em;
+    letter-spacing: -0.56px;
   }
 }
 
 .modal-book-description {
   display: flex;
+  width: 287px;
+  height: 70px;
   flex-direction: column;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.29;
-  letter-spacing: 0.04em;
+  letter-spacing: -0.56px;
   color: var(--black);
   overflow-y: auto;
 }
 
 @media screen and (min-width: 768px) {
-  .modal-book-description {
-    font-size: 14px;
+  .modal-book-descreption {
+    width: 279px;
+    height: 70px;
     color: var(--black);
   }
 }
 
-.trading-platforms {
+.modal-book-marketplaces {
   display: flex;
   align-items: center;
   gap: 20px;
+  width: 287px;
+  height: 36px;
   flex-wrap: wrap;
 }
 
 .modal-book-trading-platform {
-  filter: grayscale(100%);
-}
-.modal-book-trading-platform:hover,
-.modal-book-trading-platform:focus {
-  filter: grayscale(100%) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.35));
+  height: 36px;
 }
 
-.modal-image-amazon {
+.modal-book-trading-platform:hover,
+.modal-book-trading-platform:focus {
+  filter: saturate(0%) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
+}
+
+.amazon {
   display: block;
   width: 62px;
   height: 19px;
 }
 
-.modal-image-apple {
+.apple-books {
   width: 33px;
   height: 32px;
+}
+
+.bookshop {
+  width: 38px;
+  height: 36px;
 }
 
 .modal-book-shopping-list-btn {
@@ -255,7 +254,7 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 1.29;
-  letter-spacing: 0.09em;
+  letter-spacing: -0.14px;
   text-transform: uppercase;
 }
 
@@ -265,7 +264,7 @@
     width: 499px;
     padding: 14px 28px;
     line-height: 1.33;
-    letter-spacing: 0.01em;
+    letter-spacing: -0.18px;
   }
 }
 
@@ -291,7 +290,7 @@
   font-size: 10px;
   font-weight: 400;
   line-height: 1.2;
-  letter-spacing: 0.03em;
+  letter-spacing: -0.4px;
 }
 
 @media screen and (min-width: 768px) {
@@ -300,6 +299,6 @@
     width: 324px;
     font-size: 12px;
     line-height: 1.17;
-    letter-spacing: 0.03em;
+    letter-spacing: -0.48px;
   }
 }
