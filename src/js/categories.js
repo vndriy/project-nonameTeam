@@ -7,7 +7,8 @@ const listOfAllBooks = document.querySelector('.list-of-books');
 const categoryTitle = document.querySelector('.category-title');
 const categoryBookList = document.querySelector('.category-book-list');
 
-function receiveBookByCategory(selectedCategory) {
+// не знаю що це
+function receiveBookByCategory(selectedCategory) { 
   if (selectedCategory && selectedCategory.length > 0) {
     categoryTitle.innerHTML = createCategoryTitle(selectedCategory[0].list_name);
     categoryBookList.innerHTML = createBookCard(selectedCategory);
@@ -20,6 +21,8 @@ function createCategoryTitle(categoryName) {
   return `Category: ${categoryName}`;
 }
 
+
+// Відмальовує картки з книжками
 function createBookCard(books) {
   const booksCard = books
     .map(({ _id, author, title, book_image }) => {
@@ -96,26 +99,26 @@ getTopBooks()
     console.error(error);
   });
 
+
+  // На категорію клік —> усі книжки
 categories.addEventListener('click', async e => {
-  e.preventDefault();
-  const targetCategory = e.target.closest('.list-item');
-  if (targetCategory) {
-    const categoryId = targetCategory.dataset.categoryId;
-    if (categoryId) {
+  const targetCategory = e.target.textContent;
+  
       try {
-        const selectedCategory = await getBooksByCategory(categoryId);
+        const selectedCategory = await getBooksByCategory(targetCategory);
         receiveBookByCategory(selectedCategory);
       } catch (error) {
         console.error(error);
         Notiflix.Notify.failure('Unfortunately there are no books under the selected category');
       }
-    } else {
+    
       categoryTitle.innerHTML = 'All Categories';
       categoryBookList.innerHTML = '';
     }
-  }
-});
+  
+);
 
+// Модальне вікно Оля
 listOfAllBooks.addEventListener('click', e => {
   e.preventDefault();
 
