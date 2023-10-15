@@ -34,10 +34,13 @@ getTopBooks()
           ? 3
           : 5;
 
-      const contain = document.createElement('div');
+      const contain = document.createElement('li');
       const aboutCategory = document.createElement('div');
       const seeMoreBtn = document.createElement('button');
       const bookList = document.createElement('ul');
+      const divSeeMoreBtn = document.createElement('div')
+      divSeeMoreBtn.classList.add('div-see-more-btn');
+      divSeeMoreBtn.append(seeMoreBtn)
       seeMoreBtn.textContent = 'see more';
       seeMoreBtn.classList.add('see-more-btn');
       contain.classList.add('contain');
@@ -52,7 +55,7 @@ getTopBooks()
 
       contain.append(bookList);
       listOfAllBooks.append(contain);
-      contain.append(seeMoreBtn);
+      contain.append(divSeeMoreBtn);
     });
   })
   .catch(error => {
@@ -61,12 +64,13 @@ getTopBooks()
 
 function createBookCard(books) {
   const booksCard = books
-    .map(({ _id, author, title, book_image }) => {
+    .map(({ _id, author, title, book_image, description }) => {
       return `
         <li class="book-card" data-book-id="${_id}">
           <a href="#" class="book-link">
             <div class="overlay-wrapper">
-              <img class="book-image-category" src="${book_image}" alt="${title}" loading="lazy"/>
+              <img class="book-image-category" src="${book_image}" alt="${title}" loading="lazy" style="border-radius: 8px;"/>
+              <p class="book-overlay">${description}</p>
             </div>
             <h2 class="book-title">${title}</h2>
             <p class="author">${author}</p>
