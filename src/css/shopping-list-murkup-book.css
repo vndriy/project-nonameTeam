@@ -10,7 +10,14 @@ a {
     display: flex;
     flex-direction: column;
 }
+.block-hidden {
+    display: none;
+}
 
+
+/* .shop-list-wrap .shopping-container, .shop-list-wrap .container-general  {
+    display: none;
+    } */
 
 .shopping-list {
     color: #111;
@@ -35,7 +42,7 @@ margin: 40px 0;
     border: none;
     background-color: white;
 }
-.container{
+.shopping-container{
     
     display: flex;
     flex-direction: row;
@@ -166,7 +173,7 @@ text-overflow: ellipsis;
     max-width: 704px; 
 }
 
-    .container{
+    .shopping-container{
         max-width: 704px;
         max-height: 213px;
         padding: 24px;
@@ -213,7 +220,7 @@ text-overflow: ellipsis;
     .container-general {
         max-width: 996px; 
     }
-    .container {
+    .shopping-container {
         max-width: 996px;
     }
     .book-description{

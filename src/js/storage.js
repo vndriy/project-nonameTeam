@@ -23,9 +23,12 @@ export default class ShoppingList {
     }
   }
 
+  
   #handleNonEmptyStorage() {
-    // потрібно додати відображення карток
+    
+    
   }
+
 
   #handleEmptyStorage() {
     const supportCards = document.querySelector(

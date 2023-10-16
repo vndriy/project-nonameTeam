@@ -1,6 +1,6 @@
 
-
 const murkup = document.querySelector(".body");
+const blockHidden = document.querySelector(".container-general");
 
 
 window.addEventListener("load",  murkupBook);
@@ -10,9 +10,15 @@ window.addEventListener("load",  murkupBook);
 function murkupBook() {
   
    const list = localStorage.getItem("shopping-list")
-   const listPars = JSON.parse(list)
-   murkupBooksFromLockalstirage(listPars)
-   
+   const listPars =  JSON.parse(list)
+   if(listPars.length === 0) {
+    console.log(listPars.length)
+    blockHidden.classList.add(".block-hidden")
+    return
+   } else {
+    murkupBooksFromLockalstirage(listPars);
+   }
+    
    }
 
 
@@ -32,7 +38,7 @@ function murkupBooksFromLockalstirage(evt) {
     const applBook = buy_links[1];
     
       murkup.insertAdjacentHTML("beforeend", `
-      <section class="container ${_id}">
+      <section class="shopping-container ${_id}">
  <picture class="picture"> 
  <img class="img" src="${book_image}" alt="${title}" >
  </picture>
