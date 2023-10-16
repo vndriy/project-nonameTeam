@@ -3,7 +3,7 @@ import { getCategoryList, getBooksByCategory, getTopBooks } from './book-api';
 import { openModal } from './remote-modal';
 
 const categories = document.querySelector('.categories');
-const booksContainer = document.querySelector('.list-of-books');
+const booksContainer = document.querySelector('.books-container');
 
 getCategoryList()
   .then(data => {
@@ -23,22 +23,20 @@ getCategoryList()
     console.error(error);
   });
 
-  displayTopBooks() 
+displayTopBooks();
 
-  // Функція для відображення top-книг
-  async function displayTopBooks() {
+// Функція для відображення top-книг
+async function displayTopBooks() {
   return getTopBooks()
-  .then(data => {
-    console.log(data);
-    const topBooksHTML = createTopBooks(data);
-  booksContainer.innerHTML = topBooksHTML; // Виводимо отримані top-books
- 
-})
-  .catch(error => {
-    console.error(error);
-    Notiflix.Notify.failure('Failed to fetch top books');
-  });
-  
+    .then(data => {
+      console.log(data);
+      const topBooksHTML = createTopBooks(data);
+      booksContainer.innerHTML = topBooksHTML; // Виводимо отримані top-books
+    })
+    .catch(error => {
+      console.error(error);
+      Notiflix.Notify.failure('Failed to fetch top books');
+    });
 }
 
 function createTopBooks(arr) {
@@ -50,24 +48,26 @@ function createTopBooks(arr) {
        <button class="seemore-btn" data-category="${listName}" >See more</button>
       `;
     })
-    .join('');       
+    .join('');
   return html;
 }
-  
+
 categories.addEventListener('click', async e => {
-  console.log(e.target.textContent)
+  console.log(e.target.textContent);
   const targetCategory = e.target.textContent;
   try {
     if (targetCategory === 'All categories') {
-    return displayTopBooks();
-      }
-    
+      return displayTopBooks();
+    }
+
     const selectedCategory = await getBooksByCategory(targetCategory);
     const booksHTML = createBookCard(selectedCategory);
     booksContainer.innerHTML = booksHTML;
   } catch (error) {
     console.error(error);
-    Notiflix.Notify.failure('Unfortunately there are no books under the selected category');
+    Notiflix.Notify.failure(
+      'Unfortunately there are no books under the selected category'
+    );
   }
 });
 
@@ -92,17 +92,15 @@ function createBookCard(arr) {
   return booksCard;
 }
 
-booksContainer.addEventListener('click', async (e) => {
+booksContainer.addEventListener('click', async e => {
   e.preventDefault();
-if (e.target.dataset.category) {
-  const targetCategory = e.target.dataset.category;
-  const selectedCategory = await getBooksByCategory(targetCategory);
-  const booksHTML = createBookCard(selectedCategory);
+  if (e.target.dataset.category) {
+    const targetCategory = e.target.dataset.category;
+    const selectedCategory = await getBooksByCategory(targetCategory);
+    const booksHTML = createBookCard(selectedCategory);
     booksContainer.innerHTML = booksHTML;
-}
-if (e.target.dataset.bookId) {
+  }
+  if (e.target.dataset.bookId) {
     openModal(e.target.dataset.bookId);
- }
-
-})
-
+  }
+});
