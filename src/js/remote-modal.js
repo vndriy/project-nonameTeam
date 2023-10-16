@@ -53,24 +53,27 @@ export function openModal(bookId) {
 
       const event1 = closeButton.addEventListener('click', () => {
         closeModal();
+        document.body.classList.remove('no-scroll');
       });
 
       const event2 = modalBackdropEl.addEventListener('click', e => {
         if (!modal.contains(e.target)) {
           closeModal();
+          document.body.classList.remove('no-scroll');
         }
       });
 
       const event3 = window.addEventListener('keydown', e => {
         if (e.code === 'Escape') {
           closeModal();
+          document.body.classList.remove('no-scroll');
         }
       });
     })
     .catch(error => {
       console.log(error);
     });
-  document.body.classList.remove('no-scroll');
+  // document.body.classList.remove('no-scroll');
 }
 
 function remoteShoppingList(book) {

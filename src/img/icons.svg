@@ -25,9 +25,7 @@
       <path fill="#f6f6f6" d="M32 16c0 8.837-7.163 16-16 16S0 24.837 0 16 7.163 0 16 0s16 7.163 16 16z" style="fill:var(--color4, #f6f6f6)"/>
       <path fill="#4f2ee8" d="M10.523 22.847a5.477 5.477 0 1 1 10.954 0H10.522zM16 16.685c-2.27 0-4.108-1.838-4.108-4.108S13.73 8.469 16 8.469c2.27 0 4.108 1.838 4.108 4.108S18.27 16.685 16 16.685z" style="fill:var(--color3, #4f2ee8)"/>
     </symbol>
-    <symbol id="icon-x-close" viewBox="0 0 32 32">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.429" d="M24 8 8 24M8 8l16 16"/>
-    </symbol>
+    
     <symbol id="icon-menu" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M22.667 13.333h-18.667"></path>
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M28 8h-24"></path>
