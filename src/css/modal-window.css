@@ -29,7 +29,7 @@
   right: 12px;
   top: 12px;
   cursor: pointer;
-  stroke: var(--black);
+  fill: var(--black);
 }
 
 @media screen and (min-width: 768px) {
@@ -42,7 +42,7 @@
 }
 .close:hover,
 .close:focus {
-  stroke: var(--blue);
+  fill: var(--blue);
 }
 
 .modal-book-selection {
