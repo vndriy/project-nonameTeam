@@ -1,17 +1,9 @@
 import Notiflix from 'notiflix';
-import {
-  getCategoryList,
-  getBooksByCategory,
-  getTopBooks
-} from './book-api';
-import {
-  openModal
-} from './remote-modal';
+import { getCategoryList, getBooksByCategory, getTopBooks } from './book-api';
+import { openModal } from './remote-modal';
 // import Swiper, { Navigation } from 'swiper';
 // import 'swiper/swiper-bundle.min.css';
 // import 'swiper/swiper.min.css';
-
-
 
 const categories = document.querySelector('.categories');
 const booksContainer = document.querySelector('.books-container');
@@ -45,9 +37,6 @@ const listOfBooks = document.querySelector('.list-of-books');
 //     },
 //   },
 // });
-
-
-
 
 
 getCategoryList()
