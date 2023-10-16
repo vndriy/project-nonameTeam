@@ -10,11 +10,14 @@ a {
     display: flex;
     flex-direction: column;
 }
-
-
-.shop-list-wrap .shopping-container, .shop-list-wrap .container-general  {
+.block-hidden {
     display: none;
-    }
+}
+
+
+/* .shop-list-wrap .shopping-container, .shop-list-wrap .container-general  {
+    display: none;
+    } */
 
 .shopping-list {
     color: #111;

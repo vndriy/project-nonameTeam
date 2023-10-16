@@ -1,6 +1,6 @@
 
-
 const murkup = document.querySelector(".body");
+const blockHidden = document.querySelector(".container-general");
 
 
 window.addEventListener("load",  murkupBook);
@@ -10,9 +10,15 @@ window.addEventListener("load",  murkupBook);
 function murkupBook() {
   
    const list = localStorage.getItem("shopping-list")
-   const listPars = JSON.parse(list)
-   murkupBooksFromLockalstirage(listPars)
-   
+   const listPars =  JSON.parse(list)
+   if(listPars.length === 0) {
+    console.log(listPars.length)
+    blockHidden.classList.add(".block-hidden")
+    return
+   } else {
+    murkupBooksFromLockalstirage(listPars);
+   }
+    
    }
 
 
