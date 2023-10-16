@@ -105,14 +105,14 @@
   }
 }
 
-.modal-book-book-cover {
+.modal-book-cover {
   width: 287px;
   height: 408px;
   border-radius: 8px;
 }
 
 @media screen and (min-width: 768px) {
-  .modal-book-book-cover {
+  .modal-book-cover {
     width: 192px;
     height: 281px;
   }
@@ -205,14 +205,14 @@
 }
 
 @media screen and (min-width: 768px) {
-  .modal-book-descreption {
+  .modal-book-description {
     width: 279px;
     height: 70px;
     color: var(--black);
   }
 }
 
-.modal-book-marketplaces {
+.trading-platforms {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -222,28 +222,25 @@
 }
 
 .modal-book-trading-platform {
-  height: 36px;
+  filter: grayscale(100%);
 }
 
 .modal-book-trading-platform:hover,
 .modal-book-trading-platform:focus {
-  filter: saturate(0%) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.35));
 }
 
-.amazon {
+.amazon-img {
+  filter: grayscale(100%);
   display: block;
   width: 62px;
   height: 19px;
 }
 
-.apple-books {
+.apple-books-img {
   width: 33px;
+  filter: grayscale(100%);
   height: 32px;
-}
-
-.bookshop {
-  width: 38px;
-  height: 36px;
 }
 
 .modal-book-shopping-list-btn {

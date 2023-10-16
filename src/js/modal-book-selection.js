@@ -30,12 +30,12 @@ export function renderModal(bookDetails) {
           <a class="modal-book-trading-platform amazon" href="${
             buy_links[0].url
           }" target="_blank">
-            <img class="modal-image-amazon" src="${amazonImg}" alt="Amazon shop" loading="lazy">
+            <img class="amazon-img" src="${amazonImg}" alt="Amazon shop" loading="lazy">
           </a>
           <a class="modal-book-trading-platform apple" href="${
             buy_links[1].url
           }" target="_blank">
-            <img class="modal-image-apple" src="${appleBooksImg}" alt="Apple shop" loading="lazy">
+            <img class="apple-books-img" src="${appleBooksImg}" alt="Apple shop" loading="lazy">
           </a>
       
         </div>
