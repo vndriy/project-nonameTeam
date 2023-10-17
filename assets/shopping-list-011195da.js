@@ -1,4 +1,4 @@
-import"./main-1e3650f3.js";const p=document.querySelector(".body"),u=document.querySelector(".container-general");window.addEventListener("load",g);function g(){const o=localStorage.getItem("shopping-list"),s=JSON.parse(o);if(s.length===0){console.log(s.length),u.classList.add(".block-hidden");return}else d(s)}function m(o){for(const s of o)return s.url}function d(o){o.map(({_id:t,buy_links:r,author:n,title:e,description:l,book_image:a,list_name:c})=>{const i=r[1];p.insertAdjacentHTML("beforeend",`
+import"./main-f494c246.js";const p=document.querySelector(".body"),u=document.querySelector(".container-general");window.addEventListener("load",g);function g(){const o=localStorage.getItem("shopping-list"),s=JSON.parse(o);if(s.length===0){console.log(s.length),u.classList.add(".block-hidden");return}else d(s)}function m(o){for(const s of o)return s.url}function d(o){o.map(({_id:t,buy_links:r,author:n,title:e,description:l,book_image:a,list_name:c})=>{const i=r[1];p.insertAdjacentHTML("beforeend",`
       <section class="shopping-container ${t}">
  <picture class="picture"> 
  <img class="img" src="${a}" alt="${e}" >
