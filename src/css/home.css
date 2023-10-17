@@ -377,6 +377,10 @@
     width: 218px;
   }
 
+  .book-card {
+    width: 218px;
+  }
+
   .book-title {
     letter-spacing: -.64px;
     color: var(--font-color-dark);
