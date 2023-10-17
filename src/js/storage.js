@@ -8,7 +8,7 @@ export default class ShoppingList {
   }
 
   #init() {
-    this.#shoppingList = JSON.parse(localStorage.getItem(this.#KEY));
+    this.#shoppingList = JSON.parse(localStorage.getItem(this.#KEY)) || [];
 
     if (!this.#shoppingList) {
       localStorage.setItem(this.#KEY, '[]');
@@ -24,56 +24,41 @@ export default class ShoppingList {
   }
 
   #handleNonEmptyStorage() {
-  const notEmptyStorage = document.querySelector(".empty-basket-wrap");
-  if(notEmptyStorage) {
-    notEmptyStorage.style.display = 'none';
-    
-
-  }
+    const notEmptyStorage = document.querySelector(".empty-basket-wrap");
+    if (notEmptyStorage) {
+      notEmptyStorage.style.display = 'none';
+    }
   }
 
   #handleEmptyStorage() {
-  const yy = document.querySelector(".empty-basket-wrap");
-  if(yy) {
-    notEmptyStorage.style.display = 'block';
+    const emptyStorage = document.querySelector(".empty-basket-wrap");
+    if (emptyStorage) {
+      emptyStorage.style.display = 'block';
+    }
   }
+
+  setBook(book) {
+    this.#shoppingList = JSON.parse(localStorage.getItem(this.#KEY)) || [];
+    this.#shoppingList.push(book);
+    localStorage.setItem(this.#KEY, JSON.stringify(this.#shoppingList));
   }
 
-  
+  removeBook(bookId) {
+    this.#shoppingList = JSON.parse(localStorage.getItem(this.#KEY)) || [];
 
- 
+    const indexToRemove = this.#shoppingList.findIndex(book => book._id === bookId);
+    if (indexToRemove !== -1) {
+      this.#shoppingList.splice(indexToRemove, 1);
+    }
 
-//   setBook(book) {
-//     this.#shoppingList = JSON.parse(localStorage.getItem(this.#KEY));
-//     this.#shoppingList.push(book);
+    localStorage.setItem(this.#KEY, JSON.stringify(this.#shoppingList));
+  }
 
-//     localStorage.setItem(this.#KEY, JSON.stringify(this.#shoppingList));
-//   }
+  findBook(bookId) {
+    this.#shoppingList = JSON.parse(localStorage.getItem(this.#KEY)) || [];
 
-//   removeBook(bookId) {
-//     this.#shoppingList = JSON.parse(localStorage.getItem(this.#KEY));
+    const isBookAdded = this.#shoppingList.some(book => book._id === bookId);
 
-//     const deleteBook = this.#shoppingList.splice(
-//       this.#shoppingList.findIndex(book => {
-//         return book._id === bookId;
-//       }),
-//       1
-//     );
-
-//     if (deleteBook) {
-//       localStorage.setItem(this.#KEY, JSON.stringify(this.#shoppingList));
-//     }
-
-//     return deleteBook.length > 0 ? true : false;
-//   }
-
-//   findBook(bookId) {
-//     this.#shoppingList = JSON.parse(localStorage.getItem(this.#KEY));
-
-//     const isBookAdded = this.#shoppingList.find(book => {
-//       return book._id === bookId;
-//     });
-
-//     return isBookAdded ? true : false;
-//   }
+    return isBookAdded;
+  }
 }
