@@ -34,21 +34,26 @@ img {
   height: auto;
 }
 
-@media screen and (max-width: 703px) {
+
   .container {
-    padding: 40px 20px 20px 40px;
+    padding: 40px 20px 80px 20px;
+    width: 375px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 40px 32px 100px 32px;
+    width: 768px;
+
   }
 }
 
-@media screen and (min-width: 704px) {
-  .container {
-    padding: 40px 32px 32px 40px;
-  }
-}
-
-@media screen and (min-width: 1392px) {
+@media screen and (min-width: 1440px) {
   .container {
     padding-left: 24px;
     padding-right: 24px;
+    width: 1440px;
   }
 }

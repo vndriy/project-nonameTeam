@@ -1,4 +1,4 @@
-import { supportArr } from "./support-cards";
+import { supportArr } from './support-cards';
 
 const refs = {
   showAllBtn: document.querySelector('.scroll-list-button'),
@@ -6,8 +6,6 @@ const refs = {
   list: document.querySelector('.js-support-list'),
   buttonUp: document.querySelector('.button-up'),
 };
-
-
 
 function renderSupport(supportArr) {
 refs.list.innerHTML = supportArr
@@ -20,7 +18,7 @@ refs.list.innerHTML = supportArr
     </li>`;
     })
     .join('');
-  
+
 }
 
 renderSupport(supportArr);
@@ -49,7 +47,6 @@ function visibleItems() {
 
 visibleItems();
 
-
 refs.showAllBtn.addEventListener('click', onClickShowButtonAll);
 
 function onClickShowButtonAll () {
@@ -59,16 +56,15 @@ function onClickShowButtonAll () {
   });
 
   refs.supportCard.style.maxHeight = 'none';
-  
+
   refs.showAllBtn.style.display = 'none';
   refs.buttonUp.style.display = 'block';
   refs.buttonUp.style.marginTop = "24px";
   refs.buttonUp.style.marginBottom = "0";
-  
+
   refs.showAllBtn.removeEventListener('click', onClickShowButtonAll);
   refs.buttonUp.addEventListener('click', onClickButtonUp);
 }
-
 
 function onClickButtonUp() {
   if (window.innerWidth <= 767) {
