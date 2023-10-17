@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
 import { getCategoryList, getBooksByCategory, getTopBooks } from './book-api';
 import { openModal } from './remote-modal';
 
