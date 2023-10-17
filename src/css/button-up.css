@@ -1,8 +1,7 @@
 .btn-up {
   cursor: pointer;
-  background-color: #4f2ee8;
-  border: 20px
-solid #0000;
+  background-color: var(--blue);
+  border: 20px solid #0000;
   border-radius: 70%;
   transition: border .5s cubic-bezier(.4,0,.2,1);
   position: fixed;

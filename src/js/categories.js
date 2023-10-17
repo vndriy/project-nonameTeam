@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
 import { getCategoryList, getBooksByCategory, getTopBooks } from './book-api';
 import { openModal } from './remote-modal';
 
@@ -10,10 +10,20 @@ const listTitle = document.querySelector('.list-title');
 const listTitleOfSection = document.querySelector('.list-title-of-section');
 const listOfBooksOfSection = document.querySelector('.list-of-books-of-section')
 const listOfBooks = document.querySelector('.list-of-books');
-const sectionTitleSpan = document.querySelector('.list-title-of-section-span')
-const buttonsSeeMore = document.querySelectorAll('.seemore-btn')
 
 
+function createCategoryTitle(list_name) {
+  const words = list_name.split(' ');
+  const lastWord = words.pop();
+  const designedTitle = words.join(' ') + ' <span class="list-title-span">' + lastWord + '</span>';
+  return `<h1 class="all-books-title">${designedTitle}</h1>`;
+}
+
+function handleBookCardClick(e) {
+  if (e.target.dataset.bookId) {
+    openModal(e.target.dataset.bookId);
+  }
+}
 
 
 getCategoryList()
@@ -51,7 +61,7 @@ async function displayTopBooks() {
     sectionContainer.style.display = 'none';
     listOfBooksOfSection.innerHTML = '';
     listTitleOfSection.textContent = '';
-
+    booksContainer.addEventListener('click', handleBookCardClick);
   } catch (error) {
     console.error(error);
     Notiflix.Notify.failure('Failed to fetch top books');
@@ -76,6 +86,7 @@ function createTopBooks(arr) {
   return html;
 }
 
+
 categories.addEventListener('click', async e => {
   console.log(e.target.textContent);
   const targetCategory = e.target.textContent;
@@ -84,6 +95,7 @@ categories.addEventListener('click', async e => {
       svgColor: '#4F2EE8',
     });
     if (e.target.classList.contains('all-categories')) {
+      listTitle.innerHTML = `Best Sellers <span class="list-title-span">Books</span>`
        return displayTopBooks();
     }
     const selectedCategory = await getBooksByCategory(targetCategory);
@@ -91,7 +103,7 @@ categories.addEventListener('click', async e => {
     booksContainer.style.display = 'none';
     sectionContainer.style.display = 'block';
     
-    listTitleOfSection.textContent = targetCategory;
+    listTitleOfSection.innerHTML = createCategoryTitle(targetCategory);
     listOfBooksOfSection.innerHTML = booksHTML;
     Notiflix.Loading.remove();
   } catch (error) {
@@ -113,7 +125,7 @@ function createBookCard(arr) {
       description
     }) => {
       if(description == ''){
-        return `<li class="book-card" >
+        return `<li class="book-card">
           <a href="#" class="book-link">
             <div class="whole-image-wrapper">
              <img data-book-id="${_id}" class="book-image-category" src="${book_image}" width="180" height="256"  alt="${title}" loading="lazy"/>
@@ -125,7 +137,7 @@ function createBookCard(arr) {
         </li>
       `;
       }
-      return `<li class="book-card" >
+      return `<li class="book-card">
           <a href="#" class="book-link">
             <div class="whole-image-wrapper">
              <img data-book-id="${_id}" class="book-image-category" src="${book_image}" width="180" height="256"  alt="${title}" loading="lazy"/>
@@ -146,11 +158,28 @@ booksContainer.addEventListener('click', async e => {
   e.preventDefault();
   if (e.target.dataset.category) {
     const targetCategory = e.target.dataset.category;
-    const targetCategoryText = e.target.textContent;
-
     const selectedCategory = await getBooksByCategory(targetCategory);
     const booksHTML = createBookCard(selectedCategory);
-    listTitle.textContent = targetCategoryText
+    listTitle.innerHTML = createCategoryTitle(targetCategory)
+    booksContainer.addEventListener('click', handleBookCardClick);
+
+    listOfBooks.innerHTML = booksHTML;
+  }
+  if (e.target.dataset.bookId) {
+    openModal(e.target.dataset.bookId);
+  }
+});
+
+
+sectionContainer.addEventListener('click', async e => {
+  e.preventDefault();
+  if (e.target.dataset.category) {
+    const targetCategory = e.target.dataset.category;
+    const selectedCategory = await getBooksByCategory(targetCategory);
+    const booksHTML = createBookCard(selectedCategory);
+    listTitle.innerHTML = createCategoryTitle(targetCategory)
+    booksContainer.addEventListener('click', handleBookCardClick);
+
     listOfBooks.innerHTML = booksHTML;
   }
   if (e.target.dataset.bookId) {
