@@ -24,21 +24,7 @@ export default class ShoppingList {
   }
 
   #handleNonEmptyStorage() {
-    const bookCard = document.querySelector(
-      '.shop-list-wrap .shopping-container'
-    );
-    const supportCards = document.querySelector(
-      '.shop-list-wrap .support-card'
-    );
-    const basketTitle = document.querySelector(
-      '.shop-list-wrap .container-general'
-    );
-
-    if (supportCards && bookCard && basketTitle) {
-      supportCards.style.display = 'block';
-      bookCard.style.display = 'block';
-      basketTitle.style.display = 'block';
-    }
+  
   }
 
   #handleEmptyStorage() {
@@ -55,37 +41,41 @@ export default class ShoppingList {
     }
   }
 
-  setBook(book) {
-    this.#shoppingList = JSON.parse(localStorage.getItem(this.#KEY));
-    this.#shoppingList.push(book);
+  
 
-    localStorage.setItem(this.#KEY, JSON.stringify(this.#shoppingList));
-  }
+ 
 
-  removeBook(bookId) {
-    this.#shoppingList = JSON.parse(localStorage.getItem(this.#KEY));
+//   setBook(book) {
+//     this.#shoppingList = JSON.parse(localStorage.getItem(this.#KEY));
+//     this.#shoppingList.push(book);
 
-    const deleteBook = this.#shoppingList.splice(
-      this.#shoppingList.findIndex(book => {
-        return book._id === bookId;
-      }),
-      1
-    );
+//     localStorage.setItem(this.#KEY, JSON.stringify(this.#shoppingList));
+//   }
 
-    if (deleteBook) {
-      localStorage.setItem(this.#KEY, JSON.stringify(this.#shoppingList));
-    }
+//   removeBook(bookId) {
+//     this.#shoppingList = JSON.parse(localStorage.getItem(this.#KEY));
 
-    return deleteBook.length > 0 ? true : false;
-  }
+//     const deleteBook = this.#shoppingList.splice(
+//       this.#shoppingList.findIndex(book => {
+//         return book._id === bookId;
+//       }),
+//       1
+//     );
 
-  findBook(bookId) {
-    this.#shoppingList = JSON.parse(localStorage.getItem(this.#KEY));
+//     if (deleteBook) {
+//       localStorage.setItem(this.#KEY, JSON.stringify(this.#shoppingList));
+//     }
 
-    const isBookAdded = this.#shoppingList.find(book => {
-      return book._id === bookId;
-    });
+//     return deleteBook.length > 0 ? true : false;
+//   }
 
-    return isBookAdded ? true : false;
-  }
+//   findBook(bookId) {
+//     this.#shoppingList = JSON.parse(localStorage.getItem(this.#KEY));
+
+//     const isBookAdded = this.#shoppingList.find(book => {
+//       return book._id === bookId;
+//     });
+
+//     return isBookAdded ? true : false;
+//   }
 }

@@ -1,18 +1,15 @@
-.shop-list-wrap .support-card {
-  display: none;
-}
-.shop-list-wrap .empty-basket-wrap {
+
+.shop-list-wrap .support {
   display: none;
 }
 
 .empty-basket-wrap {
   display: flex;
   flex-direction: column;
+  margin-top: 80px;
 }
 
-.shop-list-wrap .support {
-  display: none;
-}
+
 
 .shop-list-title {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -20,6 +17,7 @@
   font-weight: 700;
   line-height: 1.18;
   letter-spacing: -1.28px;
+  margin-bottom: 40px;
 }
 
 .shop-list-title span {
@@ -27,7 +25,7 @@
 }
 
 .cap-wrap {
-  padding-top: 120px;
+ 
   display: flex;
   max-width: 265px;
   flex-direction: column;
@@ -55,10 +53,13 @@
     font-size: 48px;
     line-height: 1.08;
     letter-spacing: -1.92px;
+    
   }
-
+.empty-basket-wrap {
+  margin-top: 100px;
+}
   .cap-wrap {
-    padding-top: 140px;
+   
     gap: 20px;
     max-width: 349px;
   }
