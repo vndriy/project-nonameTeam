@@ -26,14 +26,17 @@ export default class ShoppingList {
   #handleNonEmptyStorage() {
   const notEmptyStorage = document.querySelector(".empty-basket-wrap");
   if(notEmptyStorage) {
-    notEmptyStorage.style.display = 'block';
+    notEmptyStorage.style.display = 'none';
     notEmptyStorage.setAttribute("hidden", "")
 
   }
   }
 
   #handleEmptyStorage() {
-  
+  const yy = document.querySelector(".empty-basket-wrap");
+  if(yy) {
+    notEmptyStorage.style.display = 'block';
+  }
   }
 
   

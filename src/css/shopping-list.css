@@ -2,8 +2,8 @@
 .shop-list-wrap .support {
   display: none;
 }
-.container-general .empty-basket-wrap {
-  /* display: none; */
+ .empty-basket-wrap {
+  display: block;
 }
 
 .empty-basket-wrap {
