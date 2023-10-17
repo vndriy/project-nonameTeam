@@ -1,13 +1,9 @@
 let darkMode = localStorage.getItem('darkMode');
 
-let initialTextColor;
-
 const darkModeToggle = document.querySelector('#darkmode-toggle');
 const header = document.querySelector('header'); 
 const bodybg = document.querySelector('body');
 const logostyle = document.querySelector('.logo-style');
-const shopSvg = document.querySelector('.shop-svg');
-// const listItem = document.querySelector('.list-item');
 
 const currentPageURL = window.location.pathname;
 const homeLink = document.getElementById('home-link');
@@ -22,7 +18,6 @@ const headerContainer = document.querySelector('.header-cont')
      shoppingLink.style.backgroundColor = 'transparent';
      if (darkMode === 'enabled') {
          shoppingLink.style.color = '#fff';
-         shopSvg.style.fill = 'white';
      } 
     } else if (currentPageURL.includes('shopping-list.html')) {
         shoppingLink.style.fontWeight = '700';
@@ -65,7 +60,6 @@ darkModeToggle.addEventListener("click", () => {
         console.log(darkMode);
         if (currentPageURL.includes('index.html')) {
             shoppingLink.style.color = 'white';
-            shopSvg.style.fill = 'white';
         } else if (currentPageURL.includes('shopping-list.html')) {
             homeLink.style.color = 'white';
         }
@@ -73,9 +67,7 @@ darkModeToggle.addEventListener("click", () => {
         disbleDarkMode();
         console.log(darkMode);
         if (currentPageURL.includes('index.html')) {
-            shoppingLink.style.color = 'black';
-            shopSvg.style.fill = 'black';
-             // 
+            shoppingLink.style.color = 'black'; // 
         } else if (currentPageURL.includes('shopping-list.html')) {
             homeLink.style.color = 'black'; 
         }
