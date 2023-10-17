@@ -219,7 +219,7 @@
     flex-direction: column;
   }
 
-  .list-of-books-of-section{
+  .list-of-books-of-section {
     margin-top: 40px;
     display: flex;
     flex-direction: column;
@@ -238,10 +238,10 @@
   .list-title,
   .list-title-of-section {
     color: var(--font-color-dark);
-    letter-spacing: -1.28px;
+    letter-spacing: -1.92px;
     font-size: 32px;
     font-weight: 700;
-    line-height: 1.19;
+    line-height: 1.1;
   }
 
   .list-title-span,
@@ -308,11 +308,12 @@
 
 @media screen and (min-width: 768px) {
   .list-of-books {
-    gap: 40px;
+    margin-top: 40px;
     display: flex;
-    flex-direction: column;
-    /* width: 704px; */
-    list-style: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 25px;
+    row-gap: 40px;
   }
 
   .book-list {
@@ -332,20 +333,20 @@
     border-radius: 8px;
   }
 
-  .books-container{
+  .books-container {
     display: flex;
     flex-direction: column;
     width: 704px;
   }
 
-  
+
   .section-container {
     display: flex;
     flex-direction: column;
     width: 704px;
   }
 
-  .list-of-books-of-section{
+  .list-of-books-of-section {
     margin-top: 40px;
     display: flex;
     flex-direction: row;
@@ -382,6 +383,10 @@
     color: #4f2ee8;
   }
 
+  .book-card {
+    width: 218px;
+  }
+
   .book-title {
     letter-spacing: -.64px;
     color: var(--font-color-dark);
@@ -397,7 +402,6 @@
     flex-direction: row;
     column-gap: 25px;
     width: 100%;
-    /* height: 100%; */
     z-index: 1;
     transition-property: transform;
     box-sizing: content-box;
@@ -416,7 +420,7 @@
   }
 
   .button-wrapper {
-    width: 100%;
+    width: 704px;
     display: flex;
   }
 
@@ -439,18 +443,20 @@
 
 @media screen and (min-width: 1440px) {
   .list-of-books {
-    
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     row-gap: 40px;
     column-gap: 24px;
-    
+
   }
+
   .book-card {
     width: 180px;
     height: 306px;
   }
+
   .book-list {
     display: flex;
     flex-direction: row;
@@ -480,7 +486,7 @@
     width: 996px;
   }
 
-  .list-of-books-of-section{
+  .list-of-books-of-section {
     margin-top: 40px;
     display: flex;
     flex-direction: row;
@@ -615,7 +621,7 @@
   overflow: hidden;
 }
 
-.list-of-books{
+.list-of-books {
   margin-top: 40px;
+  overflow: hidden;
 }
-
