@@ -2,9 +2,6 @@
 .shop-list-wrap .support {
   display: none;
 }
- .empty-basket-wrap {
-  display: block;
-}
 
 .empty-basket-wrap {
   display: flex;
@@ -87,8 +84,7 @@
   }
 
   .empty-basket-wrap {
-    display: flex;
-    flex-direction: column;
+   
     flex-grow: 1;
   }
   .shop-list-wrap .support-card {

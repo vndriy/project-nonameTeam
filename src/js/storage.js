@@ -27,7 +27,7 @@ export default class ShoppingList {
   const notEmptyStorage = document.querySelector(".empty-basket-wrap");
   if(notEmptyStorage) {
     notEmptyStorage.style.display = 'none';
-    notEmptyStorage.setAttribute("hidden", "")
+    
 
   }
   }

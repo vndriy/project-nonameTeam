@@ -13,7 +13,7 @@ export function murkupBook() {
     murkup.classList.add("block-hidden")
     return
    } else {
-    
+    notEmptyStorage.style.display = "none"
     murkupBooksFromLockalstirage(listPars);
    }
 
