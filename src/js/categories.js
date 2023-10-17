@@ -1,42 +1,18 @@
 import Notiflix from 'notiflix';
 import { getCategoryList, getBooksByCategory, getTopBooks } from './book-api';
 import { openModal } from './remote-modal';
-// import Swiper, { Navigation } from 'swiper';
-// import 'swiper/swiper-bundle.min.css';
-// import 'swiper/swiper.min.css';
 
 const categories = document.querySelector('.categories');
 const booksContainer = document.querySelector('.books-container');
+const sectionContainer = document.querySelector('.section-container')
 const listTitle = document.querySelector('.list-title');
+const listTitleOfSection = document.querySelector('.list-title-of-section');
+const listOfBooksOfSection = document.querySelector('.list-of-books-of-section')
 const listOfBooks = document.querySelector('.list-of-books');
+const sectionTitleSpan = document.querySelector('.list-title-of-section-span')
+const buttonsSeeMore = document.querySelectorAll('.seemore-btn')
 
 
-// const swiper = new Swiper('.swiper', {
-//   slidesPerView: 1,
-//   spaceBetween: 24,
-
-//   modules: [Navigation],
-
-//   navigation: {
-//     prevEl: '.swiper-btn-prev',
-//     nextEl: '.swiper-btn-next',
-//   },
-
-//   breakpoints: {
-//     // when window width is >= 320px
-//     320: {
-//       slidesPerView: 1,
-//     },
-//     // when window width is >= 480px
-//     768: {
-//       slidesPerView: 3,
-//     },
-//     // when window width is >= 640px
-//     1440: {
-//       slidesPerView: 5,
-//     },
-//   },
-// });
 
 
 getCategoryList()
@@ -79,12 +55,10 @@ function createTopBooks(arr) {
       list_name: listName,
       books
     }) => {
-      return `<li class="category-of-books swiper">
+      return `<li class="category-of-books">
       <h2 class="category-name">${listName}</h2>
-       <ul class="list-of-books-by-category swiper-wrapper">${createBookCard(books)}</ul>
-       <div class="swiper-btn-prev"></div>
-       <div class="swiper-btn-next"></div>
-       <div class="button-wrapper"><button class="seemore-btn" data-category="${listName}" >See more</button></div>
+       <ul class="list-of-books-by-category">${createBookCard(books)}</ul>
+       <div class="button-wrapper"><button class="seemore-btn" data-category="${listName}">See more</button></div>
        </li>
       `;
     })
@@ -96,13 +70,15 @@ categories.addEventListener('click', async e => {
   console.log(e.target.textContent);
   const targetCategory = e.target.textContent;
   try {
-    if (targetCategory === 'All categories') {
-      return displayTopBooks();
+    if (e.target.classList.contains('all-categories')) {
+       return displayTopBooks();
     }
-
     const selectedCategory = await getBooksByCategory(targetCategory);
     const booksHTML = createBookCard(selectedCategory);
-    booksContainer.innerHTML = booksHTML;
+    booksContainer.style.display = 'none';
+    sectionContainer.style.display = 'block';
+    listTitleOfSection.textContent = targetCategory;
+    listOfBooksOfSection.innerHTML = booksHTML;
   } catch (error) {
     console.error(error);
     Notiflix.Notify.failure(
@@ -111,19 +87,34 @@ categories.addEventListener('click', async e => {
   }
 });
 
+
 function createBookCard(arr) {
   const booksCard = arr
     .map(({
       _id,
       author,
       title,
-      book_image
+      book_image,
+      description
     }) => {
-      return `<li class="book-card swiper-slide" >
+      if(description == ''){
+        return `<li class="book-card" >
           <a href="#" class="book-link">
-            <div class="hole-image-wrapper">
+            <div class="whole-image-wrapper">
              <img data-book-id="${_id}" class="book-image-category" src="${book_image}" width="180" height="256"  alt="${title}" loading="lazy"/>
-             <div class="image-overlay"></div>
+             <div class="image-overlay">NO DESCRIPTION</div>
+            </div>
+            <h3 class="book-title">${title}</h3>
+            <p class="author">${author}</p>
+          </a>
+        </li>
+      `;
+      }
+      return `<li class="book-card" >
+          <a href="#" class="book-link">
+            <div class="whole-image-wrapper">
+             <img data-book-id="${_id}" class="book-image-category" src="${book_image}" width="180" height="256"  alt="${title}" loading="lazy"/>
+             <div class="image-overlay">${description}</div>
             </div>
             <h3 class="book-title">${title}</h3>
             <p class="author">${author}</p>
@@ -134,6 +125,7 @@ function createBookCard(arr) {
     .join('');
   return booksCard;
 }
+
 
 booksContainer.addEventListener('click', async e => {
   e.preventDefault();
