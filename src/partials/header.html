@@ -1,72 +1,68 @@
-<header class="header">
-  <!--  -->
-  <!-- header container -->
-  <div class="header-container">
-    <!-- left side -->
+<header>
+  <div class="container header-cont">
+    <!-- ⬅️ left-side  -->
     <nav class="header-nav">
       <a class="logo-block" href="./index.html">
         <svg width="28" height="28">
-          <use href="/img/icons.svg#icon-logo"></use></svg
-        ><span class="logo-style">Bookshelf</span></a
+          <use href="/img/icons.svg#icon-logo"></use>
+        </svg>
+        <span class="logo-style">Bookshelf</span></a
       >
-      <!-- tablet + desktop -->
-      <ul class="nav-menu">
+      <!-- 💻 tablet + desktop -->
+      <!-- <div class="menu-nav"> -->
+      <ul class="menu-nav display-none">
         <li>
           <a href="./index.html" class="nav-home" id="home-link">Home</a>
         </li>
-        <li>
+        <li class="shop-li">
           <a href="./shopping-list.html" class="nav-shopli" id="shopping-link"
             >Shopping List
-            <svg width="20" height="20">
+            <svg width="20" height="20" class="svg-pic">
               <use href="/img/icons.svg#icon-sl"></use>
             </svg>
           </a>
         </li>
       </ul>
+      <!-- </div> -->
     </nav>
-    <!-- /tablet + desktop -->
+    <!-- ⬅️ left-side  -->
 
-    <!-- switcher -->
+    <!-- 💻 /tablet + desktop -->
+    <!-- right-side ➡️ -->
+
+    <!-- SWITCHERRRRRRRR -->
     <div class="right-block">
+      <!-- SWITCHERRRRRRRR -->
       <input type="checkbox" id="darkmode-toggle" />
       <label for="darkmode-toggle"></label>
-      <!-- /switcher -->
-
-      <!-- mobile button for mobile menu-->
-      <button
-        type="button"
-        class="burger-btn menu-btn-open js-open-menu"
-        id="menu-button"
-      >
-        <!-- <svg class="menu-close-icon" width="28" height="28">
-          <use href="./img/icons.svg#open-menu"></use>
-        </svg> -->
-        <span></span><span></span><span></span>
-      </button>
-
-      <!-- /mobile button for mobile menu -->
+      <!-- SWITCHERRRRRRRR -->
+      <!-- BUTTONNNNNNNNNNNN -->
+      <div class="menu-btn mob-menu-display">
+        <div class="menu-btn__burger"></div>
+      </div>
+      <!-- BUTTONNNNNNNNNNNN -->
+      <div class="stephan">Stephan</div>
     </div>
+    <!-- stephan -->
+
+    <!-- stephan  -->
+    <!-- /switcher  -->
   </div>
+  <!-- КІНЕЦЬ ХЕДЕРУ -->
 </header>
-<!-- MOBILE MENU -->
-<div class="mob-menu js-menu-container">
-  <!-- x-button -->
-  <!-- <div class="x-button">
-    <button type="button" class="menu-btn-close js-close-menu">
-      <svg class="menu-close-icon" width="28" height="28">
-        <use href="./img/icons.svg#close-menu"></use>
-      </svg>
-    </button>
-    closeMenuBtn.addEventListener('click', toggleMenu)
-  </div> -->
-  <!-- /x-button -->
-  <div class="burger-menu">
-    <ul class="menu-mob">
-      <li class="menu-mob-item">
-        <a class="menu-link-mob" href="./index.html">Home</a>
+<div class="hamb-menu">
+  <div class="mob-menu-container">
+    <ul class="menu-hamb-nav">
+      <li>
+        <a href="./index.html" class="mobmenu-home" id="home-link">Home</a>
       </li>
-      <li class="menu-mob-item">
-        <a class="menu-link-mob" href="./portfolio.html">Shopping List</a>
+      <li>
+        <a href="./shopping-list.html" class="mobmenu-shop" id="shopping-link"
+          >Shopping List
+          <svg width="20" height="20" class="svg-mob">
+            <use href="/img/icons.svg#icon-sl"></use>
+          </svg>
+        </a>
       </li>
     </ul>
   </div>
