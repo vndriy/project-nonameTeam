@@ -1,9 +1,11 @@
-.shop-list-wrap .support-card,
+.shop-list-wrap .support-card {
+  display: none;
+}
 .shop-list-wrap .empty-basket-wrap {
   display: none;
 }
 
-empty-basket-wrap {
+.empty-basket-wrap {
   display: flex;
   flex-direction: column;
 }
@@ -66,11 +68,12 @@ empty-basket-wrap {
     line-height: 1.33;
     letter-spacing: -0.36px;
   }
+ 
 }
 
 /*DESKTOP*/
 
-@media screen and (min-width: 1392px) {
+@media screen and (min-width: 1440px) {
   .shop-list-wrap {
     display: flex;
     gap: 40px;
@@ -85,4 +88,9 @@ empty-basket-wrap {
     flex-direction: column;
     flex-grow: 1;
   }
+  .shop-list-wrap .support-card {
+    display: block;
+  }
+  
+  
 }

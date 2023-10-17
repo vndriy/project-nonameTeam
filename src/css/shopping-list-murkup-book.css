@@ -15,10 +15,6 @@ a {
 }
 
 
-/* .shop-list-wrap .shopping-container, .shop-list-wrap .container-general  {
-    display: none;
-    } */
-
 .shopping-list {
     color: #111;
 font-size: 32px;
@@ -26,6 +22,7 @@ font-weight: 700;
 line-height: 38px; 
 letter-spacing: -1.28px;
 margin: 40px 0;
+
 
 }
 .list {
@@ -219,9 +216,11 @@ text-overflow: ellipsis;
 
     .container-general {
         max-width: 996px; 
+        margin-top: 40px;
     }
     .shopping-container {
         max-width: 996px;
+        
     }
     .book-description{
         width: 808px;
