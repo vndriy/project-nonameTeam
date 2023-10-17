@@ -1,13 +1,15 @@
 let darkMode = localStorage.getItem('darkMode');
 
 const darkModeToggle = document.querySelector('#darkmode-toggle');
-const header = document.querySelector('header');
+const header = document.querySelector('header'); 
 const bodybg = document.querySelector('body');
 const logostyle = document.querySelector('.logo-style');
 
 const currentPageURL = window.location.pathname;
 const homeLink = document.getElementById('home-link');
 const shoppingLink = document.getElementById('shopping-link');
+const svgMenu = document.getElementById('#svgmenu')
+const headerContainer = document.querySelector('.header-cont')
 
  if (currentPageURL.includes('index.html')) {
      homeLink.classList.add('yellow-block')
@@ -28,7 +30,9 @@ const shoppingLink = document.getElementById('shopping-link');
 }
 
 const enableDarkMode = () => {
-    header.classList.add('headerbg')
+    // svgMenu.classList.add('svg-mob')
+    // header.classList.add('headerbg')
+    headerContainer.classList.add('headerbg')
     bodybg.classList.add('bodybg')
     logostyle.classList.add('darkmode-logo')
 console.log(currentPageURL);
@@ -36,7 +40,9 @@ console.log(currentPageURL);
 };
 
 const disbleDarkMode = () => {
-    header.classList.remove('headerbg')
+    // header.classList.remove('headerbg')
+    headerContainer.classList.remove('headerbg')
+
     bodybg.classList.remove('bodybg')
     logostyle.classList.remove('darkmode-logo')
 
