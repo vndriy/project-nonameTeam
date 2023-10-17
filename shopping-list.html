@@ -13,11 +13,9 @@
       referrerpolicy="no-referrer"
     />
     
-    
-    <script type="module" crossorigin src="/project-nonameTeam/assets/shopping-list-8ba66dc8.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-nonameTeam/assets/main-75dd0572.js">
-    <link rel="stylesheet" href="/project-nonameTeam/assets/main-745e0b92.css">
-    <link rel="stylesheet" href="/project-nonameTeam/assets/shopping-list-36f26ce6.css">
+    <script type="module" crossorigin src="/project-nonameTeam/assets/shopping-list-fe8e94c8.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-nonameTeam/assets/support-ua-c945bc1c.js">
+    <link rel="stylesheet" href="/project-nonameTeam/assets/support-ua-6fdb7dd4.css">
   </head>
   <body>
     <!-- HEADER  -->
@@ -118,41 +116,48 @@
 </div>
 
       <!-- EMPTY LIST CAP -->
-      <div class="empty-basket-wrap">
+      
+
+      <!-- BOOKMURCKUP -->
+      <div class="container-general">
   <h1 class="shop-list-title">Shopping <span>List</span></h1>
-  <div class="cap-wrap">
-    <p class="cap-text">
-      This page is empty, add some books and proceed to order.
-    </p>
-    <picture class="empty-list-pic">
-      <source
-        srcset="/project-nonameTeam/assets/empty-page-8a16ad0f.png 1x, /project-nonameTeam/assets/empty-page-2x-c166d62f.png 2x"
-        media="(min-width:704px)"
-      />
-      <source
-        srcset="/project-nonameTeam/assets/empty-page-mob-729edc7b.png 1x, /project-nonameTeam/assets/empty-page-mob@2x-0d91fc9b.png 2x"
-        media="(max-width:703px)"
-      />
-      <img src="/project-nonameTeam/assets/empty-page-8a16ad0f.png" alt="books icon" />
-    </picture>
+
+  <ul class="shopippping-list"></ul>
+  <div class="empty-basket-wrap">
+    <div class="cap-wrap">
+      <p class="cap-text">
+        This page is empty, add some books and proceed to order.
+      </p>
+      <picture class="empty-list-pic">
+        <source
+          srcset="/project-nonameTeam/assets/empty-page-8a16ad0f.png 1x, /project-nonameTeam/assets/empty-page-2x-c166d62f.png 2x"
+          media="(min-width:704px)"
+        />
+        <source
+          srcset="/project-nonameTeam/assets/empty-page-mob-729edc7b.png 1x, /project-nonameTeam/assets/empty-page-mob@2x-0d91fc9b.png 2x"
+          media="(max-width:703px)"
+        />
+        <img src="/project-nonameTeam/assets/empty-page-8a16ad0f.png" alt="books icon" />
+      </picture>
+    </div>
   </div>
 </div>
 
-      <!-- BOOKMURCKUP -->
-      
-    
-    
-
-   
-  <div class="container-general">
-  <h1 class="shopping-list ">Shopping<span class="shopping-list list">List</span> </h1>
- 
-  
-  <div class="body"></div>
-   
+      <div class="backdrop is-hidden">
+  <div id="modal" class="modal-book-selection">
+    <div class="modal-book-content">
+      <svg class="close" width="28" height="28" data-modal-close>
+        <use href="/project-nonameTeam/assets/modal-d70f2e7a.svg#icon-x-close"></use>
+      </svg>
+      <div class="modal-book-content-wrap"></div>
     </div>
-   
-  
+    <button class="modal-book-shopping-list-btn">Add to shopping list</button>
+    <p class="modal-book-shopping-list-btn-shopping-list-message message-hide">
+      Congratulations! You have added the book to the shopping list. To delete,
+      press the button "Remove from the shopping list".
+    </p>
+  </div>
+</div>
 
     </section>
 
