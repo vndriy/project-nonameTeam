@@ -1,4 +1,4 @@
-import"./support-ua-7989017c.js";document.querySelector(".body");document.querySelector(".container-general");const a=document.querySelector(".shopippping-list");function l(t){const s=t.map(({_id:e,buy_links:i,author:n,title:o,description:p,book_image:c,list_name:r})=>`<li class="shopping-list__item">
+import"./support-ua-d8e8f0bb.js";document.querySelector(".body");document.querySelector(".container-general");const a=document.querySelector(".shopippping-list");function l(t){const s=t.map(({_id:e,buy_links:i,author:n,title:o,description:p,book_image:c,list_name:r})=>`<li class="shopping-list__item">
  <img class="img" src="${c}" alt="${o}" >
 
  <div class="shopping-list__description">
