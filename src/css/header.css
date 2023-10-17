@@ -3,7 +3,6 @@
   max-width: 375px;
   margin: 0 auto;
   padding: 18px 20px;
-  justify-content: space-between;
   /* justify-content: center; */
   /* align-items: flex-start; */
 
@@ -41,7 +40,7 @@
 
 .right-block {
   display: flex;
-  /* margin-left: 144px; */
+  margin-left: 144px; /* підшаманити */
   align-items: center;
 }
 
@@ -218,10 +217,6 @@ header {
   fill: white;
 }
 
-.shop-svg {
-  fill: var(--black);
-}
-
 .stephan {
   display: none;
 }
@@ -315,7 +310,6 @@ header {
     letter-spacing: -0.56px;
     text-transform: uppercase;
   }
- 
 }
 
 @media screen and (min-width: 1440px) {
