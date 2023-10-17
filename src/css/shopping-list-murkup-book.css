@@ -1,9 +1,9 @@
-/* ul {
+ul {
   list-style: none;
 }
 a {
   text-decoration: none;
-} */
+}
 .container-general {
   max-width: 335px;
   margin: auto;
@@ -15,14 +15,14 @@ a {
   display: none;
 }
 
-.shopping-list {
+/* .shopping-list {
   color: #111;
   font-size: 32px;
   font-weight: 700;
   line-height: 38px;
   letter-spacing: -1.28px;
   margin: 40px 0;
-}
+} */
 .list {
   color: #4f2ee8;
   margin-left: 7px;
@@ -156,6 +156,7 @@ a {
 @media screen and (min-width: 768px) {
   .container-general {
     max-width: 704px;
+    margin-top: 0px;
   }
 
   .shopping-container {
@@ -201,7 +202,7 @@ a {
 @media screen and (min-width: 1440px) {
   .container-general {
     max-width: 996px;
-    margin-top: 40px;
+    /* margin-top: 40px; */
   }
   .shopping-container {
     max-width: 996px;
