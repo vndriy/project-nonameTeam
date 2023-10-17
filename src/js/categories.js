@@ -1,4 +1,5 @@
 import Notiflix from 'notiflix';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { getCategoryList, getBooksByCategory, getTopBooks } from './book-api';
 import { openModal } from './remote-modal';
 
@@ -37,23 +38,32 @@ displayTopBooks();
 
 // Функція для відображення top-книг
 async function displayTopBooks() {
-  return getTopBooks()
-    .then(data => {
-      console.log(data);
-      const topBooksHTML = createTopBooks(data);
-      listOfBooks.innerHTML = topBooksHTML; // Виводимо отримані top-books
-    })
-    .catch(error => {
-      console.error(error);
-      Notiflix.Notify.failure('Failed to fetch top books');
+  try {
+    Notiflix.Loading.standard('Loading...', {
+      svgColor: '#4F2EE8',
     });
+    const data = await getTopBooks(); // Отримуємо дані з api
+    const topBooksHTML = createTopBooks(data); // Створюємо HTML 
+    listOfBooks.innerHTML = topBooksHTML; // Виводимо "top books" 
+    Notiflix.Loading.remove();
+    // Очищаємо вміст з інших секцій
+    booksContainer.style.display = 'block';
+    sectionContainer.style.display = 'none';
+    listOfBooksOfSection.innerHTML = '';
+    listTitleOfSection.textContent = '';
+
+  } catch (error) {
+    console.error(error);
+    Notiflix.Notify.failure('Failed to fetch top books');
+  }
 }
 
 function createTopBooks(arr) {
   let html = arr
     .map(({
       list_name: listName,
-      books
+      
+      books,
     }) => {
       return `<li class="category-of-books">
       <h2 class="category-name">${listName}</h2>
@@ -70,6 +80,9 @@ categories.addEventListener('click', async e => {
   console.log(e.target.textContent);
   const targetCategory = e.target.textContent;
   try {
+    Notiflix.Loading.standard('Loading...', {
+      svgColor: '#4F2EE8',
+    });
     if (e.target.classList.contains('all-categories')) {
        return displayTopBooks();
     }
@@ -77,8 +90,10 @@ categories.addEventListener('click', async e => {
     const booksHTML = createBookCard(selectedCategory);
     booksContainer.style.display = 'none';
     sectionContainer.style.display = 'block';
+    
     listTitleOfSection.textContent = targetCategory;
     listOfBooksOfSection.innerHTML = booksHTML;
+    Notiflix.Loading.remove();
   } catch (error) {
     console.error(error);
     Notiflix.Notify.failure(
