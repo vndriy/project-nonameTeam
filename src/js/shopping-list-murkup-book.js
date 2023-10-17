@@ -3,8 +3,8 @@ const murkup = document.querySelector(".body");
 const blockHidden = document.querySelector(".container-general");
 
 
-window.addEventListener("load",  murkupBook);
 
+window.addEventListener("load",  murkupBook);
 
 
 function murkupBook() {
@@ -12,8 +12,7 @@ function murkupBook() {
    const list = localStorage.getItem("shopping-list")
    const listPars =  JSON.parse(list)
    if(listPars.length === 0) {
-    console.log(listPars.length)
-    blockHidden.classList.add(".block-hidden")
+    blockHidden.classList.add("block-hidden")
     return
    } else {
     murkupBooksFromLockalstirage(listPars);
@@ -31,14 +30,14 @@ function toGetUrl(evt) {
 
 }
 
-// Зобимо розмітку
+// Робимо розмітку
 
 function murkupBooksFromLockalstirage(evt) {
   evt.map(({_id, buy_links,  author, title, description, book_image, list_name}) => {
     const applBook = buy_links[1];
     
       murkup.insertAdjacentHTML("beforeend", `
-      <section class="shopping-container ${_id}">
+      <section data-action="${_id}" class="shopping-container" >
  <picture class="picture"> 
  <img class="img" src="${book_image}" alt="${title}" >
  </picture>
@@ -91,11 +90,58 @@ function toRemoveMurkup(e) {
   const masBook =  listPars.filter(b => b._id === e.target.classList.value)
 
    const masBooks = listPars.filter(b => b._id !== e.target.classList.value)
+
+///////////////////////////////////
+
+
    if(masBook) {
     localStorage.setItem("shopping-list", JSON.stringify(masBooks));
     location.reload()
    }
    
+
+///////////////////////////////////
+
+// if(masBook) {
+//        const oneBookMarkup = document.querySelector(".shopping-container");
+     
+//        oneBookMarkup.remove();
+    
+//        localStorage.setItem("shopping-list", JSON.stringify(masBooks));
+
+      
+// }
+
+//  murkup.removeChild(document.querySelector('.shopping-container'));
+////////////////////////
+
+
+
+// if(masBook) {
+//  console.log(masBook)
+//   masBook.map(({_id} )=> {
+//     const findeId = _id;
+//     console.log(findeId)
+//     const finde = document.querySelectorAll('.shopping-container');
+//     console.log(finde);
+
+//     for (const book of finde) {
+      
+//     }
+    
+//     for (let i = 0; i < finde.length; i += 1) {
+//       console.log(finde[i]);
+//     }
+
+//   })
+
+//  }
+
+
+////////////////////
+
+
+
       //  listPars.filter(b => {
       //   if(masBook) {
       //     localStorage.setItem("shopping-list", JSON.stringify(masBooks))
@@ -108,3 +154,4 @@ function toRemoveMurkup(e) {
       // })
   
   }
+  
