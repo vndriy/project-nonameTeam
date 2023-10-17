@@ -24,21 +24,16 @@ export default class ShoppingList {
   }
 
   #handleNonEmptyStorage() {
-  
+  const notEmptyStorage = document.querySelector(".empty-basket-wrap");
+  if(notEmptyStorage) {
+    notEmptyStorage.style.display = 'block';
+    notEmptyStorage.setAttribute("hidden", "")
+
+  }
   }
 
   #handleEmptyStorage() {
-    const supportCards = document.querySelector(
-      '.shop-list-wrap .support-card'
-    );
-    const shopListCap = document.querySelector(
-      '.shop-list-wrap .empty-basket-wrap'
-    );
-
-    if (supportCards && shopListCap) {
-      supportCards.style.display = 'block';
-      shopListCap.style.display = 'block';
-    }
+  
   }
 
   

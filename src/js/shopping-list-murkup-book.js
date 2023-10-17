@@ -1,6 +1,8 @@
 const murkup = document.querySelector('.body');
 
-
+const notEmptyStorage = document.querySelector(".empty-basket-wrap");
+console.log(notEmptyStorage)
+  
 window.addEventListener("load",  murkupBook);
 
 export function murkupBook() {
@@ -11,6 +13,7 @@ export function murkupBook() {
     murkup.classList.add("block-hidden")
     return
    } else {
+    
     murkupBooksFromLockalstirage(listPars);
    }
 

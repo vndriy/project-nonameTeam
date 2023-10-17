@@ -2,13 +2,15 @@
 .shop-list-wrap .support {
   display: none;
 }
+.container-general .empty-basket-wrap {
+  /* display: none; */
+}
 
 .empty-basket-wrap {
   display: flex;
   flex-direction: column;
   margin-top: 80px;
 }
-
 
 
 .shop-list-title {
