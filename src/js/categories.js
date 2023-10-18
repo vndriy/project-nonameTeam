@@ -4,10 +4,10 @@ import { openModal } from './remote-modal';
 
 const categories = document.querySelector('.categories');
 const booksContainer = document.querySelector('.books-container');
-const sectionContainer = document.querySelector('.section-container')
+// const sectionContainer = document.querySelector('.section-container')
 const listTitle = document.querySelector('.list-title');
-const listTitleOfSection = document.querySelector('.list-title-of-section');
-const listOfBooksOfSection = document.querySelector('.list-of-books-of-section')
+// const listTitleOfSection = document.querySelector('.list-title-of-section');
+// const listOfBooksOfSection = document.querySelector('.list-of-books-of-section')
 const listOfBooks = document.querySelector('.list-of-books');
 
 
@@ -18,11 +18,11 @@ function createCategoryTitle(list_name) {
   return `<h1 class="all-books-title">${designedTitle}</h1>`;
 }
 
-function handleBookCardClick(e) {
-  if (e.target.dataset.bookId) {
-    openModal(e.target.dataset.bookId);
-  }
-}
+// function handleBookCardClick(e) {
+//   if (e.target.dataset.bookId) {
+//     openModal(e.target.dataset.bookId);
+//   }
+// }
 
 
 getCategoryList()
@@ -57,10 +57,10 @@ async function displayTopBooks() {
     Notiflix.Loading.remove();
     // Очищаємо вміст з інших секцій
     booksContainer.style.display = 'block';
-    sectionContainer.style.display = 'none';
-    listOfBooksOfSection.innerHTML = '';
-    listTitleOfSection.textContent = '';
-    booksContainer.addEventListener('click', handleBookCardClick);
+    // sectionContainer.style.display = 'none';
+    // listOfBooksOfSection.innerHTML = '';
+    // listTitleOfSection.textContent = '';
+    // booksContainer.addEventListener('click', handleBookCardClick);
   } catch (error) {
     console.error(error);
     Notiflix.Notify.failure('Failed to fetch top books');
@@ -99,11 +99,11 @@ categories.addEventListener('click', async e => {
     }
     const selectedCategory = await getBooksByCategory(targetCategory);
     const booksHTML = createBookCard(selectedCategory);
-    booksContainer.style.display = 'none';
-    sectionContainer.style.display = 'block';
+    // booksContainer.style.display = 'none';
+    // sectionContainer.style.display = 'block';
     
-    listTitleOfSection.innerHTML = createCategoryTitle(targetCategory);
-    listOfBooksOfSection.innerHTML = booksHTML;
+    listTitle.innerHTML = createCategoryTitle(targetCategory);
+    listOfBooks.innerHTML = booksHTML;
     Notiflix.Loading.remove();
   } catch (error) {
     console.error(error);
@@ -161,7 +161,7 @@ booksContainer.addEventListener('click', async e => {
     const selectedCategory = await getBooksByCategory(targetCategory);
     const booksHTML = createBookCard(selectedCategory);
     listTitle.innerHTML = createCategoryTitle(targetCategory)
-    booksContainer.addEventListener('click', handleBookCardClick);
+    // booksContainer.addEventListener('click', handleBookCardClick);
 
     listOfBooks.innerHTML = booksHTML;
   }
@@ -171,18 +171,18 @@ booksContainer.addEventListener('click', async e => {
 });
 
 
-sectionContainer.addEventListener('click', async e => {
-  e.preventDefault();
-  if (e.target.dataset.category) {
-    const targetCategory = e.target.dataset.category;
-    const selectedCategory = await getBooksByCategory(targetCategory);
-    const booksHTML = createBookCard(selectedCategory);
-    listTitle.innerHTML = createCategoryTitle(targetCategory)
-    booksContainer.addEventListener('click', handleBookCardClick);
+// sectionContainer.addEventListener('click', async e => {
+//   e.preventDefault();
+//   if (e.target.dataset.category) {
+//     const targetCategory = e.target.dataset.category;
+//     const selectedCategory = await getBooksByCategory(targetCategory);
+//     const booksHTML = createBookCard(selectedCategory);
+//     listTitle.innerHTML = createCategoryTitle(targetCategory)
+//     booksContainer.addEventListener('click', handleBookCardClick);
 
-    listOfBooks.innerHTML = booksHTML;
-  }
-  if (e.target.dataset.bookId) {
-    openModal(e.target.dataset.bookId);
-  }
-});
+//     listOfBooks.innerHTML = booksHTML;
+//   }
+//   if (e.target.dataset.bookId) {
+//     openModal(e.target.dataset.bookId);
+//   }
+// });
