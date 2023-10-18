@@ -1,32 +1,17 @@
-import amazonImg from '../img/amazon.png';
-import appleBookImg from '../img/book.png';
+import amazonImg from '../img/amazsho.png';
+import appleBookImg from '../img/appelsho.png';
 import basket from '../img/basked.png';
 
 const murkup = document.querySelector('.body');
 const notEmptyStorage = document.querySelector(".empty-basket-wrap");
+const themaDark = document.querySelector("#darkmode-toggle");
 
+
+themaDark.addEventListener("click", changeThema)
 murkup.addEventListener('click', onDeleteBtnClick);
 window.addEventListener("load",  murkupBook);
 
 
-  
-
-
- function murkupBook() {
-
-   const list = localStorage.getItem("shopping-list")
-   const listPars =  JSON.parse(list)
-   
-   if(listPars.length === 0) {
-    murkup.classList.add("block-hidden")
-    return
-   } else {
-    notEmptyStorage.style.display = "none"
-    murkupBooksFromLockalstirage(listPars);
-   
-   }
-
-   }
    
 
 // Отримуємо URL
@@ -55,11 +40,11 @@ function murkupBooksFromLockalstirage(evt) {
  <picture class="picture"> 
  <img class="img" src="${book_image}" alt="${title}" >
  </picture>
- <div class="book-description">
- <button type="button" data-action="${_id}" class=" button-svg remove-book">
+ <div class="book-description ">
+ <button type="button" data-action="${_id}" class=" button-svg remove-book ">
  
-     <svg class="svg-button" >
-      <use href="${basket}" data-action="${_id}" class="basket-svg-shopping"></use>
+     <svg data-action="${_id}" class="svg-button" >
+      <use href="../img/icons.svg#icon-bin" data-action="${_id}" class="basket-svg-shopping"></use>
      </svg>
      
  
@@ -72,7 +57,7 @@ function murkupBooksFromLockalstirage(evt) {
  <p class="author">${author}</p>
  <div>
    <ul class="platform">
-   <li class="platform-svg amazon">
+   <li class="platform-svg amazon ">
    <a href="${toGetUrl(buy_links)}" target="_blank" rel="noopener noreferrer">
    <img src="${amazonImg}" alt="" >
    </a>
@@ -98,7 +83,8 @@ function murkupBooksFromLockalstirage(evt) {
 
 // Видаляємо книжку
 function onDeleteBtnClick(evt) {
-  if (evt.target.nodeName !== 'use' && evt.target.nodeName !== 'BUTTON') {
+  if (evt.target.nodeName !== 'use' && evt.target.nodeName !== 'BUTTON' && evt.target.nodeName !== 'svg') {
+    console.log(evt.target.nodeName);
     return;
   }
   console.log();
@@ -109,7 +95,7 @@ function onDeleteBtnClick(evt) {
   const itemId = evt.target.dataset.action;
  
   const masBook = shoppingList.filter(b => b._id === itemId);
-  console.log(masBook);
+  
   const masBooks = shoppingList.filter(b => b._id !== itemId);
   
   
@@ -128,3 +114,113 @@ function onDeleteBtnClick(evt) {
 
 
 
+// міняю тему
+function changeThema(){
+  const shoppingListTema = localStorage.getItem("darkMode");
+  
+  const contShopp = document.querySelectorAll(".shopping-container");
+    const nameShopp = document.querySelectorAll(".name");
+    const catShopp = document.querySelectorAll(".category");
+    const descShopp = document.querySelectorAll(".description");
+    const amazShopp = document.querySelectorAll(".amazon");
+    const appleShopp = document.querySelectorAll(".book");
+ 
+  if(shoppingListTema === "enabled") {
+    openAll(nameShopp);
+    openAll(catShopp);
+    openAll(descShopp);
+    openAll(contShopp);
+    colorAll(amazShopp);
+    colorAll(appleShopp);
+    color(amazShopp);
+   
+   
+    return;
+  
+  }else  {
+    closeAll(nameShopp);
+    closeAll(catShopp);
+    closeAll(descShopp);
+    closeAll(contShopp);
+    colorAllRemove(amazShopp);
+    colorAllRemove(appleShopp);
+    colorRem(amazShopp);
+  return;
+  }
+ 
+}
+
+
+
+function openAll(mas) {
+  for (const m of mas) {
+    m.classList.add('hover');
+    }
+    return
+}
+function closeAll(mas) {
+  for (const m of mas) {
+    m.classList.remove('hover');
+    }
+    return
+}
+function colorAllRemove(mas) {
+  for (const m of mas) {
+    m.classList.remove('color');
+    }
+    return
+}
+function colorAll(mas) {
+  for (const m of mas) {
+    m.classList.add('color');
+    }
+    return
+}
+function color(mas) {
+  for (const m of mas) {
+    m.classList.add('yu');
+    }
+    return
+}
+function colorRem(mas) {
+  for (const m of mas) {
+    m.classList.remove('yu');
+    }
+    return
+}
+
+
+
+ function murkupBook() {
+
+  const list = localStorage.getItem("shopping-list")
+    const listPars =  JSON.parse(list)
+   
+   if(listPars.length === 0) {
+    murkup.classList.add("block-hidden")
+    return
+   } else {
+   
+    notEmptyStorage.style.display = "none"
+    murkupBooksFromLockalstirage(listPars);
+    const shoppingListTema = localStorage.getItem("darkMode");
+    console.log(shoppingListTema)
+   
+    if(shoppingListTema === "enabled") {
+      const contShopp = document.querySelectorAll(".shopping-container");
+      const nameShopp = document.querySelectorAll(".name");
+      const catShopp = document.querySelectorAll(".category");
+      const descShopp = document.querySelectorAll(".description");
+      openAll(nameShopp);
+      openAll(catShopp);
+      openAll(descShopp);
+      openAll(contShopp);
+      
+    
+    }else  {
+    return
+    }
+   
+   }
+
+   }
