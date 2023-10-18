@@ -56,7 +56,7 @@ function murkupBooksFromLockalstirage(evt) {
  </picture>
  <div class="book-description">
  <div class="remove-book "> 
- <button type="button" class="${_id} button-svg ">
+ <button type="button" data-action="${_id}" class=" button-svg ">
      <svg class="svg-button" >
       <use href="./img/icons.svg#icon-dump" data-action="${_id}"></use>
      </svg>
