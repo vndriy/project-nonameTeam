@@ -13,11 +13,12 @@ const headerContainer = document.querySelector('.header-cont');
 const modal = document.querySelector('.modal-book-selection');
 const modalCloseBtn = document.querySelector('.close-btn-icon');
 const modalButton = document.querySelector('.modal-book-shopping-list-btn');
-const modalMessage = document.querySelector(
-  '.modal-book-shopping-list-btn-shopping-list-message'
-);
+
 // const modalContainer = document.querySelector('.modal-book-content-wrap');
 // const modalBookTitle = modalContainer.querySelector('.modal-book-title');
+// const modalMessage = modalContainer.querySelector(
+//   '.modal-book-shopping-list-btn-shopping-list-message'
+// );
 
 if (currentPageURL.includes('index.html')) {
   homeLink.classList.add('yellow-block');
@@ -50,8 +51,9 @@ const enableDarkMode = () => {
   modal.classList.add('bodybg');
   modalCloseBtn.classList.add('light');
   modalButton.classList.add('light');
-  modalMessage.classList.add('light');
+  // modalMessage.classList.add('light');
   // modalBookTitle.classList.add('light');
+  // modalMessage.classList.add('light');
 };
 
 const disbleDarkMode = () => {
@@ -66,7 +68,8 @@ const disbleDarkMode = () => {
   modal.classList.remove('bodybg');
   modalCloseBtn.classList.remove('light');
   modalButton.classList.remove('light');
-  modalMessage.classList.remove('light');
+
+  // modalMessage.classList.remove('light');
 };
 if (darkMode === 'enabled') {
   enableDarkMode();

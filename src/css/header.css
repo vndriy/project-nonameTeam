@@ -322,3 +322,7 @@ header {
     margin-left: 745px;
   }
 }
+
+.no-scroll {
+  overflow: hidden;
+}
