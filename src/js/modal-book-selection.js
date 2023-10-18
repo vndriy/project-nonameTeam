@@ -5,7 +5,7 @@ const modalContainer = document.querySelector('.modal-book-content-wrap');
 
 export function renderModal(bookDetails) {
   const { book_image, title, author, description, buy_links } = bookDetails;
-  console.log(bookDetails);
+  // console.log(bookDetails);
   const markup = `
     <img
       class="modal-book-cover"
