@@ -16,7 +16,8 @@ const modalButton = document.querySelector('.modal-book-shopping-list-btn');
 const modalMessage = document.querySelector(
   '.modal-book-shopping-list-btn-shopping-list-message'
 );
-// const modalBookTitle = getElementById('#modal-book-title');
+// const modalContainer = document.querySelector('.modal-book-content-wrap');
+// const modalBookTitle = modalContainer.querySelector('.modal-book-title');
 
 if (currentPageURL.includes('index.html')) {
   homeLink.classList.add('yellow-block');
@@ -50,7 +51,7 @@ const enableDarkMode = () => {
   modalCloseBtn.classList.add('light');
   modalButton.classList.add('light');
   modalMessage.classList.add('light');
-  //   modalBookTitle.classList.add('light');
+  // modalBookTitle.classList.add('light');
 };
 
 const disbleDarkMode = () => {
