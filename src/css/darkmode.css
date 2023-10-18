@@ -4,6 +4,14 @@
 
 .bodybg {
   background: var(--dark-theme-body);
+  color: white;
+}
+
+/* .list-item {
+  color: white;
+} */
+.shop-svg {
+  fill: black;
 }
 
 .darkmode-logo {
@@ -14,6 +22,14 @@
   color: var(--darkmode-logo);
 }
 
+.light {
+  color: #fff;
+}
+
 /* .darkmode-menu {
   color: #fff;
+} */
+
+/* .list-item{
+  color: white;
 } */

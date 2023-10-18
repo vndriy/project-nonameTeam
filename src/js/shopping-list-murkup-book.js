@@ -1,128 +1,226 @@
+import amazonImg from '../img/amazsho.png';
+import appleBookImg from '../img/appelsho.png';
+import basket from '../img/basked.png';
+
 const murkup = document.querySelector('.body');
-const blockHidden = document.querySelector('.container-general');
-const shoppingListEl = document.querySelector('.shopippping-list');
-// window.addEventListener("load",  murkupBook);
+const notEmptyStorage = document.querySelector(".empty-basket-wrap");
+const themaDark = document.querySelector("#darkmode-toggle");
 
-// function murkupBook() {
 
-//    const list = localStorage.getItem("shopping-list")
-//    const listPars =  JSON.parse(list)
-//    if(listPars.length === 0) {
-//     blockHidden.classList.add("block-hidden")
-//     return
-//    } else {
-//     murkupBooksFromLockalstirage(listPars);
-//    }
+themaDark.addEventListener("click", changeThema)
+murkup.addEventListener('click', onDeleteBtnClick);
+window.addEventListener("load",  murkupBook);
 
-//    }
+
+   
 
 // Отримуємо URL
-// function toGetUrl(evt) {
-//   for (const e of evt) {
-//     return e.url
-//   }
+function toGetUrl(evt) {
+  for (const e of evt) {
+    return e.url
+  }
 
-// }
+}
+
+function toGetUrlApple(evt) {
+  const appleBook = evt[1];
+  const apple = appleBook.url;
+  return apple;
+}
+
+
 
 // Робимо розмітку
 
-export function renderShoppingList(shoppingList) {
-  const markup = shoppingList
-    .map(
-      ({
-        _id,
-        buy_links,
-        author,
-        title,
-        description,
-        book_image,
-        list_name,
-      }) => `<li class="shopping-list__item">
+function murkupBooksFromLockalstirage(evt) {
+ const murkupBook =  evt.map(({_id, buy_links,  author, title, description, book_image, list_name}) => 
+ 
+       `
+      <section data-action="${_id}" class="shopping-container" >
+ <picture class="picture"> 
  <img class="img" src="${book_image}" alt="${title}" >
-
- <div class="shopping-list__description">
- <div class="remove-book ">
- <button type="button" class="delete-btn" data-id='${_id}' ">
-     <svg class="svg-button" >
-      <use href="./img/icons.svg#icon-dump"></use>
+ </picture>
+ <div class="book-description ">
+ <button type="button" data-action="${_id}" class=" button-svg remove-book ">
+ 
+     <svg data-action="${_id}" class="svg-button" >
+      <use href="../img/icons.svg#icon-bin" data-action="${_id}" class="basket-svg-shopping"></use>
      </svg>
-     </button>
- </div>
+     
+ 
+ </button> 
  <h2 class="name">${title}</h2>
  <p class="category">${list_name}</p>
  <p class="description">${description}</p>
-
+ 
  <div class="svg">
  <p class="author">${author}</p>
- <ul>
- </ul>
+ <div>
+   <ul class="platform">
+   <li class="platform-svg amazon ">
+   <a href="${toGetUrl(buy_links)}" target="_blank" rel="noopener noreferrer">
+   <img src="${amazonImg}" alt="" >
+   </a>
+   </li>
+   <li class="platform-svg book">
+   <a href="${toGetUrlApple(buy_links)}" target="_blank" rel="noopener noreferrer">
+   <img src="${appleBookImg}" alt="" >
+   </a>
+   
+ </li>
+   </ul>
  </div>
- </li>`
-    )
-    .join('');
-
-  shoppingListEl.innerHTML = markup;
+ </div>
+ </div>
+ </section>`
+ 
+    ).join('');
+   
+  
+    murkup.innerHTML = murkupBook;
+ 
 }
 
 // Видаляємо книжку
-// function toRemoveMurkup(e) {
-//   const list = localStorage.getItem('shopping-list');
-//   const listPars = JSON.parse(list);
-//   const masBook = listPars.filter(b => b._id === e.target.classList.value);
+function onDeleteBtnClick(evt) {
+  if (evt.target.nodeName !== 'use' && evt.target.nodeName !== 'BUTTON' && evt.target.nodeName !== 'svg') {
+    console.log(evt.target.nodeName);
+    return;
+  }
+  console.log();
+  const shoppingList = JSON.parse(localStorage.getItem('shopping-list'));
+  if (!shoppingList || shoppingList.length === 0) {
+    return;
+  }
+  const itemId = evt.target.dataset.action;
+ 
+  const masBook = shoppingList.filter(b => b._id === itemId);
+  
+  const masBooks = shoppingList.filter(b => b._id !== itemId);
+  
+  
+  localStorage.setItem('shopping-list', JSON.stringify(masBooks));
+  murkupBook(masBooks);
+  if(masBooks.length === 0) {
+   
+    murkup.setAttribute( "hidden", "")
+    notEmptyStorage.style.display = "block"
 
-//   const masBooks = listPars.filter(b => b._id !== e.target.classList.value);
+  }
+ 
+ return;
 
-//   ///////////////////////////////////
+}
 
-//   if (masBook) {
-//     localStorage.setItem('shopping-list', JSON.stringify(masBooks));
-//     location.reload();
-//   }
 
-//   ///////////////////////////////////
 
-//   // if(masBook) {
-//   //        const oneBookMarkup = document.querySelector(".shopping-container");
+// міняю тему
+function changeThema(){
+  const shoppingListTema = localStorage.getItem("darkMode");
+  
+  const contShopp = document.querySelectorAll(".shopping-container");
+    const nameShopp = document.querySelectorAll(".name");
+    const catShopp = document.querySelectorAll(".category");
+    const descShopp = document.querySelectorAll(".description");
+    const amazShopp = document.querySelectorAll(".amazon");
+    const appleShopp = document.querySelectorAll(".book");
+ 
+  if(shoppingListTema === "enabled") {
+    openAll(nameShopp);
+    openAll(catShopp);
+    openAll(descShopp);
+    openAll(contShopp);
+    colorAll(amazShopp);
+    colorAll(appleShopp);
+    color(amazShopp);
+   
+   
+    return;
+  
+  }else  {
+    closeAll(nameShopp);
+    closeAll(catShopp);
+    closeAll(descShopp);
+    closeAll(contShopp);
+    colorAllRemove(amazShopp);
+    colorAllRemove(appleShopp);
+    colorRem(amazShopp);
+  return;
+  }
+ 
+}
 
-//   //        oneBookMarkup.remove();
 
-//   //        localStorage.setItem("shopping-list", JSON.stringify(masBooks));
 
-//   // }
+function openAll(mas) {
+  for (const m of mas) {
+    m.classList.add('hover');
+    }
+    return
+}
+function closeAll(mas) {
+  for (const m of mas) {
+    m.classList.remove('hover');
+    }
+    return
+}
+function colorAllRemove(mas) {
+  for (const m of mas) {
+    m.classList.remove('color');
+    }
+    return
+}
+function colorAll(mas) {
+  for (const m of mas) {
+    m.classList.add('color');
+    }
+    return
+}
+function color(mas) {
+  for (const m of mas) {
+    m.classList.add('yu');
+    }
+    return
+}
+function colorRem(mas) {
+  for (const m of mas) {
+    m.classList.remove('yu');
+    }
+    return
+}
 
-//   //  murkup.removeChild(document.querySelector('.shopping-container'));
-//   ////////////////////////
 
-//   // if(masBook) {
-//   //  console.log(masBook)
-//   //   masBook.map(({_id} )=> {
-//   //     const findeId = _id;
-//   //     console.log(findeId)
-//   //     const finde = document.querySelectorAll('.shopping-container');
-//   //     console.log(finde);
 
-//   //     for (const book of finde) {
+ function murkupBook() {
 
-//   //     }
+  const list = localStorage.getItem("shopping-list")
+    const listPars =  JSON.parse(list)
+   
+   if(listPars.length === 0) {
+    murkup.classList.add("block-hidden")
+    return
+   } else {
+   
+    notEmptyStorage.style.display = "none"
+    murkupBooksFromLockalstirage(listPars);
+    const shoppingListTema = localStorage.getItem("darkMode");
+    console.log(shoppingListTema)
+   
+    if(shoppingListTema === "enabled") {
+      const contShopp = document.querySelectorAll(".shopping-container");
+      const nameShopp = document.querySelectorAll(".name");
+      const catShopp = document.querySelectorAll(".category");
+      const descShopp = document.querySelectorAll(".description");
+      openAll(nameShopp);
+      openAll(catShopp);
+      openAll(descShopp);
+      openAll(contShopp);
+      
+    
+    }else  {
+    return
+    }
+   
+   }
 
-//   //     for (let i = 0; i < finde.length; i += 1) {
-//   //       console.log(finde[i]);
-//   //     }
-
-//   //   })
-
-//   //  }
-
-//   ////////////////////
-
-//   //  listPars.filter(b => {
-//   //   if(masBook) {
-//   //     localStorage.setItem("shopping-list", JSON.stringify(masBooks))
-//   //     const h = murkup.querySelector(".container")
-//   //     h.remove();
-//   //     // murkup.classList.remove('h');
-//   //     murkup.removeChild(document.querySelector('h'));
-
-//   //   }
-//   // })
-// }
+   }
