@@ -6,7 +6,7 @@ import ShoppingList from './storage';
 const shoppingList = new ShoppingList();
 
 const modalBackdropEl = document.querySelector('.backdrop');
-const closeButton = modalBackdropEl.querySelector('.close');
+const closeButton = modalBackdropEl.querySelector('.close-btn');
 const modal = modalBackdropEl.querySelector('#modal');
 
 const addToShoppingListBtn = modal.querySelector(

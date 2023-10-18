@@ -1,6 +1,5 @@
 .headerbg {
   background: var(--black);
-  
 }
 
 .bodybg {
@@ -21,6 +20,10 @@
 
 .darkmode-logo {
   color: var(--darkmode-logo);
+}
+
+.light {
+  color: #fff;
 }
 
 /* .darkmode-menu {
