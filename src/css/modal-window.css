@@ -22,27 +22,36 @@
 }
 
 /*--modal-*/
-.close {
+.close-btn {
   width: 24px;
   height: 24px;
   position: absolute;
+  padding: 0;
+  border: none;
   right: 12px;
   top: 12px;
   cursor: pointer;
-  fill: var(--black);
+  background: transparent;
+}
+.close-btn-icon {
+  font-size: 24px;
+  color: var(--black);
 }
 
 @media screen and (min-width: 768px) {
-  .close {
-    width: 28px;
-    height: 28px;
+  .close-btn {
+    font-size: 28px;
     right: 24px;
     top: 24px;
   }
+  .close-btn-icon {
+    font-size: 28px;
+  }
 }
-.close:hover,
-.close:focus {
-  fill: var(--blue);
+
+.close-btn-icon:hover,
+.close-btn-icon:focus {
+  color: var(--blue);
 }
 
 .modal-book-selection {

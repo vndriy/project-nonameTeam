@@ -4,16 +4,15 @@ import { openModal } from './remote-modal';
 
 const categories = document.querySelector('.categories');
 const booksContainer = document.querySelector('.books-container');
-const sectionContainer = document.querySelector('.section-container')
+const sectionContainer = document.querySelector('.section-container');
 const listTitle = document.querySelector('.list-title');
 const listTitleOfSection = document.querySelector('.list-title-of-section');
-const listOfBooksOfSection = document.querySelector('.list-of-books-of-section')
+const listOfBooksOfSection = document.querySelector(
+  '.list-of-books-of-section'
+);
 const listOfBooks = document.querySelector('.list-of-books');
-const sectionTitleSpan = document.querySelector('.list-title-of-section-span')
-const buttonsSeeMore = document.querySelectorAll('.seemore-btn')
-
-
-
+const sectionTitleSpan = document.querySelector('.list-title-of-section-span');
+const buttonsSeeMore = document.querySelectorAll('.seemore-btn');
 
 getCategoryList()
   .then(data => {
@@ -51,10 +50,7 @@ async function displayTopBooks() {
 
 function createTopBooks(arr) {
   let html = arr
-    .map(({
-      list_name: listName,
-      books
-    }) => {
+    .map(({ list_name: listName, books }) => {
       return `<li class="category-of-books">
       <h2 class="category-name">${listName}</h2>
        <ul class="list-of-books-by-category">${createBookCard(books)}</ul>
@@ -71,7 +67,7 @@ categories.addEventListener('click', async e => {
   const targetCategory = e.target.textContent;
   try {
     if (e.target.classList.contains('all-categories')) {
-       return displayTopBooks();
+      return displayTopBooks();
     }
     const selectedCategory = await getBooksByCategory(targetCategory);
     const booksHTML = createBookCard(selectedCategory);
@@ -87,17 +83,10 @@ categories.addEventListener('click', async e => {
   }
 });
 
-
 function createBookCard(arr) {
   const booksCard = arr
-    .map(({
-      _id,
-      author,
-      title,
-      book_image,
-      description
-    }) => {
-      if(description == ''){
+    .map(({ _id, author, title, book_image, description }) => {
+      if (description == '') {
         return `<li class="book-card" >
           <a href="#" class="book-link">
             <div class="whole-image-wrapper">
@@ -126,7 +115,6 @@ function createBookCard(arr) {
   return booksCard;
 }
 
-
 booksContainer.addEventListener('click', async e => {
   e.preventDefault();
   if (e.target.dataset.category) {
@@ -135,7 +123,7 @@ booksContainer.addEventListener('click', async e => {
 
     const selectedCategory = await getBooksByCategory(targetCategory);
     const booksHTML = createBookCard(selectedCategory);
-    listTitle.textContent = targetCategoryText
+    listTitle.textContent = targetCategoryText;
     listOfBooks.innerHTML = booksHTML;
   }
   if (e.target.dataset.bookId) {

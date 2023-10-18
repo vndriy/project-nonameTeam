@@ -1,3 +1,6 @@
+import amazonImg from '../img/amazonImg.png';
+import appleBooksImg from '../img/appleBooksImg.png';
+
 const murkup = document.querySelector('.body');
 const blockHidden = document.querySelector('.container-general');
 const shoppingListEl = document.querySelector('.shopippping-list');
@@ -54,8 +57,12 @@ export function renderShoppingList(shoppingList) {
 
  <div class="svg">
  <p class="author">${author}</p>
- <ul>
- </ul>
+ <a class="modal-book-trading-platform amazon" href="${buy_links[0].url}" target="_blank" rel="noreferrer noopener">
+            <img class="amazon-img" src="${amazonImg}" alt="Amazon shop" loading="lazy">
+          </a>
+          <a class="modal-book-trading-platform apple" href="${buy_links[1].url}" target="_blank" rel="noreferrer noopener">
+            <img class="apple-books-img" src="${appleBooksImg}" alt="Apple shop" loading="lazy">
+          </a>
  </div>
  </li>`
     )
