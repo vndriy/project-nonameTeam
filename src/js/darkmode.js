@@ -15,7 +15,7 @@ const shoppingLink = document.getElementById('shopping-link');
 const svgMenu = document.getElementById('#svgmenu')
 const headerContainer = document.querySelector('.header-cont')
 
- if (currentPageURL.includes('index.html')) {
+ if (currentPageURL.includes('index.html') || currentPageURL.endsWith('https://vndriy.github.io/project-nonameTeam/')) {
      homeLink.classList.add('yellow-block')
         homeLink.style.fontWeight = '700';
         shoppingLink.style.fontWeight = '500';
