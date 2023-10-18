@@ -11,31 +11,17 @@ const refs = {
 
 refs.list.insertAdjacentHTML('beforeend', renderSupport(supportArr));
 
-$('.js-support-list').slick({
+const options = {
   vertical: true,
   dots: false,
   infinite: true,
   slidesToShow: 6,
   slidesToScroll: 3,
   prevArrow: `<div></div>`,
-  nextArrow: `
-      <button type="button" class="scroll-list-button">
-        <svg class="button-scroll-ok" width="22" height="32">
-          <use href="./img/supportUkraine/icons.svg#icon-ok"></use>
-        </svg>
-      </button>
-    `,
+  nextArrow: refs.showAllBtn,
+};
 
-  responsive: [
-    {
-      breakpoint: 767,
-      settings: {
-        slidesToShow: 6,
-        slidesToScroll:3,
-      },
-    },
-  ],
-});
+$('.js-support-list').slick(options);
 
 function renderSupport(supportArr) {
 const markup = supportArr
@@ -53,31 +39,3 @@ const markup = supportArr
     .join('');
   return markup;
 }
-
-
-
-// const options = {
-//   vertical: true,
-//   dots: false,
-//   infinite: true,
-//   slidesToShow: 6,
-//   slidesToScroll: 3,
-//   prevArrow: `<div></div>`,
-//   nextArrow: ` <div>
-//       <button type="button" class="scroll-list-button">
-//         <svg class="button-scroll-ok" width="22" height="32">
-//           <use href="./img/supportUkraine/icons.svg#icon-ok"></use>
-//         </svg>
-//       </button>
-//     </div>`,
-
-//   responsive: [
-//     {
-//       breakpoint: 767,
-//       settings: {
-//         slidesToShow: 6,
-//         slidesToScroll:3,
-//       },
-//     },
-//   ],
-// };
