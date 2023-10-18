@@ -1,9 +1,18 @@
 .headerbg {
   background: var(--black);
+  
 }
 
 .bodybg {
   background: var(--dark-theme-body);
+  color: white;
+}
+
+/* .list-item {
+  color: white;
+} */
+.shop-svg {
+  fill: black;
 }
 
 .darkmode-logo {
@@ -16,4 +25,8 @@
 
 /* .darkmode-menu {
   color: #fff;
+} */
+
+/* .list-item{
+  color: white;
 } */

@@ -1,5 +1,4 @@
 import Notiflix from 'notiflix';
-import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { getCategoryList, getBooksByCategory, getTopBooks } from './book-api';
 import { openModal } from './remote-modal';
 
@@ -137,6 +136,7 @@ function createBookCard(arr) {
         </li>
       `;
       }
+      else{
       return `<li class="book-card">
           <a href="#" class="book-link">
             <div class="whole-image-wrapper">
@@ -148,7 +148,7 @@ function createBookCard(arr) {
           </a>
         </li>
       `;
-    })
+    }})
     .join('');
   return booksCard;
 }
