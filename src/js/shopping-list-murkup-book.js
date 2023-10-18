@@ -1,7 +1,7 @@
 const murkup = document.querySelector('.body');
 
 const notEmptyStorage = document.querySelector(".empty-basket-wrap");
-console.log(notEmptyStorage)
+
   
 window.addEventListener("load",  murkupBook);
 
