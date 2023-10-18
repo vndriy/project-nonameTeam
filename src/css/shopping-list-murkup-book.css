@@ -29,10 +29,15 @@ a {
   width: 28px;
   height: 28px;
   right: 0;
+  border: none;
   border-radius: 50%;
-  border: 2px solid rgba(79, 46, 232, 0.4);
   background-color: var(--blue);
   cursor: pointer;
+  transition: 0.2s ease-in-out 0s;
+}
+.button-trash:hover,
+.button-trash:focus {
+  transform: scale(1.25);
 }
 
 /* .button-svg {
@@ -180,6 +185,9 @@ a {
   .button-trash {
     width: 34px;
     height: 34px;
+  }
+  .icon-trash {
+    font-size: 18px;
   }
   .img {
     width: 116px;
