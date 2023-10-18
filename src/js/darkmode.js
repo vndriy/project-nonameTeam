@@ -15,6 +15,7 @@ const shoppingLink = document.getElementById('shopping-link');
 const svgMenu = document.getElementById('#svgmenu');
 const headerContainer = document.querySelector('.header-cont');
 
+
 const modal = document.querySelector('.modal-book-selection');
 const modalCloseBtn = document.querySelector('.close-btn-icon');
 const modalButton = document.querySelector('.modal-book-shopping-list-btn');
