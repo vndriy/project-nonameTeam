@@ -212,7 +212,8 @@
   line-height: 1.29;
   letter-spacing: -0.56px;
   color: var(--black);
-  overflow-y: auto;
+  height: auto;
+  /* overflow-y: auto; */
 }
 
 @media screen and (min-width: 768px) {
