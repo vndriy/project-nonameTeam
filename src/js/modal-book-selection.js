@@ -26,13 +26,13 @@ export function renderModal(bookDetails) {
             : `<p class="modal-book-description not-description scrollbar">No description</p>`
         }
       </div>
-      <div class="">
-          <a class="amazon" href="${
+      <div class="trading-platforms">
+          <a class="modal-book-trading-platform amazon" href="${
             buy_links[0].url
           }" target="_blank" rel="noreferrer noopener">
             <img class="amazon-img" src="${amazonImg}" alt="Amazon shop" loading="lazy">
           </a>
-          <a class="apple" href="${
+          <a class="modal-book-trading-platform apple" href="${
             buy_links[1].url
           }" target="_blank" rel="noreferrer noopener">
             <img class="apple-books-img" src="${appleBooksImg}" alt="Apple shop" loading="lazy">
