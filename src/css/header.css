@@ -315,7 +315,6 @@ header {
     letter-spacing: -0.56px;
     text-transform: uppercase;
   }
- 
 }
 
 @media screen and (min-width: 1440px) {
@@ -327,4 +326,8 @@ header {
   .right-block {
     margin-left: 745px;
   }
+}
+
+.no-scroll {
+  overflow: hidden;
 }
