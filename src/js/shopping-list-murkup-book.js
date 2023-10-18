@@ -1,3 +1,6 @@
+import amazonImg from '../img/amazon.png';
+import appleBookImg from '../img/book.png'
+
 const murkup = document.querySelector('.body');
 
 const notEmptyStorage = document.querySelector(".empty-basket-wrap");
@@ -57,12 +60,12 @@ function murkupBooksFromLockalstirage(evt) {
    <ul class="platform">
    <li class="platform-svg amazon">
    <a href="${toGetUrl(buy_links)}" target="_blank" rel="noopener noreferrer">
-   <img src="../img/amazon.png" alt="" >
+   <img src="${amazonImg}" alt="" >
    </a>
    </li>
    <li class="platform-svg book">
    <a href="${applBook.url}" target="_blank" rel="noopener noreferrer">
-   <img src="../img/book.png " alt="" >
+   <img src="${appleBookImg} " alt="" >
    </a>
    
  </li>
