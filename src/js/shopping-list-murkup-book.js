@@ -1,5 +1,6 @@
 import amazonImg from '../img/amazon.png';
 import appleBookImg from '../img/book.png';
+import basket from '../img/basked.png';
 
 const murkup = document.querySelector('.body');
 const notEmptyStorage = document.querySelector(".empty-basket-wrap");
@@ -55,13 +56,14 @@ function murkupBooksFromLockalstirage(evt) {
  <img class="img" src="${book_image}" alt="${title}" >
  </picture>
  <div class="book-description">
- <div class="remove-book "> 
- <button type="button" data-action="${_id}" class=" button-svg ">
+ <button type="button" data-action="${_id}" class=" button-svg remove-book">
+ 
      <svg class="svg-button" >
-      <use href="./img/icons.svg#icon-dump" data-action="${_id}"></use>
+      <use href="${basket}" data-action="${_id}" class="basket-svg-shopping"></use>
      </svg>
-     </button> 
- </div>
+     
+ 
+ </button> 
  <h2 class="name">${title}</h2>
  <p class="category">${list_name}</p>
  <p class="description">${description}</p>
