@@ -33,9 +33,9 @@ export default class ShoppingList {
   }
 
   #handleEmptyStorage() {
-  const yy = document.querySelector(".empty-basket-wrap");
-  if(yy) {
-    notEmptyStorage.style.display = 'block';
+  const emptyStorage = document.querySelector(".empty-basket-wrap");
+  if(emptyStorage) {
+    emptyStorage.style.display = 'block';
   }
   }
 
