@@ -11,7 +11,7 @@ window.addEventListener("load",  murkupBook);
   
 
 
-export function murkupBook() {
+ function murkupBook() {
 
    const list = localStorage.getItem("shopping-list")
    const listPars =  JSON.parse(list)
