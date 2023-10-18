@@ -71,8 +71,9 @@
 
   width: 338px;
   max-height: calc(100% - 40px);
-  overflow-y: auto;
-  overflow-x: hidden;
+  height: auto;
+  /* overflow-y: auto;
+  overflow-x: hidden; */
   border: 2px solid;
 }
 
@@ -173,7 +174,7 @@
   font-weight: 700;
   line-height: 1.13;
   letter-spacing: -0.64px;
-  margin-right: 10px;
+  margin-right: 16px;
 }
 
 @media screen and (min-width: 768px) {
