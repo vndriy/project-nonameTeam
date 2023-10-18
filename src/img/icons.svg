@@ -32,5 +32,9 @@
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M28 18.667h-24"></path>
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M22.667 24h-18.667"></path>
 </symbol>
+<symbol id="icon-trash" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3" d="M11.5 2.5h9M2.5 7h27M26.5 7l-1.052 15.779c-0.158 2.367-0.237 3.551-0.748 4.449-0.45 0.79-1.129 1.425-1.948 1.822-0.929 0.45-2.116 0.45-4.488 0.45h-4.528c-2.373 0-3.559 0-4.488-0.45-0.818-0.397-1.497-1.032-1.948-1.822-0.511-0.898-0.59-2.081-0.748-4.449l-1.052-15.779M13 13.75v7.5M19 13.75v7.5"></path>
+</symbol>
+
   </defs>
 </svg>
