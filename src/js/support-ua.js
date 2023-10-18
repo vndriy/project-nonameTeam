@@ -35,7 +35,7 @@ supportListNumber();
 
 function visibleItems() {
   const listItems = document.querySelectorAll('.support-item');
-  console.log(listItems);
+  // console.log(listItems);
   for (let i = 0; i < listItems.length; i += 1){
     if (i < 6) {
       listItems[i].style.display = 'flex';
