@@ -15,14 +15,7 @@ a {
   display: none;
 }
 
-/* .shopping-list {
-  color: #111;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 38px;
-  letter-spacing: -1.28px;
-  margin: 40px 0;
-} */
+
 .list {
   color: #4f2ee8;
   margin-left: 7px;
@@ -30,13 +23,17 @@ a {
 .svg-button {
   width: 28px;
   height: 28px;
+  
 }
-.button-svg {
+
+/* .button-svg {
+  position: absolute;
+  right: 0;
   width: 28px;
   height: 28px;
   border: none;
-  background-color: white;
-}
+  background-color: aqua; */
+/* } */
 .shopping-container {
   display: flex;
   flex-direction: row;
@@ -55,8 +52,16 @@ a {
   width: 28px;
   height: 28px;
   right: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(79, 46, 232, 0.40);
+  background-color: #4F2EE8;
+  
 }
+.basket-svg-shopping {
+fill: #fff;
+background-color: #fff;
 
+}
 .img {
   border-radius: 8px;
   width: 100px;
