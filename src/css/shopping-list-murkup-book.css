@@ -22,15 +22,30 @@ a {
   display: none;
 }
 
-
 .list {
   color: #4f2ee8;
   margin-left: 7px;
 }
-.svg-button {
-  width: 16px;
-    height: 19px;
-  
+
+.icon-trash {
+  font-size: 16px;
+  color: var(--white);
+}
+
+.button-trash {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  right: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--blue);
+  cursor: pointer;
+  transition: 0.2s ease-in-out 0s;
+}
+.button-trash:hover,
+.button-trash:focus {
+  transform: scale(1.25);
 }
 
 .shopping-container {
@@ -46,21 +61,19 @@ a {
   max-width: 335px;
   max-height: 170px;
 }
-.remove-book {
+/* .remove-book {
   position: absolute;
   width: 28px;
   height: 28px;
   right: 0;
   border-radius: 50%;
-  border: 2px solid rgba(79, 46, 232, 0.40);
-  background-color: #4F2EE8;
-  
-}
-.basket-svg-shopping {
-fill: #fff;
-background-color: #fff;
-
-}
+  border: 2px solid rgba(79, 46, 232, 0.4);
+  background-color: #4f2ee8;
+} */
+/* .basket-svg-shopping {
+  fill: #fff;
+  background-color: #fff;
+} */
 .img {
   border-radius: 8px;
   width: 100px;
@@ -183,9 +196,12 @@ background-color: #fff;
     padding: 24px;
     gap: 24px;
   }
-  .remove-book {
+  .button-trash {
     width: 34px;
     height: 34px;
+  }
+  .icon-trash {
+    font-size: 18px;
   }
   .img {
     width: 116px;

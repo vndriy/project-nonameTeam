@@ -10,11 +10,11 @@ const listTitle = document.querySelector('.list-title');
 // const listOfBooksOfSection = document.querySelector('.list-of-books-of-section')
 const listOfBooks = document.querySelector('.list-of-books');
 
-
 function createCategoryTitle(list_name) {
   const words = list_name.split(' ');
   const lastWord = words.pop();
-  const designedTitle = words.join(' ') + ' <span class="list-title-span">' + lastWord + '</span>';
+  const designedTitle =
+    words.join(' ') + ' <span class="list-title-span">' + lastWord + '</span>';
   return `<h1 class="all-books-title">${designedTitle}</h1>`;
 }
 
@@ -23,7 +23,6 @@ function createCategoryTitle(list_name) {
 //     openModal(e.target.dataset.bookId);
 //   }
 // }
-
 
 getCategoryList()
   .then(data => {
@@ -52,8 +51,8 @@ async function displayTopBooks() {
       svgColor: '#4F2EE8',
     });
     const data = await getTopBooks(); // Отримуємо дані з api
-    const topBooksHTML = createTopBooks(data); // Створюємо HTML 
-    listOfBooks.innerHTML = topBooksHTML; // Виводимо "top books" 
+    const topBooksHTML = createTopBooks(data); // Створюємо HTML
+    listOfBooks.innerHTML = topBooksHTML; // Виводимо "top books"
     Notiflix.Loading.remove();
     // Очищаємо вміст з інших секцій
     booksContainer.style.display = 'block';
@@ -69,22 +68,23 @@ async function displayTopBooks() {
 
 function createTopBooks(arr) {
   let html = arr
-    .map(({
-      list_name: listName,
-      
-      books,
-    }) => {
-      return `<li class="category-of-books">
+    .map(
+      ({
+        list_name: listName,
+
+        books,
+      }) => {
+        return `<li class="category-of-books">
       <h2 class="category-name">${listName}</h2>
        <ul class="list-of-books-by-category">${createBookCard(books)}</ul>
        <div class="button-wrapper"><button class="seemore-btn" data-category="${listName}">See more</button></div>
        </li>
       `;
-    })
+      }
+    )
     .join('');
   return html;
 }
-
 
 categories.addEventListener('click', async e => {
   console.log(e.target.textContent);
@@ -94,14 +94,14 @@ categories.addEventListener('click', async e => {
       svgColor: '#4F2EE8',
     });
     if (e.target.classList.contains('all-categories')) {
-      listTitle.innerHTML = `Best Sellers <span class="list-title-span">Books</span>`
-       return displayTopBooks();
+      listTitle.innerHTML = `Best Sellers <span class="list-title-span">Books</span>`;
+      return displayTopBooks();
     }
     const selectedCategory = await getBooksByCategory(targetCategory);
     const booksHTML = createBookCard(selectedCategory);
     // booksContainer.style.display = 'none';
     // sectionContainer.style.display = 'block';
-    
+
     listTitle.innerHTML = createCategoryTitle(targetCategory);
     listOfBooks.innerHTML = booksHTML;
     Notiflix.Loading.remove();
@@ -113,31 +113,23 @@ categories.addEventListener('click', async e => {
   }
 });
 
-
 function createBookCard(arr) {
   const booksCard = arr
-    .map(({
-      _id,
-      author,
-      title,
-      book_image,
-      description
-    }) => {
-      if(description == ''){
+    .map(({ _id, author, title, book_image, description }) => {
+      if (description == '') {
         return `<li class="book-card">
           <a href="#" class="book-link">
             <div class="whole-image-wrapper">
              <img data-book-id="${_id}" class="book-image-category" src="${book_image}" width="180" height="256"  alt="${title}" loading="lazy"/>
-             <div class="image-overlay">NO DESCRIPTION</div>
+             <div class="image-overlay">QUICK VIEW</div>
             </div>
             <h3 class="book-title">${title}</h3>
             <p class="author">${author}</p>
           </a>
         </li>
       `;
-      }
-      else{
-      return `<li class="book-card">
+      } else {
+        return `<li class="book-card">
           <a href="#" class="book-link">
             <div class="whole-image-wrapper">
              <img data-book-id="${_id}" class="book-image-category" src="${book_image}" width="180" height="256"  alt="${title}" loading="lazy"/>
@@ -148,11 +140,11 @@ function createBookCard(arr) {
           </a>
         </li>
       `;
-    }})
+      }
+    })
     .join('');
   return booksCard;
 }
-
 
 booksContainer.addEventListener('click', async e => {
   e.preventDefault();
@@ -160,7 +152,7 @@ booksContainer.addEventListener('click', async e => {
     const targetCategory = e.target.dataset.category;
     const selectedCategory = await getBooksByCategory(targetCategory);
     const booksHTML = createBookCard(selectedCategory);
-    listTitle.innerHTML = createCategoryTitle(targetCategory)
+    listTitle.innerHTML = createCategoryTitle(targetCategory);
     // booksContainer.addEventListener('click', handleBookCardClick);
 
     listOfBooks.innerHTML = booksHTML;
@@ -169,7 +161,6 @@ booksContainer.addEventListener('click', async e => {
     openModal(e.target.dataset.bookId);
   }
 });
-
 
 // sectionContainer.addEventListener('click', async e => {
 //   e.preventDefault();

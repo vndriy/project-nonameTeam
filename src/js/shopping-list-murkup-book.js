@@ -1,25 +1,36 @@
-import amazonImg from '../img/amazsho.png';
-import appleBookImg from '../img/appelsho.png';
-import basket from '../img/basked.png';
+
+import amazonImg from '../img/amazon.png';
+import appleBookImg from '../img/book.png';
+// import basket from '../img/basked.png';
 
 const murkup = document.querySelector('.body');
-const notEmptyStorage = document.querySelector(".empty-basket-wrap");
+const notEmptyStorage = document.querySelector('.empty-basket-wrap');
 const themaDark = document.querySelector("#darkmode-toggle");
 
 
 themaDark.addEventListener("click", changeThema)
 murkup.addEventListener('click', onDeleteBtnClick);
-window.addEventListener("load",  murkupBook);
+window.addEventListener('load', murkupBook);
+
+function murkupBook() {
+  const list = localStorage.getItem('shopping-list');
+  const listPars = JSON.parse(list);
 
 
-   
+  if (listPars.length === 0) {
+    murkup.classList.add('block-hidden');
+    return;
+  } else {
+    notEmptyStorage.style.display = 'none';
+    murkupBooksFromLockalstirage(listPars);
+  }
+}
 
 // Отримуємо URL
 function toGetUrl(evt) {
   for (const e of evt) {
-    return e.url
+    return e.url;
   }
-
 }
 
 function toGetUrlApple(evt) {
@@ -28,27 +39,22 @@ function toGetUrlApple(evt) {
   return apple;
 }
 
-
-
 // Робимо розмітку
 
 function murkupBooksFromLockalstirage(evt) {
- const murkupBook =  evt.map(({_id, buy_links,  author, title, description, book_image, list_name}) => 
- 
-       `
+  const murkupBook = evt
+    .map(
+      ({ _id, buy_links, author, title, description, book_image, list_name }) =>
+        `
       <section data-action="${_id}" class="shopping-container" >
  <picture class="picture"> 
  <img class="img" src="${book_image}" alt="${title}" >
  </picture>
- <div class="book-description ">
- <button type="button" data-action="${_id}" class=" button-svg remove-book ">
- 
-     <svg data-action="${_id}" class="svg-button" >
-      <use href="../img/icons.svg#icon-bin" data-action="${_id}" class="basket-svg-shopping"></use>
-     </svg>
-     
- 
- </button> 
+
+ <div class="book-description">
+ <button type="button" data-action="${_id}" class="button-trash remove-book">
+    <i data-action="${_id}" class="fa-regular fa-trash-can icon-trash"></i>
+     </button>
  <h2 class="name">${title}</h2>
  <p class="category">${list_name}</p>
  <p class="description">${description}</p>
@@ -63,7 +69,9 @@ function murkupBooksFromLockalstirage(evt) {
    </a>
    </li>
    <li class="platform-svg book">
-   <a href="${toGetUrlApple(buy_links)}" target="_blank" rel="noopener noreferrer">
+   <a href="${toGetUrlApple(
+     buy_links
+   )}" target="_blank" rel="noopener noreferrer">
    <img src="${appleBookImg}" alt="" >
    </a>
    
@@ -73,17 +81,20 @@ function murkupBooksFromLockalstirage(evt) {
  </div>
  </div>
  </section>`
- 
-    ).join('');
-   
-  
-    murkup.innerHTML = murkupBook;
- 
+    )
+    .join('');
+
+  murkup.innerHTML = murkupBook;
 }
 
 // Видаляємо книжку
 function onDeleteBtnClick(evt) {
-  if (evt.target.nodeName !== 'use' && evt.target.nodeName !== 'BUTTON' && evt.target.nodeName !== 'svg') {
+
+  if (
+    evt.target.nodeName !== 'use' &&
+    evt.target.nodeName !== 'BUTTON' &&
+    !evt.target.classList.contains('icon-trash')
+  ) {
     console.log(evt.target.nodeName);
     return;
   }
@@ -93,24 +104,21 @@ function onDeleteBtnClick(evt) {
     return;
   }
   const itemId = evt.target.dataset.action;
- 
+
   const masBook = shoppingList.filter(b => b._id === itemId);
   
   const masBooks = shoppingList.filter(b => b._id !== itemId);
-  
-  
+
   localStorage.setItem('shopping-list', JSON.stringify(masBooks));
   murkupBook(masBooks);
-  if(masBooks.length === 0) {
-   
-    murkup.setAttribute( "hidden", "")
-    notEmptyStorage.style.display = "block"
-
+  if (masBooks.length === 0) {
+    murkup.setAttribute('hidden', '');
+    notEmptyStorage.style.display = 'block';
   }
- 
- return;
 
+  return;
 }
+
 
 
 
@@ -224,3 +232,4 @@ function colorRem(mas) {
    }
 
    }
+
