@@ -1,6 +1,8 @@
 
 import amazonImg from '../img/amazon.png';
 import appleBookImg from '../img/book.png';
+import apple from '../img/supportUkraine/applebooks.png';
+import amazon from '../img/amazonImg.png';
 // import basket from '../img/basked.png';
 
 const murkup = document.querySelector('.body');
@@ -51,14 +53,14 @@ function murkupBooksFromLockalstirage(evt) {
    <ul class="platform">
    <li class="platform-svg amazon ">
    <a href="${toGetUrl(buy_links)}" target="_blank" rel="noopener noreferrer">
-   <img src="${amazonImg}" alt="" >
+   <img src="${amazon}" alt="" class="modal-icon-amazon">
    </a>
    </li>
    <li class="platform-svg book">
    <a href="${toGetUrlApple(
      buy_links
    )}" target="_blank" rel="noopener noreferrer">
-   <img src="${appleBookImg}" alt="" >
+   <img src="${apple}" alt="" class="modal-icon-apple">
    </a>
    
  </li>
@@ -117,7 +119,7 @@ function changeThema(){
     const catShopp = document.querySelectorAll(".category");
     const descShopp = document.querySelectorAll(".description");
     const amazShopp = document.querySelectorAll(".amazon");
-    const appleShopp = document.querySelectorAll(".book");
+  const appleShopp = document.querySelectorAll(".book");
  
   if(shoppingListTema === "enabled") {
     openAll(nameShopp);

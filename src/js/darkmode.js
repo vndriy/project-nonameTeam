@@ -22,6 +22,11 @@ const modalButton = document.querySelector('.modal-book-shopping-list-btn');
 const modalMessage = document.querySelector(
   '.modal-book-shopping-list-btn-shopping-list-message'
 );
+//
+const menuBtn = document.querySelector('.menu-btn');
+const mobHome = document.querySelector('.mobmenu-home')
+const mobShop = document.querySelector('mobmenu-shop')
+
 // const modalContainer = document.querySelector('.modal-book-content-wrap');
 // const modalBookTitle = modalContainer.querySelector('.modal-book-title');
 // const modalMessage = modalContainer.querySelector(
@@ -33,6 +38,12 @@ if (currentPageURL.includes('index.html')) {
   homeLink.style.fontWeight = '700';
   shoppingLink.style.fontWeight = '500';
   shoppingLink.style.backgroundColor = 'transparent';
+
+  mobHome.classList.add('yellow-block');
+  mobHome.style.fontWeight = '700';
+  mobHome.style.color = 'black';
+
+
   if (darkMode === 'enabled') {
     shoppingLink.style.color = '#fff';
     shopSvg.style.fill = 'white';
@@ -42,6 +53,10 @@ if (currentPageURL.includes('index.html')) {
   shoppingLink.classList.add('yellow-block');
   homeLink.style.fontWeight = '500';
   homeLink.style.backgroundColor = 'transparent';
+  
+  //   mobShop.classList.add('yellow-block');
+  // mobShop.style.fontWeight = '700';
+  // mobShop.style.color = 'black';
   if (darkMode === 'enabled') {
     homeLink.style.color = '#fff';
   }
@@ -105,3 +120,8 @@ darkModeToggle.addEventListener('click', () => {
     }
   }
 });
+
+
+// if (darkMode === 'enabled') {
+ 
+// }

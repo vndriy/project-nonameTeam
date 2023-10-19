@@ -5,9 +5,47 @@ a {
   text-decoration: none;
 }
 
+.modal-icon-apple {
+  filter: grayscale(100%);
+}
+
+.modal-icon-apple:hover {
+  filter: grayscale(100%);
+  filter: drop-shadow(0);
+}
+
+.bodybg .modal-icon-apple {
+  filter: grayscale(100%);
+}
+
+.bodybg .modal-icon-apple:hover {
+  /* filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.35)); */
+  /* filter: grayscale(100%); */
+}
+
+/*v*/
+.modal-icon-amazon {
+  filter: grayscale(100%);
+}
+
+.modal-icon-amazon:hover {
+  /* filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.35)); */
+  /* filter: grayscale(100%); */
+}
+
+.bodybg .modal-icon-amazon {
+  filter: brightness(0) invert(1);
+}
+.bodybg .modal-icon-amazon:hover {
+  filter: brightness(0) invert(1);
+}
+
+/* .bodybg .modal-icon-amazon,
+.bodybg .modal-icon-apple {
+  filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.35));
+} */
 
 .body .hover {
-  
   background-color: #111;
   color: #fff;
 }
@@ -177,10 +215,9 @@ a {
 }
 .color {
   filter: grayscale(0%);
-  
 }
 
-.yu{
+.yu {
   filter: drop-shadow(88px 45px 33px red) invert(60%);
 }
 /* Планшет */

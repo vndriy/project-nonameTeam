@@ -33,3 +33,37 @@
 /* .list-item{
   color: white;
 } */
+
+.bodybg .list-item {
+  color: white;
+  opacity: 60%;
+}
+
+.bodybg .list-item:hover {
+  color: var(--yellow);
+  opacity: 100%;
+}
+
+.bodybg .modal-book-title {
+  color: white;
+}
+
+.bodybg .cap-text {
+  color: white;
+}
+
+.bodybg .modal-book-description {
+  color: white;
+}
+
+.bodybg .active-category {
+  color: var(--yellow);
+  font-weight: 700;
+  opacity: 100%;
+}
+
+.active-category {
+  color: var(--blue);
+  font-weight: 700;
+  opacity: 100%;
+}
