@@ -18,6 +18,14 @@ function createCategoryTitle(list_name) {
   return `<h1 class="all-books-title">${designedTitle}</h1>`;
 }
 
+function createCategoryTitleList(list_name) {
+  const words = list_name.split(' ');
+  const lastWord = words.pop();
+  const designedTitle =
+    words.join(' ') + ' <span class="list-title-span">' + lastWord + '</span>';
+  return `<h1 class="all-books-title">${designedTitle}</h1>`;
+}
+
 // function handleBookCardClick(e) {
 //   if (e.target.dataset.bookId) {
 //     openModal(e.target.dataset.bookId);
@@ -86,33 +94,74 @@ function createTopBooks(arr) {
   return html;
 }
 
-categories.addEventListener('click', async e => {
-  console.log(e.target.textContent);
-  const targetCategory = e.target.textContent;
-  try {
-    Notiflix.Loading.standard('Loading...', {
-      svgColor: '#4F2EE8',
-    });
-    if (e.target.classList.contains('all-categories')) {
-      listTitle.innerHTML = `Best Sellers <span class="list-title-span">Books</span>`;
-      return displayTopBooks();
-    }
-    const selectedCategory = await getBooksByCategory(targetCategory);
-    const booksHTML = createBookCard(selectedCategory);
-    // booksContainer.style.display = 'none';
-    // sectionContainer.style.display = 'block';
+// Old function by Yura is below
+// categories.addEventListener('click', async e => {
+//   console.log(e.target.textContent);
+//   const targetCategory = e.target.textContent;
+//   try {
+//     Notiflix.Loading.standard('Loading...', {
+//       svgColor: '#4F2EE8',
+//     });
+//     if (e.target.classList.contains('all-categories')) {
+//       listTitle.innerHTML = `Best Sellers <span class="list-title-span">Books</span>`;
+//       return displayTopBooks();
+//     }
+//     const selectedCategory = await getBooksByCategory(targetCategory);
+//     const booksHTML = createBookCard(selectedCategory);
+//     // booksContainer.style.display = 'none';
+//     // sectionContainer.style.display = 'block';
+//     listTitle.innerHTML = createCategoryTitle(targetCategory);
 
-    listTitle.innerHTML = createCategoryTitle(targetCategory);
-    listOfBooks.innerHTML = booksHTML;
-    Notiflix.Loading.remove();
-  } catch (error) {
-    console.error(error);
-    Notiflix.Notify.failure(
-      'Unfortunately there are no books under the selected category'
-    );
+//     listOfBooks.innerHTML = booksHTML;
+//     Notiflix.Loading.remove();
+//   } catch (error) {
+//     console.error(error);
+//     Notiflix.Notify.failure(
+//       'Unfortunately there are no books under the selected category'
+//     );
+//   }
+// });
+
+categories.addEventListener('click', async e => {
+  if (e.target.classList.contains('list-item')) {
+
+    const categoryItems = document.querySelectorAll('.list-item');
+    categoryItems.forEach(item => {
+      item.classList.remove('active-category');
+      item.style.color = '';
+    });
+
+    e.target.classList.add('active-category');
+    e.target.style.color = 'var(--blue)'; 
+
+    const targetCategory = e.target.textContent;
+    const upperCaseCategory = targetCategory.toUpperCase();
+    try {
+      Notiflix.Loading.standard('Loading...', {
+        svgColor: '#4F2EE8',
+      });
+
+      if (e.target.classList.contains('all-categories')) {
+        listTitle.innerHTML = `Best Sellers <span class="list-title-span">Books</span>`;
+        return displayTopBooks();
+      }
+
+      const selectedCategory = await getBooksByCategory(targetCategory);
+      const booksHTML = createBookCard(selectedCategory);
+
+      listTitle.innerHTML = createCategoryTitleList(upperCaseCategory);
+      listTitle.innerHTML = createCategoryTitle(targetCategory);
+
+      listOfBooks.innerHTML = booksHTML;
+      Notiflix.Loading.remove();
+    } catch (error) {
+      console.error(error);
+      Notiflix.Notify.failure('Unfortunately there are no books under the selected category');
+    }
   }
 });
 
+// ----
 function createBookCard(arr) {
   const booksCard = arr
     .map(({ _id, author, title, book_image, description }) => {
