@@ -25,6 +25,10 @@
       <path fill="#f6f6f6" d="M32 16c0 8.837-7.163 16-16 16S0 24.837 0 16 7.163 0 16 0s16 7.163 16 16z" style="fill:var(--color4, #f6f6f6)"/>
       <path fill="#4f2ee8" d="M10.523 22.847a5.477 5.477 0 1 1 10.954 0H10.522zM16 16.685c-2.27 0-4.108-1.838-4.108-4.108S13.73 8.469 16 8.469c2.27 0 4.108 1.838 4.108 4.108S18.27 16.685 16 16.685z" style="fill:var(--color3, #4f2ee8)"/>
     </symbol>
+    <symbol id="icon-bin" viewBox="0 0 32 32">
+    <path d="M4 10v20c0 1.1 0.9 2 2 2h18c1.1 0 2-0.9 2-2v-20h-22zM10 28h-2v-14h2v14zM14 28h-2v-14h2v14zM18 28h-2v-14h2v14zM22 28h-2v-14h2v14z"></path>
+    <path d="M26.5 4h-6.5v-2.5c0-0.825-0.675-1.5-1.5-1.5h-7c-0.825 0-1.5 0.675-1.5 1.5v2.5h-6.5c-0.825 0-1.5 0.675-1.5 1.5v2.5h26v-2.5c0-0.825-0.675-1.5-1.5-1.5zM18 4h-6v-1.975h6v1.975z"></path>
+   </symbol>
     
     <symbol id="icon-menu" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M22.667 13.333h-18.667"></path>

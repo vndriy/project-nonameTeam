@@ -4,6 +4,13 @@ ul {
 a {
   text-decoration: none;
 }
+
+
+.body .hover {
+  
+  background-color: #111;
+  color: #fff;
+}
 .container-general {
   max-width: 335px;
   margin: auto;
@@ -19,6 +26,7 @@ a {
   color: #4f2ee8;
   margin-left: 7px;
 }
+
 .icon-trash {
   font-size: 16px;
   color: var(--white);
@@ -40,14 +48,6 @@ a {
   transform: scale(1.25);
 }
 
-/* .button-svg {
-  position: absolute;
-  right: 0;
-  width: 28px;
-  height: 28px;
-  border: none;
-  background-color: aqua; */
-/* } */
 .shopping-container {
   display: flex;
   flex-direction: row;
@@ -157,18 +157,32 @@ a {
 .book {
   width: 16px;
   height: 16px;
+  /* filter: grayscale(100%); */
 }
-.book:hover {
+.book:hover,
+.book:focus {
+  filter: grayscale(0%);
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
 }
 .amazon {
   width: 32px;
   height: 11px;
-}
-.amazon:hover {
-  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
+  /* filter: grayscale(100%); */
 }
 
+.amazon:hover,
+.amazon:focus {
+  filter: grayscale(0%);
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
+}
+.color {
+  filter: grayscale(0%);
+  
+}
+
+.yu{
+  filter: drop-shadow(88px 45px 33px red) invert(60%);
+}
 /* Планшет */
 @media screen and (min-width: 768px) {
   .container-general {
