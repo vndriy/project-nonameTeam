@@ -9,7 +9,7 @@
 
   border-radius: 0px 0px 8px 8px;
   border: 1.5px solid #111;
-  background: #fff;
+  background: var(--white);
   display: flex;
 }
 
@@ -105,7 +105,7 @@ label:active:after {
 .menu-btn__burger {
   width: 14px;
   height: 2px;
-  background: #000000;
+  background: var(--black);
   /* border-radius: 5px; */
   /* box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2); */
   transition: all 0.5s ease-in-out;
@@ -157,8 +157,8 @@ header {
   height: 100vh;
   background: radial-gradient(
     189.32% 190.93% at 59.76% -23.42%,
-    #4f2ee8 18.03%,
-    #fff 100%
+    var(--blue) 18.03%,
+    var(--white) 100%
   );
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
@@ -168,8 +168,8 @@ header {
   background: url('../img/books.png'),
     radial-gradient(
       189.32% 190.93% at 59.76% -23.42%,
-      #4f2ee8 18.03%,
-      #fff 100%
+      var(--blue) 18.03%,
+      var(--white) 100%
     );
   background-repeat: no-repeat;
   background-position-y: bottom;
@@ -190,7 +190,7 @@ header {
 }
 
 .mobmenu-home {
-  color: #ffffff;
+  color: var(--white);
   font-family: DM Sans;
   font-size: 14px;
   font-style: normal;
@@ -204,7 +204,7 @@ header {
   display: flex;
   align-items: center;
   gap: 4px;
-  color: #ffffff;
+  color: var(--white);
   font-family: DM Sans;
   font-size: 14px;
   font-style: normal;
@@ -215,7 +215,7 @@ header {
 }
 
 .svg-mob {
-  fill: white;
+  fill: var(--white);
 }
 
 .shop-svg {
@@ -228,27 +228,15 @@ header {
 
 .yellow-block {
   display: flex;
-  /* height: 100%; */
   padding: 7px 16px;
   justify-content: center;
   align-items: center;
   gap: 8px;
   border-radius: 36px;
-  background: #eac645;
+  background: var(--yellow);
 }
 
 @media screen and (min-width: 768px) {
-  /* .container {
-    height: 64px;
-    max-width: 768px;
-    margin: 0 auto;
-    padding: 18px 20px;
-
-    border-radius: 0px 0px 8px 8px;
-    border: 1.5px solid #111;
-    background: #fff;
-  } */
-
   .header-cont {
     height: 72px;
     max-width: 768px;
@@ -277,7 +265,7 @@ header {
     background: #4f2ee8;
     margin-left: 18px;
 
-    color: #fff;
+    color: var(--white);
     font-family: DM Sans;
     font-size: 22px;
     font-style: normal;
@@ -297,7 +285,7 @@ header {
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
-    line-height: 18px; /* 128.571% */
+    line-height: 18px;
     letter-spacing: -0.56px;
     text-transform: uppercase;
   }
@@ -311,7 +299,7 @@ header {
     font-size: 14px;
     font-style: normal;
     font-weight: 700;
-    line-height: 18px; /* 128.571% */
+    line-height: 18px;
     letter-spacing: -0.56px;
     text-transform: uppercase;
   }
@@ -330,4 +318,16 @@ header {
 
 .no-scroll {
   overflow: hidden;
+}
+
+.bodybg .menu-btn__burger {
+  background: var(--white);
+}
+
+.bodybg .menu-btn__burger::before {
+  background: var(--white);
+}
+
+.bodybg .menu-btn__burger::after {
+  background: var(--white);
 }

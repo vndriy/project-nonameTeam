@@ -132,8 +132,6 @@ categories.addEventListener('click', async e => {
     });
 
     e.target.classList.add('active-category');
-    e.target.style.color = 'var(--blue)'; 
-
     const targetCategory = e.target.textContent;
     const upperCaseCategory = targetCategory.toUpperCase();
     try {
