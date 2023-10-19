@@ -25,7 +25,8 @@ const modalMessage = document.querySelector(
 //
 const menuBtn = document.querySelector('.menu-btn');
 const mobHome = document.querySelector('.mobmenu-home')
-const mobShop = document.querySelector('mobmenu-shop')
+const mobShop = document.querySelector('.mobmenu-shop')
+const svgMob = document.querySelector('.svg-mob')
 
 // const modalContainer = document.querySelector('.modal-book-content-wrap');
 // const modalBookTitle = modalContainer.querySelector('.modal-book-title');
@@ -54,9 +55,11 @@ if (currentPageURL.includes('index.html')) {
   homeLink.style.fontWeight = '500';
   homeLink.style.backgroundColor = 'transparent';
   
-  //   mobShop.classList.add('yellow-block');
-  // mobShop.style.fontWeight = '700';
-  // mobShop.style.color = 'black';
+    mobShop.classList.add('yellow-block');
+  mobShop.style.fontWeight = '700';
+  mobShop.style.color = 'black';
+    svgMob.style.fill = 'black';
+
   if (darkMode === 'enabled') {
     homeLink.style.color = '#fff';
   }
