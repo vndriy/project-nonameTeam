@@ -12,20 +12,6 @@ themaDark.addEventListener("click", changeThema)
 murkup.addEventListener('click', onDeleteBtnClick);
 window.addEventListener('load', murkupBook);
 
-function murkupBook() {
-  const list = localStorage.getItem('shopping-list');
-  const listPars = JSON.parse(list);
-
-
-  if (listPars.length === 0) {
-    murkup.classList.add('block-hidden');
-    return;
-  } else {
-    notEmptyStorage.style.display = 'none';
-    murkupBooksFromLockalstirage(listPars);
-  }
-}
-
 // Отримуємо URL
 function toGetUrl(evt) {
   for (const e of evt) {
