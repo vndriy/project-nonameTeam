@@ -75,7 +75,7 @@ function createTopBooks(arr) {
         books,
       }) => {
         return `<li class="category-of-books">
-      <h2 class="category-name>${listName}</h2>
+      <h2 class="category-name">${listName}</h2>
        <ul class="list-of-books-by-category">${createBookCard(books)}</ul>
        <div class="button-wrapper"><button class="seemore-btn" data-category="${listName}">See more</button></div>
        </li>
@@ -121,7 +121,7 @@ function createBookCard(arr) {
           <a href="#" class="book-link">
             <div class="whole-image-wrapper">
              <img data-book-id="${_id}" class="book-image-category" src="${book_image}" width="180" height="256"  alt="${title}" loading="lazy"/>
-             <div class="image-overlay">NO DESCRIPTION</div>
+             <div class="image-overlay">QUICK VIEW</div>
             </div>
             <h3 class="book-title">${title}</h3>
             <p class="author">${author}</p>

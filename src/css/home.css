@@ -156,7 +156,8 @@
     letter-spacing: -0.32px;
     color: rgba(17, 17, 17, 0.6);
     cursor: pointer;
-    transition: all var(--transition-dur-func);
+    transition: color var(--transition-dur-func),
+      text-transform var(--transition-dur-func);
   }
 
   .list-item:hover {
@@ -570,7 +571,6 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   position: absolute;
   bottom: 0;
