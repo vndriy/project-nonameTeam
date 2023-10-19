@@ -27,12 +27,23 @@ const menuBtn = document.querySelector('.menu-btn');
 const mobHome = document.querySelector('.mobmenu-home')
 const mobShop = document.querySelector('.mobmenu-shop')
 const svgMob = document.querySelector('.svg-mob')
+const allCateg = document.querySelector('.all-categories')
+
+
 
 // const modalContainer = document.querySelector('.modal-book-content-wrap');
 // const modalBookTitle = modalContainer.querySelector('.modal-book-title');
 // const modalMessage = modalContainer.querySelector(
 //   '.modal-book-shopping-list-btn-shopping-list-message'
 // );
+currentPageURL.includes('index.html');
+homeLink.classList.add('yellow-block');
+// allCateg.classList.add('active-category');
+
+
+// mobHome.classList.add('yellow-block');
+  // mobHome.style.color = 'black';
+    
 
 if (currentPageURL.includes('index.html')) {
   homeLink.classList.add('yellow-block');
