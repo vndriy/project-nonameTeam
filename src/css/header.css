@@ -13,6 +13,10 @@
   display: flex;
 }
 
+.bodybg .header-cont {
+  border: 1.5px solid #ffffff;
+}
+
 .header-nav {
   display: flex;
   align-items: center;

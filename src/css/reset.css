@@ -13,10 +13,6 @@ p {
   text-transform: uppercase;
 }
 
-.shop-body {
-  height: 100vh;
-}
-
 p:last-child {
   margin-bottom: 0;
 }
