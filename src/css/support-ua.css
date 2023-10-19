@@ -92,9 +92,10 @@
 
 
 .img-support {
-  filter: brightness(0) invert(1);
-  max-width: 200px;
+  filter: brightness(0)invert(1);
+  vertical-align: middle;
   height: 32px;
+  display: inline-block;
 }
 
 .scroll-list-button {
