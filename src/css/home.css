@@ -141,7 +141,9 @@
     font-weight: 700;
     line-height: 18px;
     letter-spacing: -0.64px;
-
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
     color: var(--black);
   }
 
