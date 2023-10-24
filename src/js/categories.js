@@ -180,7 +180,7 @@ function createBookCard(arr) {
           <a href="#" class="book-link">
             <div class="whole-image-wrapper">
              <img data-book-id="${_id}" class="book-image-category" src="${book_image}" width="180" height="256"  alt="${title}" loading="lazy"/>
-             <div class="image-overlay">${description}</div>
+             <div data-book-id="${_id}" class="image-overlay">${description}</div>
             </div>
             <h3 class="book-title">${title}</h3>
             <p class="author">${author}</p>
