@@ -52,7 +52,7 @@ Notiflix needs to be appended to the "<`+r+'>" element, but you called it before
           <a href="#" class="book-link">
             <div class="whole-image-wrapper">
              <img data-book-id="${n}" class="book-image-category" src="${a}" width="180" height="256"  alt="${o}" loading="lazy"/>
-             <div class="image-overlay">${s}</div>
+             <div data-book-id="${n}" class="image-overlay">${s}</div>
             </div>
             <h3 class="book-title">${o}</h3>
             <p class="author">${i}</p>
