@@ -7,12 +7,13 @@
   color: white;
 }
 
-/* .list-item {
-  color: white;
-} */
-.shop-svg {
-  fill: black;
-}
+.bodybg .nav-shopli {
+  color: #fff;
+ }
+
+ .bodybg .shop-svg {
+  fill: #fff;
+ }
 
 .darkmode-logo {
   color: var(--black);
@@ -25,14 +26,6 @@
 .light {
   color: #fff;
 }
-
-/* .darkmode-menu {
-  color: #fff;
-} */
-
-/* .list-item{
-  color: white;
-} */
 
 .bodybg .list-item {
   color: white;
