@@ -7,7 +7,6 @@ const header = document.querySelector('header');
 const bodybg = document.querySelector('body');
 const logostyle = document.querySelector('.logo-style');
 const shopSvg = document.querySelector('.shop-svg');
-// const listItem = document.querySelector('.list-item');
 
 const currentPageURL = window.location.pathname;
 const homeLink = document.getElementById('home-link');
@@ -15,35 +14,21 @@ const shoppingLink = document.getElementById('shopping-link');
 const svgMenu = document.getElementById('#svgmenu');
 const headerContainer = document.querySelector('.header-cont');
 
-
 const modal = document.querySelector('.modal-book-selection');
 const modalCloseBtn = document.querySelector('.close-btn-icon');
 const modalButton = document.querySelector('.modal-book-shopping-list-btn');
 const modalMessage = document.querySelector(
   '.modal-book-shopping-list-btn-shopping-list-message'
 );
-//
+
 const menuBtn = document.querySelector('.menu-btn');
 const mobHome = document.querySelector('.mobmenu-home')
 const mobShop = document.querySelector('.mobmenu-shop')
 const svgMob = document.querySelector('.svg-mob')
 const allCateg = document.querySelector('.all-categories')
 
-
-
-// const modalContainer = document.querySelector('.modal-book-content-wrap');
-// const modalBookTitle = modalContainer.querySelector('.modal-book-title');
-// const modalMessage = modalContainer.querySelector(
-//   '.modal-book-shopping-list-btn-shopping-list-message'
-// );
 currentPageURL.includes('index.html');
 homeLink.classList.add('yellow-block');
-// allCateg.classList.add('active-category');
-
-
-// mobHome.classList.add('yellow-block');
-  // mobHome.style.color = 'black';
-    
 
 if (currentPageURL.includes('index.html')) {
   homeLink.classList.add('yellow-block');
@@ -62,6 +47,8 @@ if (currentPageURL.includes('index.html')) {
   }
 } else if (currentPageURL.includes('shopping-list.html')) {
   shoppingLink.style.fontWeight = '700';
+  shoppingLink.style.color = 'black';
+  shopSvg.style.fill = 'black';
   shoppingLink.classList.add('yellow-block');
   homeLink.style.fontWeight = '500';
   homeLink.style.backgroundColor = 'transparent';
@@ -77,8 +64,7 @@ if (currentPageURL.includes('index.html')) {
 }
 
 const enableDarkMode = () => {
-  // svgMenu.classList.add('svg-mob')
-  // header.classList.add('headerbg')
+ 
   headerContainer.classList.add('headerbg');
   bodybg.classList.add('bodybg');
   logostyle.classList.add('darkmode-logo');
@@ -89,13 +75,12 @@ const enableDarkMode = () => {
   modalCloseBtn.classList.add('light');
   modalButton.classList.add('light');
   modalMessage.classList.add('light');
-  //   modalBookTitle.classList.add('light');
+  
 };
 
 const disbleDarkMode = () => {
-  // header.classList.remove('headerbg')
+  
   headerContainer.classList.remove('headerbg');
-
   bodybg.classList.remove('bodybg');
   logostyle.classList.remove('darkmode-logo');
 
@@ -106,6 +91,7 @@ const disbleDarkMode = () => {
 
   localStorage.setItem('darkMode', null);
 };
+
 if (darkMode === 'enabled') {
   enableDarkMode();
   darkModeToggle.checked = true;
@@ -128,7 +114,7 @@ darkModeToggle.addEventListener('click', () => {
     if (currentPageURL.includes('index.html')) {
       shoppingLink.style.color = 'black';
       shopSvg.style.fill = 'black';
-      //
+      
     } else if (currentPageURL.includes('shopping-list.html')) {
       homeLink.style.color = 'black';
     }
@@ -136,6 +122,3 @@ darkModeToggle.addEventListener('click', () => {
 });
 
 
-// if (darkMode === 'enabled') {
- 
-// }
